@@ -1,6 +1,6 @@
 ---
 title: About
-tags: [about]
+tags:
 permalink: /about/
 modified: 2015-08-30
 header:

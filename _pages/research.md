@@ -4,7 +4,7 @@ date: 2011-07-17
 permalink: /research/
 modified: 2015-08-30
 excerpt:
-tags: [research]
+tags:
 ---
 
 I research various aspects of gravity from an astrophysical
