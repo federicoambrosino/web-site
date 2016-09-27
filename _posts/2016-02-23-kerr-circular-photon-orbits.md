@@ -7,6 +7,7 @@ tags: [general relativity, black holes, interactive, dynamics]
 date: 2016-03-02
 jsxgraph: true
 published: true
+pinned: true
 ---
 
 {% include toc %}
