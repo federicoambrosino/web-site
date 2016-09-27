@@ -15,7 +15,7 @@ links you think ought to be here, feel free to suggest them to me.
 * [Gravitational-wave resources](http://www.astro.cornell.edu/~favata/gwresources.html) list from [Marc Favata](http://www.astro.cornell.edu/~favata/)
 * [Hyperspace list](http://hyperspace.uni-frankfurt.de/) of
   gravity conferences and jobs
-* [Physics research conference (PRC) calendar](http://www.pmaweb.caltech.edu/PhysColl/PhysColl15-16.html) at [Caltech](https://www.caltech.edu/)
+* [Physics research conference (PRC) calendar](http://www.pmaweb.caltech.edu/PhysColl/PhysColl16-17.html) at [Caltech](https://www.caltech.edu/)
 * [TAPIR seminar calendar](http://www.tapir.caltech.edu/seminars/) (I am an
   organizer)
 
