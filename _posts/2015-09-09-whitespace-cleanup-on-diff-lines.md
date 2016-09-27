@@ -25,7 +25,7 @@ it was time to automate things and learn some rudimentary
 [`elisp`](https://en.wikipedia.org/wiki/Emacs_Lisp) in the process.
 Without further ado:
 
-{% highlight elisp %}
+{% highlight elisp linenos %}
 (defun buffer-file-git-diff-regions () ""
   (or (magit-git-dir) (error "Dir NOT in a git repo: %s" default-directory))
   (let ((file (buffer-file-name)))
