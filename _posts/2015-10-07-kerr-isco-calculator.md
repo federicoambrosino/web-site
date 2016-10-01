@@ -11,8 +11,9 @@ jsxgraph: true
 With no delay, here is the interactive ISCO calculator. Grab either of
 the red circles on one of the two curves and drag.  Horizontal axis is
 $$a/M$$, vertical axis is $$r_{ISCO}/M$$.  Scroll down for an
-[explanation](#explanation).\\
-P.S. After some suggestions I have created the
+[explanation](#explanation).
+
+**Update 2015-10-08**: After some suggestions I have created the
 [Kerr Calculator v2]({{ site.url }}{% post_url 2015-10-08-kerr-calculator-v2 %}).
 
 <div id="box" class="jxgbox" style="width:500px; height:500px;"></div>
