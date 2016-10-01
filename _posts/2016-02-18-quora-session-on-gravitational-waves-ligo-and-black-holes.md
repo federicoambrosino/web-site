@@ -4,7 +4,7 @@ modified:
 categories: news
 excerpt: I hosted a Quora session. It went well!
 link: https://www.quora.com/profile/Leo-C-Stein/session/90/
-tags: [social, media, quora, outreach, gravitational waves, LIGO, black holes, general relativity]
+tags: [social media, quora, outreach, gravitational waves, LIGO, black holes, general relativity]
 date: 2016-02-18T13:48:50-08:00
 ---
 

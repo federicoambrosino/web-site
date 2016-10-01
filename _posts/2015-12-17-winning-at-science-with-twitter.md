@@ -3,7 +3,7 @@ title: "Winning at #science With Twitter"
 modified:
 categories: 
 excerpt: "That moment when social media creates scientific collaboration"
-tags: [twitter, collaboration, social, media]
+tags: [twitter, collaboration, social media]
 date: 2015-12-17T12:24:22-08:00
 ---
 
