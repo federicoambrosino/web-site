@@ -17,13 +17,13 @@ dynamical Chern-Simons gravity,
 working in collaboration with Maria Okounkova.
 Enjoy!
 
-<video controls style="width:640px;height:360px;" >
+<video controls style="height:360px;" >
   <source src="{{ site.url }}/files/zooming.webm" type="video/webm">
   <source src="{{ site.url }}/files/zooming.m4v" type="video/mp4">
   Your browser does not support the <code>video</code> element.
 </video>
 
-<video controls style="width:640px;height:360px;" >
+<video controls style="height:360px;" >
   <source src="{{ site.url }}/files/theta3d.webm" type="video/webm">
   <source src="{{ site.url }}/files/theta3d.mp4" type="video/mp4">
   Your browser does not support the <code>video</code> element.

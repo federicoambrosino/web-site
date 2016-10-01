@@ -18,13 +18,13 @@ done in collaboration with [Bob McNees](http://jacobi.luc.edu/) and
 Nico Yunes.
 Enjoy!
 
-<video controls style="width:640px;height:360px;" >
+<video controls style="height:360px;" >
   <source src="{{ site.url }}/files/theta3d.webm" type="video/webm">
   <source src="{{ site.url }}/files/theta3d.mp4" type="video/mp4">
   Your browser does not support the <code>video</code> element.
 </video>
 
-<video controls style="width:640px;height:360px;" >
+<video controls style="height:360px;" >
   <source src="{{ site.url }}/files/theta.webm" type="video/webm">
   <source src="{{ site.url }}/files/theta.mp4" type="video/mp4">
   Your browser does not support the <code>video</code> element.
