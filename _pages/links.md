@@ -2,7 +2,7 @@
 title: "Links"
 permalink: /links/
 date: 2015-06-11
-modified: 2015-06-11
+modified: 2016-10-26
 excerpt:
 tags: []
 ---
@@ -39,23 +39,30 @@ links you think ought to be here, feel free to suggest them to me.
   contributed to) this system for abstract and component tensor math
   in Mathematica.
   * [Community-contributed packages](http://contrib.xact.es/) for
-     xAct.
+     xAct (I help maintain).
   * [xTerior](https://github.com/xAct-contrib/xTerior): I coauthored
     this package for exterior differential geometry
 * I use [Aquamacs](http://aquamacs.org/)
   [emacs](http://www.gnu.org/software/emacs/) for <s>writing</s>
   everything.
+  * Use a modern emacs and package management
+    (package.el, should be builtin).
+  * Add [MELPA](https://melpa.org/#/)
+    to your list of package-archives.
+  * Make sure you have [AUCTeX](https://www.gnu.org/software/auctex/)
+  * Make sure you have [magit](https://magit.vc/)
 * [LaTeX](http://www.latex-project.org/)
   * [AUCTeX](https://www.gnu.org/software/auctex/) makes writing LaTeX
   in emacs better.
   * [TeX Live](https://www.tug.org/texlive/);
     [MacTeX](https://www.tug.org/mactex/)
-  * Make sure you use [pdfsync](http://www.ctan.org/pkg/pdfsync). It
+  * Make sure you use synctex. It
     works with [Skim.app](http://skim-app.sourceforge.net/), which is
     a better PDF reader than Apple's Preview.app.
 * [git](http://git-scm.com/): I recommend using git for revision control
   * [Leo C. Stein on github](https://github.com/duetosymmetry)
   * [This web page's repo](https://github.com/duetosymmetry/web-site)
+  * [magit](https://magit.vc/) is the best way to use git from emacs.
 * [make-iop-author-list](https://github.com/duetosymmetry/make-iop-author-list): If you find yourself in the unenviable position of needing to create
   a long LaTeX author list for an IOP publication, then you don't get
   nice `\affiliation{}` macros (like in revtex, for example) to do the
