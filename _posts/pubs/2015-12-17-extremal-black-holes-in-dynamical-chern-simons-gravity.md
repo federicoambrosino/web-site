@@ -7,10 +7,11 @@ excerpt: "Progress in understanding the structure of extremal black holes in Che
 tags: [black holes, Chern-Simons, beyond-GR]
 pub:
   authors: "Robert McNees, Leo C. Stein, Nico Yunes"
-  doi:
+  doi: "10.1088/0264-9381/33/23/235013"
   arXiv: "1512.05453"
-  jref:
+  jref: "2016 Class. Quantum Grav. <b>33</b> 235013"
 date: 2015-12-17T11:30:36-08:00
+modified: 2016-11-21T00:00:00-08:00
 ---
 
 ![]({{ site.url }}/images/theta-0999.png)
