@@ -5,7 +5,6 @@ categories: talks
 excerpt: "My talk slides/movies from the EHT16 conference in Cambrige, MA"
 tags: [black holes, general relativity, beyond-GR]
 date: 2016-11-30T00:00:00-00:00
-published: false
 ---
 
 The
