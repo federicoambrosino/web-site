@@ -128,18 +128,12 @@ $$x^a(\lambda)$$ with $$\lambda$$ an affine parameter.
 Finding the system of ordinary differential equations is pretty
 straightforward (see any of the [references](#references)).  For
 example, from Teo's paper:
-\\[
-\Delta \Sigma \dot{t} = ((r^2+a^2)^2-\Delta a^2\sin^2\theta)E - 2Mr a L_z
-\\]
-\\[
-\Sigma^2 \dot{r}^2 = E^2 r^4 + (a^2E^2-L_z^2-\mathcal{Q})r^2 + 2M[(aE-L_z)^2+\mathcal{Q}]r - a^2 \mathcal{Q}
-\\]
-\\[
-\Sigma^2\dot{\theta}^2 = \mathcal{Q} - \left( \frac{L_z^2}{\sin^2\theta}-E^2a^2 \right)\cos^2\theta
-\\]
-\\[
-\Delta\Sigma\dot{\phi} = 2MraE + (\Sigma-2Mr)\frac{L_z}{\sin^2\theta}
-\\]
+\\begin{align}
+\Delta \Sigma \dot{t} &= ((r^2+a^2)^2-\Delta a^2\sin^2\theta)E - 2Mr a L_z \\\
+\Sigma^2 \dot{r}^2 &= E^2 r^4 + (a^2E^2-L_z^2-\mathcal{Q})r^2 + 2M[(aE-L_z)^2+\mathcal{Q}]r - a^2 \mathcal{Q} \\\
+\Sigma^2\dot{\theta}^2 &= \mathcal{Q} - \left( \frac{L_z^2}{\sin^2\theta}-E^2a^2 \right)\cos^2\theta \\\
+\Delta\Sigma\dot{\phi} &= 2MraE + (\Sigma-2Mr)\frac{L_z}{\sin^2\theta}
+\\end{align}
 where overdots are derivatives with respect to an affine parameter,
 and with the usual Kerr quantities $$\Delta = r^2-2Mr+a^2$$,
 $$\Sigma = r^2+a^2\cos^2\theta$$, and where $$ \mathcal{Q}$$ is the
@@ -174,12 +168,10 @@ plane.  You saw those functions previously on my
 [Kerr calculator]({{ site.url }}{% post_url 2015-10-08-kerr-calculator-v2 %}).
 You can switch between $$(r,a)$$ and $$(\Phi,Q)$$ (in the appropriate
 part of parameter space) via
-\\[
-\Phi = -\frac{r^3-3Mr^2+a^2 r+a^2 M}{a(r-M)}
-\\]
-\\[
-Q = - \frac{r^3(r^3-6Mr^2+9M^2r-4a^2M)}{a^2(r-M)^2}
-\\]
+\\begin{align}
+\Phi &= -\frac{r^3-3Mr^2+a^2 r+a^2 M}{a(r-M)} \\\
+Q &= - \frac{r^3(r^3-6Mr^2+9M^2r-4a^2M)}{a^2(r-M)^2}
+\\end{align}
 
 For any radius between the minimum and maximum, the photon will
 oscillate in latitude between a minimum and maximum, which you can
