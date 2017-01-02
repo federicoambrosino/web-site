@@ -5,6 +5,7 @@ categories: [notes]
 excerpt: "In an effort to keep myself organized, I decided I should type up some notes I have laying around."
 tags: [geometry]
 date: 2017-01-01T15:57:29-08:00
+modified: 2017-01-01T16:59:00-08:00
 ---
 
 <script type="math/tex">
@@ -172,6 +173,16 @@ is arbitrary, we have derived an identity
 when $$\cd$$ is the Levi-Civita connection of $$g$$ and $$v$$ is a
 Killing vector field.
 
+Note: another way to say this is
+<div>
+\begin{align}
+  [ \lie_v, \cd_a ] T = 0 \,.
+\end{align}
+</div>
+In other words, when $$v$$ is a Killing vector field of the metric
+$$g$$, $$\lie_v$$ commutes with the Levi-Civita connection $$\cd$$ of
+$$g$$.
+
 ## General connection coefficients for $$(\varphi_{t}^{*}\cd)-\cd$$
 
 Let us further study the difference $$(\varphi_{t}^{*}\cd)-\cd,$$ and we
@@ -325,6 +336,10 @@ symmetry on the last two indices of $$C$$, we can solve for
 \end{align}
 </div>
 
+Note: Again if $$v$$ is a Killing vector field of $$g$$, this
+immediately vanishes.  This says that to linear order in $$t$$,
+$$(\varphi_t^*\cd)$$ agrees with $$\cd$$.
+
 ## Expansion of pullback connection
 
 Here we are going to present an explicit formula in terms of Lie
@@ -451,6 +466,10 @@ indices in the orders $$(abc)+(bac)-(cab)$$.  This allows us to find
   \,.
 \end{align}
 </div>
+
+Note: Again inspect the case when $$v$$ is a Killing vector field of
+$$g$$.  Since $$[\lie_v, \cd_a] = 0$$, we recover the fact that
+$$(\varphi_t^*\cd)$$ and $$\cd$$ agree to all orders of $$t$$.
 
 # References
 
