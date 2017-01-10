@@ -112,7 +112,7 @@ P \equiv {}^*\!R^{abcd} R_{abcd} ={}^*\!C^{abcd} C_{abcd} \,,
 \end{align}
 </div>
 where $${}^*\!C^{abcd}$$ is the (left) dual Weyl tensor, defined in the
-same way is the dual to Riemann.  Interestingly, the Pontryagin is
+same way as the dual to Riemann.  Interestingly, the Pontryagin is
 completely insensitive to the Ricci tensor.
 
 For future purposes, we will also define a complex tensor where the
