@@ -2,7 +2,7 @@
 title: "Links"
 permalink: /links/
 date: 2015-06-11
-modified: 2016-10-26
+modified: 2017-01-10
 excerpt:
 tags: []
 ---
@@ -12,6 +12,9 @@ links you think ought to be here, feel free to suggest them to me.
 
 # Physics #
 
+* [Bob McNees's](http://jacobi.luc.edu/) collection of
+  [useful conventions, definitions, identities, and formulas](http://jacobi.luc.edu/Useful.html) in
+  general relativity
 * [Gravitational-wave resources](http://www.astro.cornell.edu/~favata/gwresources.html) list from [Marc Favata](http://www.astro.cornell.edu/~favata/)
 * [Hyperspace list](http://hyperspace.uni-frankfurt.de/) of
   gravity conferences and jobs
