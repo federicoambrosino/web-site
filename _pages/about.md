@@ -8,10 +8,10 @@ header:
   overlay_filter: 0.3
 ---
 
-![]({{ site.url }}/images/leo_chalkboard_small.jpg)
+![]({{ site.url }}/images/leo-chalkboard-new-scaled.jpg)
 {: .align-right}
 
-I am currently a postdoctoral researcher in the
+I am currently a post­doctoral researcher in the
 [TAPIR](http://www.tapir.caltech.edu/ "Theoretical astrophysics
 including relativity") group at [Caltech](http://www.caltech.edu/).
 
