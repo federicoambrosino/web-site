@@ -797,7 +797,7 @@ initTraj();
 
 function updateTrajGeom( a, r, solution )
 {
-  var threeVectors = solutionTo3D( a, r, currentSolution );
+  var threeVectors = solutionTo3D( a, r, solution );
 
   var newGeom = new THREE.Geometry();
   newGeom.vertices = threeVectors;
