@@ -8,8 +8,8 @@ date: 2017-03-27T18:00:00-05:00
 modified:
 ---
 
-Special thanks to [Ben Mares](http://tensorial.com/) for posing this
-problem.
+Special thanks to [Ben Mares](http://tensorial.com/) for coming up
+with this identity.
 <script type="math/tex">
 \newcommand{\cd}{\nabla}
 </script>
