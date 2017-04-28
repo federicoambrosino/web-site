@@ -7,7 +7,7 @@ tags: []
 date: 2015-12-01T19:22:41-08:00
 ---
 
-The monster [topical review on testing general relativity]({% post_url 2015-01-28-testing-general-relativity-with-present-and-future-astrophysical-observations %}) is finally published
+The monster [topical review on testing general relativity]({{ site.url }}{% post_url /pubs/2015-01-28-testing-general-relativity-with-present-and-future-astrophysical-observations %}) is finally published
 [in Classical and Quantum Gravity](http://iopscience.iop.org/article/10.1088/0264-9381/32/24/243001)!
 This has taken a long time and a lot of effort from a large number of
 people, all directed and coordinated by our fearless leader

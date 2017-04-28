@@ -13,7 +13,7 @@ movies (right click and save
 [[2]]({{ site.url }}/files/theta.mp4))
 from the 2016 April APS meeting in Salt Lake City, Utah.  This talk
 was reporting on the work
-[Extremal black holes in dynamical Chern-Simons gravity]({{ site.url }}{% post_url 2015-12-17-extremal-black-holes-in-dynamical-chern-simons-gravity %})
+[Extremal black holes in dynamical Chern-Simons gravity]({{ site.url }}{% post_url /pubs/2015-12-17-extremal-black-holes-in-dynamical-chern-simons-gravity %})
 done in collaboration with [Bob McNees](http://jacobi.luc.edu/) and
 Nico Yunes.
 Enjoy!

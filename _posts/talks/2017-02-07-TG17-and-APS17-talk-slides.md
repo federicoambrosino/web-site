@@ -17,10 +17,10 @@ in Vancouver, and the
 in Washington DC.
 The talks I gave at both conferences were similar (and also contained
 elements I've discussed before, at
-[GR21]({{ site.url }}{% post_url 2016-07-12-gr21-talk-slides %}),
-[FF2016]({{ site.url }}{% post_url 2016-09-02-FF2016-talk-slides %}),
+[GR21]({{ site.url }}{% post_url /talks/2016-07-12-gr21-talk-slides %}),
+[FF2016]({{ site.url }}{% post_url /talks/2016-09-02-FF2016-talk-slides %}),
 and
-[EHT16]({{ site.url }}{% post_url 2016-11-30-EHT16-talk-slides %})).
+[EHT16]({{ site.url }}{% post_url /talks/2016-11-30-EHT16-talk-slides %})).
 Therefore I'm only posting one set of slides.
 
 Also, the movies (right click and save):

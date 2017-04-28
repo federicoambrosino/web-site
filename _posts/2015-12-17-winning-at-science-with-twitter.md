@@ -10,7 +10,7 @@ date: 2015-12-17T12:24:22-08:00
 Tonight on the [arXiv](http://arXiv.org), you can read the new
 preprint from [Bob McNees](http://jacobi.luc.edu/), myself, and
 [Nico Yunes](http://www.physics.montana.edu/people/faculty/yunes-nicolas.html),
-entitled [Extremal Black Holes in Dynamical Chern-Simons Gravity]({% post_url 2015-12-17-extremal-black-holes-in-dynamical-chern-simons-gravity %}).
+entitled [Extremal Black Holes in Dynamical Chern-Simons Gravity]({% post_url /pubs/2015-12-17-extremal-black-holes-in-dynamical-chern-simons-gravity %}).
 So, what's special about this paper? If you read the acknowledgments
 you'll find something interesting:
 ![]({{ site.url }}/images/twitter-acks.png)

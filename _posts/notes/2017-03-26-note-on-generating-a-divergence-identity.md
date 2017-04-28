@@ -58,7 +58,7 @@ carefully anti-symmetrized tensor products of the tensor $$M_a{}^b
 \equiv \cd_a X^b$$.  These expressions arise in the expansion of the
 [characteristic polynomial](https://en.wikipedia.org/wiki/Characteristic_polynomial)
 of $$M_a{}^b$$ (the characteristic polynomial made an appearance in
-[an earlier note]({{ site.url }}{% post_url 2017-02-08-note-on-a-dimension-dependent-Weyl-identity %})
+[an earlier note]({{ site.url }}{% post_url /notes/2017-02-08-note-on-a-dimension-dependent-Weyl-identity %})
 that I wrote).  The characteristic polynomial of an $$n\times n$$
 matrix is given by
 $$p_M(t) \equiv \det(tI - M)$$, where $$I$$ is the $$n\times n$$
