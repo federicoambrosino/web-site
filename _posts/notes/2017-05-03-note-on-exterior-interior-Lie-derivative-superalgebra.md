@@ -152,7 +152,6 @@ where $$|x|$$ is the degree of $$x$$.  Now we can honestly claim that
 $$d, \Lie_v, i_v$$ have degrees $$+1, 0, -1$$, because we have a
 superalgebra!  Rewriting our table in this language is quite beautiful:
 
-
 |---
 | :-: | :-: | :-: | :-:
 |  | $$d$$ | $$\Lie$$ | $$i$$
