@@ -46,9 +46,7 @@ define another set of coefficients $$\tilde{c}$$ from
 \end{align}
 </div>
 where we have included a factor of 1/2 for future convenience.  (This
-is not to be confused with the connection 1-form $$\omega^a{}_b$$
-where $$d\theta^a = \omega^a{}_b \wedge \theta^b$$, but the
-relationship is clear.)
+is not to be confused with the connection 1-form $$\omega^a{}_b$$.)
 
 The wedge product of two one-forms is automatically antisymmetric, so
 again we have this property that the collection of scalar fields
