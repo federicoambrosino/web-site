@@ -9,7 +9,7 @@ pub:
   authors: "Maria Okounkova, Leo C. Stein, Mark A. Scheel, and Dan A. Hemberger"
   doi:
   arXiv: "1705.07924"
-  jref: "Submitted to PRD (2017)"
+  jref: "Accepted by PRD (2017)"
 date: 2017-05-23
 ---
 
