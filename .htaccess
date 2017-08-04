@@ -1,5 +1,8 @@
 ErrorDocument 404 /404.html
 
+# Disallow directory listings
+Options -Indexes
+
 # Following is from https://wiki.apache.org/httpd/RewriteHTTPToHTTPS
 RewriteEngine On
 # This will enable the Rewrite capabilities
