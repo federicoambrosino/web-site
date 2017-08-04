@@ -9,7 +9,7 @@ pub:
   authors: "Baoyi Chen and Leo C. Stein"
   doi:
   arXiv: "1707.05319"
-  jref: "Submitted to PRD (2017)"
+  jref: "Accepted by PRD (2017)"
 date: 2017-07-19
 ---
 
