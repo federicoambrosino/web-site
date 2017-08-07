@@ -95,10 +95,12 @@ Eqs. \eqref{eq:action1}, \eqref{eq:SEDGB} is given simply by
 <div>
 \begin{align}
 \label{eq:eom-EDGB}
+\boxed{
 m_{pl}^2 G_{ab} - m_{pl} \ell^2 \cd^c \cd^d
 \left[
 \ddR_{cabd} F(\vartheta)
 \right] = T_{ab}
+}
 \end{align}
 </div>
 where $$T_{ab}$$ is the stress-energy tensor for matter plus the
@@ -159,9 +161,11 @@ again some algebra shows that you can write it as
 <div>
 \begin{align}
 \label{eq:eom-DCS}
+\boxed{
 m_{pl}^2 G_{ab} - m_{pl} \ell^2 \cd^c \cd^d
 \left[ \dR_{c(ab)d} F(\vartheta)
 \right] = T_{ab}
+}
 \end{align}
 </div>
 where $$(ab)$$ means that we are symmetrizing (with a factor of 1/2)
