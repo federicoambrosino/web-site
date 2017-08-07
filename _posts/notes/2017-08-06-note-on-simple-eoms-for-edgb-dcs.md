@@ -25,11 +25,7 @@ example, here's a clip from [one paper on EDGB](https://arxiv.org/abs/1511.05513
 ![Scary equations for EDGB]({{ site.url }}/images/EDGB-scary.png ) 
 
 Ack!  That's pretty unwieldy.  But don't despair, it turns out that
-the above mess can be written much more compactly.  This equivalence
-can be easily verified using the [xAct/xTensor suite](http://www.xact.es/).
-You can download my notebook named
-`EDGB-and-DCS-EOMs-and-C-tensors-simplified.nb` from the
-[xAct examples collection](https://github.com/xAct-contrib/examples).
+the above mess can be written much more compactly.
 
 Just to set conventions, let's work with the action
 <div>
