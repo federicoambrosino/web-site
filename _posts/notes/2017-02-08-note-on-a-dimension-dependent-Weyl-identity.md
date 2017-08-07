@@ -3,7 +3,7 @@ title: "Note on a (dimension-dependent) Weyl identity"
 modified:
 categories: [notes]
 excerpt:
-tags: [geometry]
+tags: [geometry, algebra, xTensor]
 date: 2017-02-08T16:00:00-08:00
 modified:
 ---
