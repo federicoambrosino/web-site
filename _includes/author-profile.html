@@ -31,6 +31,18 @@
       {% if author.email %}
         <li><a href="mailto:{{ author.email }}"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].email_label | default: "Email" }}</a></li>
       {% endif %}
+      {% if author.arxiv %}
+        <li><a href="https://arxiv.org/a/{{ author.arxiv }}"><i class="ai ai-fw ai-arxiv" aria-hidden="true"></i> arXiv</a></li>
+      {% endif %}
+      {% if author.orcid %}
+        <li><a href="https://orcid.org/{{ author.orcid }}"><i class="ai ai-fw ai-orcid" aria-hidden="true"></i> ORCiD</a></li>
+      {% endif %}
+      {% if author.inspire %}
+        <li><a href="https://inspirehep.net/author/profile/{{ author.inspire }}"><i class="ai ai-fw ai-inspire" aria-hidden="true"></i> Inspire</a></li>
+      {% endif %}
+      {% if author.google-scholar %}
+        <li><a href="https://scholar.google.com/citations?user={{ author.google-scholar }}"><i class="ai ai-fw ai-google-scholar" aria-hidden="true"></i> Google Scholar</a></li>
+      {% endif %}
       {% if author.keybase %}
         <li><a href="https://keybase.io/{{ author.keybase }}"><i class="fa fa-fw fa-key" aria-hidden="true"></i> Keybase</a></li>
       {% endif %}
