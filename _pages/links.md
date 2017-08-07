@@ -24,13 +24,13 @@ links you think ought to be here, feel free to suggest them to me.
 
 # Papers #
 
-* [arXiv](http://arxiv.org/) preprints service. I typically read:
-  * [gr-qc](http://arxiv.org/list/gr-qc/new),
-  * [hep-th](http://arxiv.org/list/hep-th/new),
-  * [astro-ph](http://arxiv.org/list/astro-ph/new)
-* [INSPIRE](http://inspirehep.net/) system
-  * [My papers on INSPIRE](http://inspirehep.net/search?p=exactauthor%3AL.C.Stein.2)
-* [NASA ADS](http://labs.adsabs.harvard.edu/adsabs/) service
+* [<i class="ai ai-fw ai-arxiv" aria-hidden="true"></i> arXiv](https://arxiv.org/) preprints service. I typically read:
+  * [gr-qc](https://arxiv.org/list/gr-qc/new),
+  * [hep-th](https://arxiv.org/list/hep-th/new),
+  * [astro-ph](https://arxiv.org/list/astro-ph/new)
+* [<i class="ai ai-fw ai-inspire" aria-hidden="true"></i> INSPIRE](https://inspirehep.net/) system
+  * [My papers on INSPIRE](https://inspirehep.net/search?p=exactauthor%3AL.C.Stein.2)
+* [<i class="ai ai-fw ai-ads" aria-hidden="true"></i> NASA ADS](https://ui.adsabs.harvard.edu/) service
 
 # Software #
 
@@ -45,7 +45,7 @@ links you think ought to be here, feel free to suggest them to me.
      xAct (I help maintain).
   * [xTerior](https://github.com/xAct-contrib/xTerior): I coauthored
     this package for exterior differential geometry
-* I use [Aquamacs](http://aquamacs.org/)
+* I use
   [emacs](http://www.gnu.org/software/emacs/) for <s>writing</s>
   everything.
   * Use a modern emacs and package management
