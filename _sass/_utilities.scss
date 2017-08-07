@@ -282,6 +282,18 @@ body:hover .visually-hidden button {
   .fa-xing-square {
     color: $xing-color;
   }
+
+  /* custom 'brand' colors */
+
+  .ai-orcid,
+  .ai-orcid-square {
+    color: $orcid-color;
+  }
+
+  .ai-google-scholar,
+  .ai-google-scholar-square {
+    color: $google-scholar-color;
+  }
 }
 
 
