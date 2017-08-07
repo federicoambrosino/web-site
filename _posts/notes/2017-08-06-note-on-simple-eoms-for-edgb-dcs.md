@@ -100,7 +100,7 @@ m_{pl}^2 G_{ab} - m_{pl} \ell^2 \cd^c \cd^d
 \end{align}
 </div>
 where $$T_{ab}$$ is the stress-energy tensor for matter plus the
-canonical stress-energy tensor for the scalar field.  That's quite a
+stress-energy tensor for the scalar field.  That's quite a
 bit simpler than the image above, isn't it!  If you want to get
 xTensor to verify this for you, grab
 `EDGB-and-DCS-EOMs-and-C-tensors-simplified.nb` from the
