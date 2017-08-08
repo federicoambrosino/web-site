@@ -166,9 +166,10 @@ m_{pl}^2 G_{ab} - m_{pl} \ell^2 \cd^c \cd^d
 </div>
 where $$(ab)$$ means that we are symmetrizing (with a factor of 1/2)
 on those two indices.  This looks very similar to the expression for
-EDGB!  However, the single-dual of Riemann is not divergence-free, so
+EDGB!  However, the single-dual of Riemann is only manifestly
+divergence-free on the left two indices, so
 this equation does have third derivatives of the metric.  The
-double-divergence, though, does vanish, so there are no fourth
+double-divergence does vanish, so there are no fourth
 derivatives.
 
 All of the above calculations are in my notebook
