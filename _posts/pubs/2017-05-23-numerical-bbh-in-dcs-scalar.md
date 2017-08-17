@@ -7,9 +7,9 @@ excerpt: "One of the first numerical simulations of black hole mergers in beyond
 tags: [general relativity, gravity, gravitational waves, black holes, beyond-GR, Chern-Simons, perturbation theory]
 pub:
   authors: "Maria Okounkova, Leo C. Stein, Mark A. Scheel, and Dan A. Hemberger"
-  doi:
+  doi: "10.1103/PhysRevD.96.044020"
   arXiv: "1705.07924"
-  jref: "Accepted by PRD (2017)"
+  jref: "Phys. Rev. D <b>96</b>, 044020 (2017)"
 date: 2017-05-23
 ---
 
