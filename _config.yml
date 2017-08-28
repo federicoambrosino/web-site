@@ -142,6 +142,10 @@ exclude:
   - tmp
   - page-archive.html
   - collection-archive.html
+  - lrr-index/Makefile
+  - lrr-index/*.txt
+  - lrr-index/*.xml
+  - lrr-index/*.py
 keep_files:
   - .git
   - .svn
