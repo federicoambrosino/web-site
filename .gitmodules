@@ -1,0 +1,3 @@
+[submodule "lrr-index"]
+	path = lrr-index
+	url = git@github.com:duetosymmetry/lrr-index.git
