@@ -46,3 +46,13 @@ and published this theorem at a time when women were not allowed to
 teach in academia.  Not only did she shape modern physics and make
 formative contributions to abstract algebra, she also broke through
 the sexist barriers of her time.
+
+![]({{ site.url }}/images/apple-eye.png)
+{: .align-right style="width: 300px"}
+The illustration at the top (and seen here) is from Figure 1.1 of
+*Gravitation* by Misner, Thorne, and Wheeler (MTW).
+
+This website is built with [Jekyll](https://jekyllrb.com/) using the
+[Minimal mistakes theme](https://mmistakes.github.io/minimal-mistakes/).
+You can view the source/clone/fork/anything you want at
+[my web site's repo](https://github.com/duetosymmetry/web-site).
