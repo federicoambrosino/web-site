@@ -4,7 +4,7 @@ modified:
 categories: [code]
 excerpt:
 link: https://github.com/duetosymmetry/elliptic-integrals-js
-tags: [javascript, special functions]
+tags: [javascript, code, special functions]
 date: 2016-02-24T21:18:03-08:00
 jsxgraph: true
 ---
