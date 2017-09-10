@@ -4,7 +4,7 @@ tags:
 permalink: /about/
 modified: 2015-08-30
 header:
-  overlay_image: apple-eye.png
+  overlay_image: apple-eye.jpg
   overlay_filter: 0.3
 ---
 
@@ -47,7 +47,7 @@ teach in academia.  Not only did she shape modern physics and make
 formative contributions to abstract algebra, she also broke through
 the sexist barriers of her time.
 
-![]({{ site.url }}/images/apple-eye.png)
+![]({{ site.url }}/images/apple-eye.jpg)
 {: .align-right style="width: 300px"}
 The illustration at the top (and seen here) is from Figure 1.1 of
 *Gravitation* by Misner, Thorne, and Wheeler (MTW).
