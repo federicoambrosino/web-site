@@ -1,15 +1,15 @@
 ---
 layout: pub-link
 title: "Separating metric perturbations in near-horizon extremal Kerr spacetimes"
-modified:
+modified: 2017-09-13
 categories: pubs
 excerpt: "Whenever you've got symmetry, you should use it!"
 tags: [general relativity, gravity, black holes, perturbation theory, symmetry, group theory]
 pub:
   authors: "Baoyi Chen and Leo C. Stein"
-  doi:
+  doi: "10.1103/PhysRevD.96.064017"
   arXiv: "1707.05319"
-  jref: "Accepted by PRD (2017)"
+  jref: "Phys. Rev. D <b>96</b>, 064017 (2017)"
 date: 2017-07-19
 ---
 
