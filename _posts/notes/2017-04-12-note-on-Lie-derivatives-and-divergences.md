@@ -13,7 +13,7 @@ modified:
 \newcommand{\pd}{\partial}
 \newcommand{\Lie}{\mathcal{L}}
 </script>
-One of Saul Teukolsky's favorite pieces of advices is if you're ever
+One of Saul Teukolsky's favorite pieces of advice is if you're ever
 stuck, try integrating by parts.  If we're working with a covariant
 derivative $$\cd_a$$, and we have some tensor quantities $$S, T$$ under
 an integral, then every calculus student knows that we can move the
