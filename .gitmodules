@@ -1,3 +1,6 @@
 [submodule "lrr-index"]
 	path = lrr-index
 	url = git@github.com:duetosymmetry/lrr-index.git
+[submodule "testing-gr-tables"]
+	path = testing-gr-tables
+	url = git@github.com:duetosymmetry/testing-gr-tables.git
