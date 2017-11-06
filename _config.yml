@@ -146,6 +146,13 @@ exclude:
   - lrr-index/*.txt
   - lrr-index/*.xml
   - lrr-index/*.py
+  - testing-gr-tables/Makefile
+  - testing-gr-tables/Parser.js
+  - testing-gr-tables/collectTableRefs.js
+  - testing-gr-tables/Bib2JSON*
+  - testing-gr-tables/*.org
+  - testing-gr-tables/*.awk
+  - testing-gr-tables/*.tmp
 keep_files:
   - .git
   - .svn
