@@ -155,6 +155,7 @@ exclude:
   - testing-gr-tables/*.tmp
   - testing-gr-tables/README.md
   - testing-gr-tables/LICENSE.txt
+  - testing-gr-tables/docs/*
 keep_files:
   - .git
   - .svn
