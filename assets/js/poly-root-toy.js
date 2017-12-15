@@ -118,7 +118,9 @@
         [(function (box) { return function(){ return box.getBoundingBox()[0];}; })(this.rootbox),
          (function (box) { return function(){ return box.getBoundingBox()[1];}; })(this.rootbox),
          'Roots'],
-        {anchorX: 'left', anchorY: 'top', cssClass: 'myBoxTitle', fontSize: 14});
+        {anchorX: 'left', anchorY: 'top',
+         cssClass: 'myBoxTitle', highlightCssClass: 'myBoxTitle',
+         fontSize: 14});
 
       this.coeffbox.create('axis', [[0, 0], [1,0]],
         { name:'Re[a<sub>i</sub>]',
@@ -139,7 +141,9 @@
         [(function (box) { return function(){ return box.getBoundingBox()[0];}; })(this.coeffbox),
          (function (box) { return function(){ return box.getBoundingBox()[1];}; })(this.coeffbox),
          'Coefficients'],
-        {anchorX: 'left', anchorY: 'top', cssClass: 'myBoxTitle', fontSize: 14});
+        {anchorX: 'left', anchorY: 'top',
+         cssClass: 'myBoxTitle', highlightCssClass: 'myBoxTitle',
+         fontSize: 14});
     },
 
     'setDegreeFromView': function() {
