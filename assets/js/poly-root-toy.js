@@ -87,14 +87,59 @@
       var baseOpts = {
         boundingbox: [-2, 2, 2, -2],
         keepaspectratio: true,
-        axis: {ticks: {minorTicks:1, majorHeight:10, minorHeight:4}},
+        axis: false,
         grid: true,
         pan: {enabled: false},
-        showNavigation: false,
+        showNavigation: true,
         showCopyright:  false};
 
       this.rootbox  = JXG.JSXGraph.initBoard(rootboxName, baseOpts);
       this.coeffbox = JXG.JSXGraph.initBoard(coeffboxName, baseOpts);
+
+      this.rootbox.create('axis', [[0, 0], [1,0]],
+        { name:'Re[z]',
+			    withLabel: true,
+          ticks: {minorTicks:1, majorHeight:10, minorHeight:4},
+			    label: { position: 'rt',
+					         offset: [-25, 20], }
+			  });
+      this.rootbox.create('axis', [[0, 0], [0,1]],
+        { name:'Im[z]',
+			    withLabel: true,
+          ticks: {minorTicks:1, majorHeight:10, minorHeight:4},
+			    label: { position: 'rt',
+					         offset: [20, 0], }
+			  });
+
+      // This is a dumb hack to fix the label relative to the screen instead of axes.
+      // Did I mention how much I hate JS's scoping?
+      this.rootbox.create(
+        'text',
+        [(function (box) { return function(){ return box.getBoundingBox()[0];}; })(this.rootbox),
+         (function (box) { return function(){ return box.getBoundingBox()[1];}; })(this.rootbox),
+         'Roots'],
+        {anchorX: 'left', anchorY: 'top', cssClass: 'myBoxTitle', fontSize: 14});
+
+      this.coeffbox.create('axis', [[0, 0], [1,0]],
+        { name:'Re[a<sub>i</sub>]',
+			    withLabel: true,
+          ticks: {minorTicks:1, majorHeight:10, minorHeight:4},
+			    label: { position: 'rt',
+					         offset: [-25, 20], }
+			  });
+      this.coeffbox.create('axis', [[0, 0], [0,1]],
+        { name:'Im[a<sub>i</sub>]',
+			    withLabel: true,
+          ticks: {minorTicks:1, majorHeight:10, minorHeight:4},
+			    label: { position: 'rt',
+					         offset: [20, 0], }
+			  });
+      this.coeffbox.create(
+        'text',
+        [(function (box) { return function(){ return box.getBoundingBox()[0];}; })(this.coeffbox),
+         (function (box) { return function(){ return box.getBoundingBox()[1];}; })(this.coeffbox),
+         'Coefficients'],
+        {anchorX: 'left', anchorY: 'top', cssClass: 'myBoxTitle', fontSize: 14});
     },
 
     'setDegreeFromView': function() {

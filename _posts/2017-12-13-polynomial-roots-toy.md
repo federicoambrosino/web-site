@@ -13,8 +13,8 @@ pinned: false
 
 <style>
 .mybox {
-width: 300px;
-height: 300px;
+width: 360px;
+height: 360px;
 margin-bottom: 1em;
 display: inline-block;
 }
@@ -25,6 +25,11 @@ width: 4em;
 
 .myLabel {
 display: inline-block;
+}
+
+.myBoxTitle {
+padding: 10px;
+text-decoration: underline;
 }
 </style>
 
