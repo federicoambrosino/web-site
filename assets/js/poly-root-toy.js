@@ -24,6 +24,89 @@
     };
   };
 
+  /**
+   * TODO Document this
+   */
+  function SylvesterMatrix(p1, p2) {
+    var n1 = p1.degree(), n2 = p2.degree();
+    var p1a = p1.coeffArray(), p2a = p2.coeffArray();
+
+    var d = n1+n2;
+
+    var s = new Array(d);
+
+    for (var i=0; i<n2; i++) {
+      s[i] = new Array(d);
+      for (var j=0; j<i; j++)
+        s[i][j] = 0;
+      for (var j=i; j<i+n1+1; j++)
+        s[i][j] = p1a[n1-j+i];
+      for (var j=i+n1+1; j<d; j++)
+        s[i][j] = 0;
+    };
+
+    for (var i=n2; i<d; i++) {
+      s[i] = new Array(d);
+      for (var j=0; j<i-n2; j++)
+        s[i][j] = 0;
+      for (var j=i-n2; j<i+1; j++)
+        s[i][j] = p2a[i-j];
+      for (var j=i+1; j<d; j++)
+        s[i][j] = 0;
+    };
+
+    return s;
+  }
+
+  /**
+   * Return the (i,j) minor matrix
+   */
+  function MinorMatrix(mat, i, j) {
+    var dim = mat.length;
+
+    var rowRemoved = mat.slice(0,i).concat(mat.slice(i+1, dim));
+    var colRemoved = rowRemoved.map( r =>
+                                     r.slice(0,j).concat(r.slice(j+1, dim)));
+
+    return colRemoved;
+  };
+
+  /**
+   * TODO Document this.
+   * Compute the determinant of some square matrix (array of arrays)
+   * as a Polynomial() object.
+   * Use minor expansion.
+   * Explicitly skip over terms that are 0.
+   * This is an optimization because I'm only going to use this
+   * function for computing the discriminant from the Sylvester matrix.
+   */
+  function PolyDeterminant(mat) {
+    var dim = mat.length;
+
+    if (dim == 1)
+      return Polynomial(mat[0][0]);
+
+    // Because of the structure of the Sylvester matrix, it's going
+    // to be more efficient to perform the minor expansion down the
+    // first column, where all but two entries are 0.
+    var result = Polynomial(Complex(0.));
+    for (var i=0; i<dim; i++) {
+      if (mat[i][0] == 0)
+        continue;
+
+      var summand = Polynomial(mat[i][0]);
+      summand = summand.mul( PolyDeterminant( MinorMatrix(mat, i, 0) ) );
+
+      if (!(i%2)) {
+        result = result.add(summand);
+      } else {
+        result = result.sub(summand);
+      };
+    };
+
+    return result;
+  };
+
   function PolyRootController(rootboxName, coeffboxName, degreeInputName) {
 
     if (!(this instanceof PolyRootController)) {
@@ -205,6 +288,10 @@
       this.coeffPoints = [];
     },
   };
+
+  PolyRootController.SylvesterMatrix = SylvesterMatrix;
+  PolyRootController.MinorMatrix = MinorMatrix;
+  PolyRootController.PolyDeterminant = PolyDeterminant;
 
   root['PolyRootController'] = PolyRootController;
 
