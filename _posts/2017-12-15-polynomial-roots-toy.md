@@ -41,7 +41,7 @@ Grab the red dots and play around! Or jump to the
 <div id="rootbox" class="jxgbox mybox" style="">
 </div>
 
-<form>
+<form onsubmit="return false;">
 <label for="degView" class="myLabel">Degree of polynomial (change me!):</label>
 <input type="number" name="degView" id="degView" class="myDegInput" min="1" max="7" step="1" value="4">
 </form>
@@ -109,7 +109,7 @@ $$a_i$$ is varied.  If $$a_i$$ moves in a very small loop, so does
 each $$z_j$$.
 
 Now try to find a larger loop for some $$a_i$$ so that some $$z_j$$'s
-swap place!
+swap places!
 
 Hint (spoiler): a really simple choice is to move $$a_0$$ around the
 unit circle, if all the other $$a_i$$'s are close to the origin.  Then
