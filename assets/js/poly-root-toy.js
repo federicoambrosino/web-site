@@ -287,6 +287,28 @@
       this.rootPoints = [];
       this.coeffPoints = [];
     },
+
+    /**
+     * TODO Document this
+     * view the discriminant as a univariate polynomial in coefficient
+     * a[j], holding all other coefficients constant
+     */
+    'discriminantAsUnivariateOfCoeff': function(j) {
+      var SylvM = SylvesterMatrix(this.p, this.p.derive(1));
+      var n = this.degree;
+      var px = Polynomial("x");
+      var pjx = px.mul(Complex(j));
+
+      // replace the appropriate slots in SylvM with px or pjx
+      for (var i=0; i<n-1; i++)
+        SylvM[i][i + n - j] = px;
+      if (j>0) {
+        for (var i=n-1; i<(n * 2 - 1); i++)
+          SylvM[i][i+1 - j] = pjx;
+      }
+
+      return PolyDeterminant(SylvM);
+    },
   };
 
   PolyRootController.SylvesterMatrix = SylvesterMatrix;
