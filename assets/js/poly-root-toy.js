@@ -135,6 +135,9 @@
     'coeffbox': {},
     'coeffPoints': [],
 
+    'keepHist': false,
+    'iterHist': {},
+
     'updatePolyCoeffsFromRoots': function() {
       this.degree = this.roots.length;
       this.p = Polynomial.fromRoots(this.roots);
@@ -144,6 +147,17 @@
     'updateRootsFromPoly': function() {
       var result = this.p.complexRoots(this.roots);
       // TODO Do some error checking here?!
+
+      if (this.keepHist) {
+        var iter = result.iter;
+
+        if (this.iterHist.hasOwnProperty(iter)) {
+          this.iterHist[iter] = this.iterHist[iter] + 1;
+        } else {
+          this.iterHist[iter] = 1;
+        }
+
+      }
 
       this.roots = result.root;
     },
@@ -286,6 +300,15 @@
       };
       this.rootPoints = [];
       this.coeffPoints = [];
+    },
+
+    'startKeepingHist': function() {
+      this.iterHist = {};
+      this.keepHist = true;
+    },
+
+    'stopKeepingHist': function() {
+      this.keepHist = false;
     },
 
     /**
