@@ -21,6 +21,63 @@
 
       controller.updateRootsFromPoly();
       controller.updateRootView();
+
+      return; // Discriminant stuff is not ready for production
+
+      // Beginning of discriminant roots code
+      if (controller.showingDiscRoots) {
+        // Somebody else already set this up, nothing to do
+        return;
+      } else {
+        // Take care of the roots of the discriminant polynomial
+        controller.showingDiscRoots = true;
+
+        var nDiscRoots = controller.degree;
+        if (j==0)
+          nDiscRoots = nDiscRoots - 1;
+
+        controller.discRootPoints = new Array(nDiscRoots);
+
+        if (nDiscRoots == 0)
+          return;
+
+        var t0 = performance.now();
+        var disc = controller.discriminantAsUnivariateOfCoeff(j).monic();
+        var t1 = performance.now();
+
+        console.log("Discriminant took "+(t1-t0)+"ms.");
+        console.log(disc);
+
+        var dRootResult = disc.complexRoots(controller.roots);
+       // TODO CHECK FOR ERRORS
+
+        console.log(dRootResult);
+
+        for (var i=0; i<nDiscRoots; i++) {
+          controller.discRootPoints[i] =
+            controller.coeffbox.create(
+              'point',
+              [dRootResult.root[i].re, dRootResult.root[i].im],
+              {name: "", face: "x", color: 'gray'});
+        };
+      };
+    };
+  };
+
+  function makeCoeffPointOnUp(controller, j) {
+    return function() {
+      if (controller.showingDiscRoots) {
+        // Tear down the discriminant root points
+        for (var p in controller.discRootPoints) {
+          controller.coeffbox.removeObject(controller.discRootPoints[p]);
+        }
+        controller.discRootPoints = [];
+        controller.showingDiscRoots = false;
+        return;
+      } else {
+        // Not sure how we can get here
+        return;
+      }
     };
   };
 
@@ -76,6 +133,7 @@
    * Compute the determinant of some square matrix (array of arrays)
    * as a Polynomial() object.
    * Use minor expansion.
+   * TODO: MINOR EXPANSION IS HELLA SLOW, USE GAUSSIAN ELIMINATION INSTEAD
    * Explicitly skip over terms that are 0.
    * This is an optimization because I'm only going to use this
    * function for computing the discriminant from the Sylvester matrix.
@@ -83,6 +141,7 @@
   function PolyDeterminant(mat) {
     var dim = mat.length;
 
+    // TODO: Hardcode more low dimensional cases
     if (dim == 1)
       return Polynomial(mat[0][0]);
 
@@ -137,6 +196,9 @@
 
     'keepHist': false,
     'iterHist': {},
+
+    'showingDiscRoots': false,
+    'discRootPoints': [],
 
     'updatePolyCoeffsFromRoots': function() {
       this.degree = this.roots.length;
@@ -290,6 +352,7 @@
 
         this.rootPoints[i].on('drag', makeRootPointOnDrag(this, i));
         this.coeffPoints[i].on('drag', makeCoeffPointOnDrag(this, i));
+        // this.coeffPoints[i].on('up', makeCoeffPointOnUp(this, i));
       }
     },
 
