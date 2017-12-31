@@ -47,7 +47,7 @@ For EDGB, let's take
 <div>
 \begin{align}
 \label{eq:SEDGB}
-S_{int}^{EDGB} = -\frac{1}{8} m_{pl} \ell^2
+S_{int}^{EDGB} = \frac{1}{8} \varepsilon
 \int d^4x \sqrt{-g}
 F(\vartheta)
 \left[
@@ -55,8 +55,8 @@ R^2 - 4 R_{ab}R^{ab} + R_{abcd}R^{abcd}
 \right]
 \end{align}
 </div>
-with some arbitrary coupling function F, and some dimensional
-parameter $$\ell$$.  Now this above curvature combination might seem
+with some arbitrary coupling function F, and some dimensionless perturbation
+parameter $$\varepsilon$$.  Now this above curvature combination might seem
 arbitrary, but it's actually the 4-dimensional Euler density (see
 e.g. [Bob McNees's notes](http://jacobi.luc.edu/Useful.html#EulerDensities)).
 It's more natural to write that as
@@ -92,7 +92,7 @@ Eqs. \eqref{eq:action1}, \eqref{eq:SEDGB} is given simply by
 \begin{align}
 \label{eq:eom-EDGB}
 \boxed{
-m_{pl}^2 G_{ab} - m_{pl} \ell^2 \cd^c \cd^d
+m_{pl}^2 G_{ab} + \varepsilon \cd^c \cd^d
 \left[
 \ddR_{cabd} F(\vartheta)
 \right] = T_{ab}
@@ -142,10 +142,10 @@ Anyway, on to DCS. Now we use the interaction term
 <div>
 \begin{align}
 \label{eq:SDCS}
-S_{int}^{DCS} = -\frac{1}{8} m_{pl} \ell^2
+S_{int}^{DCS} = \frac{1}{8} \varepsilon
 \int d^4x \sqrt{-g}
 F(\vartheta)
-\dR^{abcd} R_{abcd}
+\dR^{abcd} R_{abdc}
 \end{align}
 </div>
 with just a single dual.  Again it looks kind of arbitrary, but
@@ -158,7 +158,7 @@ again some algebra shows that you can write it as
 \begin{align}
 \label{eq:eom-DCS}
 \boxed{
-m_{pl}^2 G_{ab} - m_{pl} \ell^2 \cd^c \cd^d
+m_{pl}^2 G_{ab} + \varepsilon \cd^c \cd^d
 \left[ \dR_{c(ab)d} F(\vartheta)
 \right] = T_{ab}
 }
