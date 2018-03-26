@@ -5,13 +5,20 @@ categories: [notes]
 excerpt: "The Weyl decomposition, further splitting into E/B, and computing in terms of 3+1 objects"
 tags: [geometry]
 date: 2017-01-09T22:32:00-08:00
-modified:
+modified: 2018-03-26T07:07:46-07:00
 ---
 
 {% include toc %}
 
 More notes I had that needed to live somewhere.  I hope you find them
 useful.
+
+**Update 2018-03-26**: I'm making public a
+[companion xAct notebook]({{ site.url }}/files/EB-decomp-and-3+1-split.nb)
+which contains most of the calculations on this web page. You can also
+get this notebook from the
+[xAct-contrib/examples](https://github.com/xAct-contrib/examples)
+repository.
 
 # Weyl decomposition
 
@@ -367,7 +374,7 @@ The recipe for finding a formula for $$E_{ab}$$ is as follows:
 4. You should now have $$E_{bd}$$ with free indices and no prefactor
 
 I highly recommend using [xAct](http://www.xact.es/) for this
-calculation, to avoid errors.  The result is
+calculation, to avoid errors (see the [companion notebook]({{ site.url }}/files/EB-decomp-and-3+1-split.nb)).  The result is
 <div>
 \begin{align}
 E_{ab} =& 
@@ -404,7 +411,8 @@ The recipe for finding a formula for $$B_{ab}$$ is as follows:
 4. Symmetrize on indices $$(a,d)$$
 5. You should now have $$B_{ad}$$ with free indices and no prefactor
 
-Once again you should use [xAct](http://www.xact.es/).  The result is simply
+Once again you should use [xAct](http://www.xact.es/) (see the
+[companion notebook]({{ site.url }}/files/EB-decomp-and-3+1-split.nb)).  The result is simply
 <div>
 \begin{align}
 B_{ab} = \epsilon_{cd(a} D^c K_{b)}{}^d \,.
