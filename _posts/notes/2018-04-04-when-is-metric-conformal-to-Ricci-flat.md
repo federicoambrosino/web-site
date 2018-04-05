@@ -150,17 +150,20 @@ system of PDEs
 \end{align}
 </div>
 If we can solve \eqref{eq:integomega1} for $$\omega_a$$ which
-satisfies \eqref{eq:integomega}, then it can immediately be integrated
-up into a solution for $$\ln\Omega$$.
+satisfies \eqref{eq:integomega}, and there is no topological
+obstruction (i.e. $$\omega$$ is not just closed but exact; a question
+in [de Rham
+cohomology](https://en.wikipedia.org/wiki/De_Rham_cohomology)), then
+it can immediately be integrated up into a solution for $$\ln\Omega.$$
 
 Now to find the integrability of this first-order system, let's take a
 further derivative $$\cd_c$$ of Eq. \eqref{eq:integomega1} and
 antisymmetrize over the *[cb]* index pair.  On the left-hand side, this
 gives a commutator of covariant derivatives, which means we can
 convert it into a curvature tensor.  The price is that on the
-right-hand, we will be taking derivatives of the $$\omega$$'s.  But if
+right-hand side, we will be taking derivatives of the $$\omega$$'s.  But if
 solutions exist, then we can just reuse \eqref{eq:integomega1} to
-replace $$\cd\omega$$ with *P* and squares of $$\omega$$ without
+replace $$\cd\omega$$ with *P* and products of $$\omega$$ without
 derivatives.  I encourage you to do these manipulations with
 [xAct/xTensor](http://www.xact.es/), of course.
 
@@ -204,13 +207,15 @@ knowing identity \eqref{eq:divWeyl}.
 
 Thus it is at least algebraically possible for $$\cd_{[a}P_{b]c}$$ to
 live in the image of $$C: T^*M \to T^*M^{\otimes 3}$$.  If it
-actually does (which is yet another question) then there is a space of
+actually does (which is the real question) then there is a space of
 potential solutions $$\omega_d$$ (unique up to elements of the kernel
 of Weyl).  We then need there to be a solution in this space which
 satisfies the integrability condition $$\cd_{[a}\omega_{b]}=0$$.  If
-all of these conditions are satisfied, then the closed (and exact)
-one-form $$\omega$$ exists, $$\Omega$$ may be integrated up, and
-finally $$\tilde{g}_{ab}$$ can be found, which is Ricci-flat.
+all of these conditions are satisfied, then the closed
+one-form $$\omega$$ exists; and if there is no topological
+obstruction, $$\omega$$ is also exact, so $$\ln\Omega$$ may be
+integrated up, and finally $$\tilde{g}_{ab}$$ can be found, which will
+be Ricci-flat.
 
 # References
 
