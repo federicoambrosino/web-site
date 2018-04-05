@@ -56,7 +56,7 @@ in e.g. Appendix D of Wald.[^1]  The easy ones are
 \begin{align}
 \tilde{g}^{ab} &= \Omega^{-2} g^{ab} \nonumber\\
 \label{eq:confC}
-\tilde{C}_{abc}{}^d &= C_{abc}{}^d \,,
+\tilde{C}_{abc}{}^d &= C_{abc}{}^d \,.
 \end{align}
 </div>
 From Eq. \eqref{eq:confC} we immediately see that you can never get
@@ -115,7 +115,7 @@ that $$\tilde{P}_{ab}=0$$?  And this immediately becomes a question of
 \label{eq:integ0}
 \end{align}
 </div>
-which are *n(n-1)/2* partial differential equations for the single
+which are *n(n+1)/2* partial differential equations for the single
 scalar field $$\Omega$$.  For a gentle introduction to the theory of
 integrability from a geometric viewpoint, I recommend the sections on
 [Frobenius'
@@ -155,7 +155,7 @@ up into a solution for $$\ln\Omega$$.
 
 Now to find the integrability of this first-order system, let's take a
 further derivative $$\cd_c$$ of Eq. \eqref{eq:integomega1} and
-antisymmetrize over *[cb]* index pair.  On the left-hand side, this
+antisymmetrize over the *[cb]* index pair.  On the left-hand side, this
 gives a commutator of covariant derivatives, which means we can
 convert it into a curvature tensor.  The price is that on the
 right-hand, we will be taking derivatives of the $$\omega$$'s.  But if
@@ -164,21 +164,21 @@ replace $$\cd\omega$$ with *P* and squares of $$\omega$$ without
 derivatives.  I encourage you to do these manipulations with
 [xAct/xTensor](http://www.xact.es/), of course.
 
-The resulting integrability condition is
+The resulting integrability condition is the amazingly simple
 <div>
 \begin{align}
 \label{eq:intCondWeyl}
 \boxed{C_{abc}{}^d\omega_d = 2\cd_{[a}P_{b]c}} \,.
 \end{align}
 </div>
-As an easy consequence, if the Weyl tensor vanishes, then $$g_{ab}$$
+As an easy consequence, when the Weyl tensor vanishes, $$g_{ab}$$
 is conformal to Ricci-flat (and indeed conformal to flat) if and only
 if $$\cd_{[a}P_{b]c} = 0$$.  This result was already known to Schouten
 back in 1920,[^3] but I'm interested in the more general case when
 the Weyl tensor is non-vanishing.
 
 So, we have succeeded in turning integrability of \eqref{eq:integ0}
-into an algebraic property.  In words, this condition is: Treat the
+into an algebraic test.  In words, this condition is: Treat the
 Weyl tensor as a linear map from $$T^*M$$ to $$T^*M^{\otimes 3}$$;
 then a necessary (but not yet sufficient) condition for
 \eqref{eq:integ0} to be integrable is that $$\cd_{[a}P_{b]c}$$ must be
