@@ -7,9 +7,9 @@ excerpt: "Finding the shape of extremal black holes in beyond-GR theories"
 tags: [general relativity, gravity, black holes, perturbation theory, symmetry, group theory, beyond-GR, Chern-Simons, Gauss-Bonnet]
 pub:
   authors: "Baoyi Chen and Leo C. Stein"
-  doi:
+  doi: "10.1103/PhysRevD.97.084012"
   arXiv: "1802.02159"
-  jref:
+  jref: "Phys. Rev. D <b>97</b>, 084012 (2018)"
 date: 2018-02-08
 ---
 
