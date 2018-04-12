@@ -145,7 +145,7 @@ system of PDEs
 \begin{align}
 \label{eq:integomega1}
 \cd_b \omega_a = P_{ab} & +
-\omega_a \omega_b - \frac{1}{2} g_{ab} g^{cd}\omega_c \omega_b
+\omega_a \omega_b - \frac{1}{2} g_{ab} g^{cd}\omega_c \omega_d
 \,.
 \end{align}
 </div>
