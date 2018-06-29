@@ -9,7 +9,7 @@ pub:
   authors: "Kartik Prabhu and Leo C. Stein"
   doi:
   arXiv: "1805.02668"
-  jref: "Submitted to PRD"
+  jref: "Accepted by PRD"
 date: 2018-05-08
 ---
 
