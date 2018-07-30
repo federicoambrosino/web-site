@@ -1,15 +1,15 @@
 ---
 layout: pub-link
 title: "Black hole scalar charge from a topological horizon integral in Einstein-dilaton-Gauss-Bonnet gravity"
-modified:
+modified: 2018-07-30
 categories: pubs
 excerpt: "In theories of gravity that include a scalar field, a compact object’s scalar charge is a crucial quantity since it controls dipole radiation, which can be strongly constrained by pulsar timing and gravitational wave observations"
 tags: [general relativity, gravity, black holes, symmetry, topology, beyond-GR, Gauss-Bonnet]
 pub:
   authors: "Kartik Prabhu and Leo C. Stein"
-  doi:
+  doi: "10.1103/PhysRevD.98.021503"
   arXiv: "1805.02668"
-  jref: "Accepted by PRD"
+  jref: "Phys. Rev. D <b>98</b>, 021503(R) (Rapid Communication) (2018)"
 date: 2018-05-08
 ---
 
