@@ -9,11 +9,11 @@ header:
 ---
 
 ![]({{ site.url }}/images/leo-chalkboard-new-scaled.jpg)
-{: .align-right}
+{: .align-right style="width: 375px"}
 
-I am currently a post­doctoral researcher in the
-[TAPIR](http://www.tapir.caltech.edu/ "Theoretical astrophysics
-including relativity") group at [Caltech](http://www.caltech.edu/).
+I am currently an Assistant Professor in the
+[department of Physics and Astronomy](http://physics.olemiss.edu/) at the
+[University of Mississippi (a.k.a. Ole Miss)](http://www.olemiss.edu/).
 
 Briefly, my research interests are studying and testing general
 relativity and other theories of gravity from an astrophysical

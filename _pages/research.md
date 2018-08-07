@@ -2,14 +2,14 @@
 title: "Research Interests"
 date: 2011-07-17
 permalink: /research/
-modified: 2015-08-30
+modified: 2018-08-07
 excerpt:
 tags:
 ---
 
 I research various aspects of gravity from an astrophysical
-standpoint. I'm a member of the [TAPIR](http://www.tapir.caltech.edu/
-"Theoretical astrophysics including relativity") group at Caltech.
+standpoint. I'm an Assistant Professor in the [department of physics
+and astronomy](http://physics.olemiss.edu/) at Ole Miss.
 
 I'm mainly interested in testing general relativity, specifically in
 the high-curvature regime (think black holes, neutron stars,
