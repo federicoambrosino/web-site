@@ -7,8 +7,8 @@ main:
   url: /LeoCStein.pdf
   alt: Curriculum Vitae
 
-- title: Research
-  url: /research/
+- title: Teaching
+  url: /teaching/
 
 - title: Publications
   url: /pubs/
