@@ -11,10 +11,12 @@ tags:
 
 * [Syllabus in PDF format]({{ site.url }}/files/teaching/2018-fall-phys-709/syllabus.pdf)
 * Class schedule:  Tue/Thu 0800--0915, Lewis Hall room 109
-* Office hours:  By appointment via email
+* Office hours:  Wed 1430, 205 Lewis Hall
 
 ## News
 
+* Aug. 30: Added office hours.  Also, I will hold FW1.11 off until
+  next week's problem set.
 * Aug. 24: Pset 01 has been posted below
 
 ## Problem sets
