@@ -15,6 +15,7 @@ tags:
 
 ## News
 
+* Sep. 10: Pset 03 has been posted below.
 * Aug. 31: Pset 02 has been posted below.
 * Aug. 30: Added office hours.  Also, I will hold FW1.11 off until
   next week's problem set.
@@ -22,6 +23,8 @@ tags:
 
 ## Problem sets
 
+* [Problem set 03]({{ site.url }}/files/teaching/2018-fall-phys-709/pset03.pdf),
+  due to me by 5PM on Monday, Sep. 17
 * [Problem set 02]({{ site.url }}/files/teaching/2018-fall-phys-709/pset02.pdf),
   due to me by 5PM on Friday, Sep. 7
 * [Problem set 01]({{ site.url }}/files/teaching/2018-fall-phys-709/pset01.pdf),
