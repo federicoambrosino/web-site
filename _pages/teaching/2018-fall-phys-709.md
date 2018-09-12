@@ -27,5 +27,6 @@ tags:
   due to me by 5PM on Monday, Sep. 17
 * [Problem set 02]({{ site.url }}/files/teaching/2018-fall-phys-709/pset02.pdf),
   due to me by 5PM on Friday, Sep. 7
-* [Problem set 01]({{ site.url }}/files/teaching/2018-fall-phys-709/pset01.pdf),
+* [Problem set 01]({{ site.url }}/files/teaching/2018-fall-phys-709/pset01.pdf)
+  ([solution]({{ site.url }}/files/teaching/2018-fall-phys-709/pset01-sol.pdf), [supplement]({{ site.url }}/files/teaching/2018-fall-phys-709/FW1_9.nb)),
   due to me by 5PM on Friday, Aug. 31
