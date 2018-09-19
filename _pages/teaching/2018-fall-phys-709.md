@@ -2,7 +2,7 @@
 title: "Phys 709, Advanced Mechanics I (Fall 2018)"
 date: 2018-08-20
 permalink: /teaching/2018-fall-phys-709/
-modified: 2018-08-24
+modified: 2018-09-19
 excerpt:
 tags:
 ---
@@ -15,6 +15,7 @@ tags:
 
 ## News
 
+* Sep. 19: Pset 04 has been posted below.
 * Sep. 10: Pset 03 has been posted below.
 * Aug. 31: Pset 02 has been posted below.
 * Aug. 30: Added office hours.  Also, I will hold FW1.11 off until
@@ -23,6 +24,8 @@ tags:
 
 ## Problem sets
 
+* [Problem set 04]({{ site.url }}/files/teaching/2018-fall-phys-709/pset04.pdf),
+  due to me by 5PM on Wednesday, Sep. 26
 * [Problem set 03]({{ site.url }}/files/teaching/2018-fall-phys-709/pset03.pdf),
   due to me by 5PM on Monday, Sep. 17
 * [Problem set 02]({{ site.url }}/files/teaching/2018-fall-phys-709/pset02.pdf)
