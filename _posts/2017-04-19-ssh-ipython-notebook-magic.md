@@ -3,7 +3,7 @@ title: "ssh ipython notebook tunneling magic"
 modified:
 categories: code
 excerpt: "How to get remote jupyter to automatically open a local browser."
-tags: [code, ssh, remote, tunnel, ipython, jupyter, iterm2, scientific computing]
+tags: [code, ssh, remote, tunnel, python, ipython, jupyter, iterm2, scientific computing]
 date: 2017-04-19T22:24:00-07:00
 ---
 
