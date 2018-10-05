@@ -15,6 +15,7 @@ tags:
 
 ## News
 
+* Oct. 5: Pset 05 has been posted below.
 * Sep. 25: As mentioned in class today, the due date for pset04 is
   pushed back by one day to Thursday, Sep. 27
 * Sep. 19: Pset 04 has been posted below.
@@ -26,6 +27,8 @@ tags:
 
 ## Problem sets
 
+* [Problem set 05]({{ site.url }}/files/teaching/2018-fall-phys-709/pset05.pdf),
+  due to me by 5PM on Friday, Oct. 12
 * [Problem set 04]({{ site.url }}/files/teaching/2018-fall-phys-709/pset04.pdf)
   ([solution]({{ site.url }}/files/teaching/2018-fall-phys-709/pset04-sol.pdf)),
   due to me by 5PM on Thursday, Sep. 27
