@@ -27,7 +27,8 @@ tags:
 
 ## Problem sets
 
-* [Problem set 05]({{ site.url }}/files/teaching/2018-fall-phys-709/pset05.pdf),
+* [Problem set 05]({{ site.url }}/files/teaching/2018-fall-phys-709/pset05.pdf)
+  ([solution]({{ site.url }}/files/teaching/2018-fall-phys-709/pset05-sol.pdf)),
   due to me by 5PM on Friday, Oct. 12
 * [Problem set 04]({{ site.url }}/files/teaching/2018-fall-phys-709/pset04.pdf)
   ([solution]({{ site.url }}/files/teaching/2018-fall-phys-709/pset04-sol.pdf)),
