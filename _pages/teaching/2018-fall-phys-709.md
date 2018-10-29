@@ -15,6 +15,7 @@ tags:
 
 ## News
 
+* Oct. 28: Pset 07 has been posted below.
 * Oct. 15: The midterm (a.k.a. pset 06) has been posted below.
 * Oct. 5: Pset 05 has been posted below.
 * Sep. 25: As mentioned in class today, the due date for pset04 is
@@ -28,6 +29,8 @@ tags:
 
 ## Problem sets
 
+* [Problem set 07]({{ site.url }}/files/teaching/2018-fall-phys-709/pset07.pdf),
+  due to me by 5PM on Monday, Nov. 5
 * [Midterm (a.k.a. problem set 06)]({{ site.url }}/files/teaching/2018-fall-phys-709/pset06.pdf),
   due to me by 5PM on Tuesday, Oct. 23
 * [Problem set 05]({{ site.url }}/files/teaching/2018-fall-phys-709/pset05.pdf)
