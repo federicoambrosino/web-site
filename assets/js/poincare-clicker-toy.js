@@ -49,6 +49,85 @@
     return [adot, ladot, bdot, lbdot];
   };
 
+  // Returns the x value where y crosses zero, using linear interpolation.
+  function zeroCrossing(x0, y0, x1, y1) {
+    var m = (y1-y0)/(x1-x0);
+    var b = y1-m*x1;
+    return -b/m;
+  }
+
+  /* Assume that y(x) is a linear function with values
+   * y0 = y(x0), y1 = y(x1)
+   * Then interpolate y(xprime)
+  */
+  function linearInterp(xprime, x0, y0, x1, y1) {
+    var m = (y1-y0)/(x1-x0);
+    var b = y1-m*x1;
+    return m*xprime + b;
+  }
+
+  /* This is the heart of the toy.
+   * Tries to yield npt _new_ points in the (b,lb) plane.
+   * Returns an Array, hopefully of length npt+1, where the 0th
+   * element is the initial point that was passed, and the rest are new.
+   * Stops if maxSteps is reached, so it may yield fewer points.
+   */
+  function reapPoincarePoints(energy, npt, initB, initLB, deltaT, maxSteps) {
+    var poincPoints = new Array();
+    var foundPoints = 0, iter = 0;
+    var curPoint = initConds(energy, initB, initLB), newPoint;
+    var tCross, newB, newLB;
+
+    // We will return the initial point as element 0
+    poincPoints.push([initB, initLB]);
+
+    // Fence-post issue with JXG.Math.Numerics.rungeKutta .
+    // To get it to take one step, we need to tell it we want a total
+    // of two steps on the interval, because it counts the 0th step.
+    deltaT = 2.*deltaT;
+
+    do {
+      // Take an RK step
+      newPoint = JXG.Math.Numerics.rungeKutta(
+        'rk4',        // Butcher table
+        curPoint,     // Initial conditions
+        [0., deltaT], // time interval
+        2,            // how many points
+        ODERHS        // the RHS of the system
+      );
+
+      // Just get the new point
+      newPoint = newPoint[1];
+
+      // Check if there has been a zero-crossing for a, in the
+      // positive direction
+      if ((curPoint[0] < 0) && (newPoint[0] >= 0) ) {
+        // We found a new point on the section!
+        foundPoints++;
+
+        // Find the approximate time of crossing
+        tCross = zeroCrossing(0., curPoint[0], deltaT, newPoint[0]);
+
+        // Interpolate the values of b, lb
+        newB  = linearInterp(tCross, 0., curPoint[2], deltaT, newPoint[2]);
+        newLB = linearInterp(tCross, 0., curPoint[3], deltaT, newPoint[3]);
+
+        // store it
+        poincPoints.push([newB, newLB]);
+      };
+
+      // Next
+      iter++;
+      curPoint = newPoint;
+
+    } while ( (iter <= maxSteps) && (foundPoints < npt) );
+
+    return poincPoints;
+  };
+
+  ////////////////////////////////////////////////////////////
+  // UI related
+
   /* Emits the slider-drag-handler */
   function makeESliderDrag(controller) {
     return function() {
@@ -63,8 +142,11 @@
     };
   };
 
-  /* This emits the click handler for the Poincare section.
-   * Integration is triggered from this click handler.
+  /* This emits a click handler for the Poincare section.
+   * This is the UI-specific code.  It dispatches to
+   * controller.handleTouch after translating to logical (b, lb) coordinates.
+   * handleTouch needs to know if there is already a point there, and
+   * if so, which one
    */
   function makePoincTouch(controller) {
     // See https://jsxgraph.uni-bayreuth.de/wiki/index.php/Browser_event_and_coordinates
@@ -80,7 +162,7 @@
     };
 
     return function(e) {
-      var ptExists = false, i, coords;
+      var ptExists = false, i, coords, thePoint;
 
       if (e[JXG.touchProperty]) {
         // index of the finger that is used to extract the coordinates
@@ -93,19 +175,17 @@
       for (var el in board.objects) {
         if(JXG.isPoint(board.objects[el]) && board.objects[el].hasPoint(coords.scrCoords[1], coords.scrCoords[2])) {
           ptExists = true;
+          thePoint = el;
           break;
         }
       }
 
-      if (!ptExists) {
-        if (insideSep(controller.energy, b, lb)) {
-          console.log("("+b+","+lb+")=>");
-          console.log(initConds(controller.energy, b, lb));
-        }
-      };
+      controller.handleTouch(b, lb, ptExists, thePoint);
+
     };
   };
 
+  // Add the separatrix curves to the plot
   function createSeparatrixCurves(controller) {
     /* q will run from 0 to 1, map it to the correct range of b */
     var bOfq = function(q){ return bMax(controller.energy)*(-1. + 2. * q); };
@@ -117,11 +197,28 @@
                  [bOfq,
                   function(q){ return -lbSeparatrix(controller.energy, bOfq(q));},
                   0., 1.]);
-    // Is this the right way?
+
+    // Make them unclickable
     sepA.hasPoint = function(){return false; };
     sepB.hasPoint = function(){return false; };
   };
-  
+
+  function makeZoomHandler(controller) {
+    return function(){
+      var box = controller.poincbox.stopSelectionMode();
+      // bbox has the coordinates of the selectionr rectangle.
+      // Attention: box[i].usrCoords have the form [1, x, y], i.e.
+      // are homogeneous coordinates.
+      var bbox = box[0].usrCoords.slice(1).concat(box[1].usrCoords.slice(1));
+      // Set a new bounding box
+      controller.poincbox.setBoundingBox(bbox, false);
+    };
+  };
+
+  ////////////////////////////////////////////////////////////
+  // Controller class
+
+  // Constructor
   function PoincareClickerController(ctrlsboxName,poincboxName) {
 
     if (!(this instanceof PoincareClickerController)) {
@@ -132,6 +229,7 @@
 
   };
 
+  // Controller prototype
   PoincareClickerController.prototype = {
     /* UI objects for the controls box */
     'ctrlsbox': {},
@@ -140,114 +238,137 @@
 
     /* UI objects for the Poincare section box */
     'poincbox': {},
-    'baxis': {},
-    'lbaxis': {},
 
     /* State variables for making Poincare sections */
     'energy': -1.9,
     'npt': 100,
+    'deltaT': 0.04,
+    'maxSteps': 100000,
 
-    /* Member functions */
-    'setupBoxes': function(ctrlsboxName,poincboxName) {
-      this.ctrlsbox = JXG.JSXGraph.initBoard(ctrlsboxName,
+    /* Public member functions */
+    'setupBoxes': {},
+    'handleTouch': {},
+    'setenergy': {},
+    'setnpt': {},
+  };
+
+  // TODO Maybe setupBoxes should not be public
+  PoincareClickerController.prototype.setupBoxes = function(ctrlsboxName,poincboxName) {
+    this.ctrlsbox = JXG.JSXGraph.initBoard(ctrlsboxName,
                                  {boundingbox:[0.,1.,1.,0.],
                                   axis:false,
                                   pan: {enabled: false},
                                   showNavigation: false,
                                   showCopyright:  false});
-      this.ctrlsbox.suspendUpdate();
+    this.ctrlsbox.suspendUpdate();
 
-      this.eslider = this.ctrlsbox.create(
-        'slider',
-        [[0.05,.75],[0.7,.75],
-         [-2.999,-1.909,-1.001]],
-        {name: 'E', precision:3});
+    this.eslider = this.ctrlsbox.create(
+      'slider',
+      [[0.05,.75],[0.7,.75],
+       [-2.999,-1.909,-1.001]],
+      {name: 'E', precision:3});
 
-      this.nptslider = this.ctrlsbox.create(
-        'slider',
-        [[0.05,.5],[0.7,.5],
-         [100,100,500]],
-        {name: '# of points', snapWidth:1, precision:0});
+    this.nptslider = this.ctrlsbox.create(
+      'slider',
+      [[0.05,.5],[0.7,.5],
+       [100,100,500]],
+      {name: '# of points', snapWidth:1, precision:0});
 
-      this.eslider.on('drag', makeESliderDrag(this));
-      this.nptslider.on('drag', makeNPtSliderDrag(this));
+    this.eslider.on('drag', makeESliderDrag(this));
+    this.nptslider.on('drag', makeNPtSliderDrag(this));
 
-      var baseOpts = {
-        boundingbox: [-2, 2, 2, -2],
-        keepaspectratio: true,
-        axis: false,
-        grid: true,
-        pan: {enabled: false},
-        showNavigation: true,
-        showCopyright:  false};
+    var baseOpts = {
+      boundingbox: [-2, 2, 2, -2],
+      keepaspectratio: true,
+      axis: false,
+      grid: true,
+      pan: {enabled: false},
+      showNavigation: true,
+      showCopyright:  false};
 
-      this.poincbox = JXG.JSXGraph.initBoard(poincboxName, baseOpts);
+    this.poincbox = JXG.JSXGraph.initBoard(poincboxName, baseOpts);
 
-      this.poincbox.suspendUpdate();
+    this.poincbox.suspendUpdate();
 
-      this.baxis = this.poincbox.create('axis', [[-2, 0], [2,0]],
+    var baxis = this.poincbox.create('axis', [[-4, 0], [4,0]],
         { name:'b',
           withLabel: true,
           ticks: {minorTicks:1, majorHeight:10, minorHeight:4},
           label: { position: 'rt',
                    offset: [-25, 20], }
         });
-      this.lbaxis = this.poincbox.create('axis', [[0, 0], [0,1]],
+    var lbaxis = this.poincbox.create('axis', [[0, -4], [0,4]],
         { name:'l_b',
           withLabel: true,
           ticks: {minorTicks:1, majorHeight:10, minorHeight:4},
           label: { position: 'rt',
                    offset: [20, 0], }
         });
-      // Is this the right way?
-      this.baxis.hasPoint = function(){return false; };
-      this.lbaxis.hasPoint = function(){return false; };
 
-      // For selection-zooming, see example at
-      // https://jsxgraph.org/docs/symbols/JXG.Board.html#startSelectionMode
-      this.poincbox.on('stopselecting', (function(controller) {
-        return function(){
-          var box = controller.poincbox.stopSelectionMode();
-          // bbox has the coordinates of the selectionr rectangle.
-          // Attention: box[i].usrCoords have the form [1, x, y], i.e.
-          // are homogeneous coordinates.
-          var bbox = box[0].usrCoords.slice(1).concat(box[1].usrCoords.slice(1));
-          // Set a new bounding box
-          controller.poincbox.setBoundingBox(bbox, false);
-        }
-      })(this));
+    // Is this the right way?  Make them non-clickable
+    baxis.hasPoint = function(){return false; };
+    lbaxis.hasPoint = function(){return false; };
 
-      createSeparatrixCurves(this);
-      
-      this.poincbox.on('down',
-                       makePoincTouch(this));
-      
-      this.ctrlsbox.addChild(this.poincbox);
+    // For some reason JSXGraph creates a point at the origin, which
+    // will capture our clicks there... this finds the point and
+    // unsets its knowledge of owning (0,0)
+    for (var el in this.poincbox.objects) {
+      if(JXG.isPoint(this.poincbox.objects[el])
+         && this.poincbox.objects[el].coords.usrCoords[1] == 0
+         && this.poincbox.objects[el].coords.usrCoords[2] == 0)
+      {
+        this.poincbox.objects[el].hasPoint = function(){return false; };
+      };
+    };
 
-      this.poincbox.unsuspendUpdate();
-      this.ctrlsbox.unsuspendUpdate();
+    // For selection-zooming, see example at
+    // https://jsxgraph.org/docs/symbols/JXG.Board.html#startSelectionMode
+    this.poincbox.on('stopselecting', makeZoomHandler(this));
 
-      // Use triggers to synchronize internal state
-      makeNPtSliderDrag(this)();
-      makeESliderDrag(this)();
+    createSeparatrixCurves(this);
 
-    },
+    this.poincbox.on('down', makePoincTouch(this));
 
-    'setenergy': function(energy) {
-      this.energy = energy;
-      this.poincbox.suspendUpdate();
-      this.poincbox.setBoundingBox([ -1.05*bMax(energy), 1.05*lbMax(energy),
-                                     1.05*bMax(energy), -1.05*lbMax(energy) ], false);
-      this.poincbox.unsuspendUpdate();
-      // This seems to be necessary to update what's shown on the axes
-      this.poincbox.fullUpdate();
-    },
+    this.ctrlsbox.addChild(this.poincbox);
 
-    'setnpt': function(npt) {
-      this.npt = npt;
-    },
+    this.poincbox.unsuspendUpdate();
+    this.ctrlsbox.unsuspendUpdate();
+
+    // Use triggers to synchronize internal state
+    makeNPtSliderDrag(this)();
+    makeESliderDrag(this)();
+
   };
 
+  PoincareClickerController.prototype.handleTouch = function(b, lb, ptExists, thePoint) {
+    if (!ptExists) {
+      if (insideSep(this.energy, b, lb)) {
+        console.log("("+b+","+lb+")=>");
+        console.log(initConds(this.energy, b, lb));
+        var newPoincPoints = reapPoincarePoints(this.energy, this.npt, b, lb, this.deltaT, this.maxSteps);
+        console.log(newPoincPoints);
+      }
+    } else {
+      console.log("point exists");
+      console.log(thePoint);
+    };
+  };
+
+  PoincareClickerController.prototype.setenergy = function(energy) {
+    this.energy = energy;
+    this.poincbox.suspendUpdate();
+    this.poincbox.setBoundingBox([ -1.05*bMax(energy), 1.05*lbMax(energy),
+                                   1.05*bMax(energy), -1.05*lbMax(energy) ], false);
+    this.poincbox.unsuspendUpdate();
+    // This seems to be necessary to update what's shown on the axes
+    this.poincbox.fullUpdate();
+  };
+
+  PoincareClickerController.prototype.setnpt = function(npt) {
+    this.npt = npt;
+  };
+
+  /* Add to global namespace */
   root['PoincareClickerController'] = PoincareClickerController;
 
 })(this);
