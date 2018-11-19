@@ -242,7 +242,7 @@
     /* State variables for making Poincare sections */
     'energy': -1.9,
     'npt': 100,
-    'deltaT': 0.04,
+    'deltaT': 0.03,
     'maxSteps': 100000,
 
     /* Public member functions */
@@ -282,6 +282,7 @@
       keepaspectratio: true,
       axis: false,
       grid: true,
+      // renderer: 'canvas', // SVG seems to work better than canvas
       pan: {enabled: false},
       showNavigation: true,
       showCopyright:  false};
@@ -343,10 +344,18 @@
   PoincareClickerController.prototype.handleTouch = function(b, lb, ptExists, thePoint) {
     if (!ptExists) {
       if (insideSep(this.energy, b, lb)) {
-        console.log("("+b+","+lb+")=>");
-        console.log(initConds(this.energy, b, lb));
+        // console.log("("+b+","+lb+")=>");
+        // console.log(initConds(this.energy, b, lb));
         var newPoincPoints = reapPoincarePoints(this.energy, this.npt, b, lb, this.deltaT, this.maxSteps);
-        console.log(newPoincPoints);
+        // console.log(newPoincPoints);
+        this.poincbox.suspendUpdate();
+        for (var i = 0; i < newPoincPoints.length; i++) {
+          this.poincbox.create('point', newPoincPoints[i],
+                               {size: 0.5, sizeUnit: 'screen',
+                                fixed: true,
+                                name: '', withLabel: false});
+        };
+        this.poincbox.unsuspendUpdate();
       }
     } else {
       console.log("point exists");
