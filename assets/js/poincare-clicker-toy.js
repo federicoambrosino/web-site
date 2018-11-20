@@ -215,6 +215,12 @@
     };
   };
 
+  function makeClearClickHandler(controller) {
+    return function(){
+      controller.clearPoints();
+    };
+  };
+
   ////////////////////////////////////////////////////////////
   // Controller class
 
@@ -281,6 +287,11 @@
     this.eslider.on('drag', makeESliderDrag(this));
     this.nptslider.on('drag', makeNPtSliderDrag(this));
 
+    this.ctrlsbox.create(
+      'button',
+      [.05, .25, 'Clear points', makeClearClickHandler(this)]);
+
+    //////////////////////////////
     var baseOpts = {
       boundingbox: [-2, 2, 2, -2],
       keepaspectratio: true,
