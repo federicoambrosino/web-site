@@ -206,9 +206,10 @@
   function makeZoomHandler(controller) {
     return function(){
       var box = controller.poincbox.stopSelectionMode();
-      // bbox has the coordinates of the selectionr rectangle.
+      // bbox has the coordinates of the selection rectangle.
       // Attention: box[i].usrCoords have the form [1, x, y], i.e.
       // are homogeneous coordinates.
+      // TODO: make sure to order min, max x,y so that orientation is preserved
       var bbox = box[0].usrCoords.slice(1).concat(box[1].usrCoords.slice(1));
       // Set a new bounding box
       controller.poincbox.setBoundingBox(bbox, false);
@@ -221,26 +222,33 @@
     };
   };
 
+  function makeMoreClickHandler(controller) {
+    return function(){
+      controller.morePointsFromLast();
+    };
+  };
+
   ////////////////////////////////////////////////////////////
   // Controller class
 
   // Constructor
-  function PoincareClickerController(ctrlsboxName,poincboxName) {
+  function PoincareClickerController(ctrlsboxName,buttonboxName,poincboxName) {
 
     if (!(this instanceof PoincareClickerController)) {
-      return new PoincareClickerController(ctrlsboxName,poincboxName);
+      return new PoincareClickerController(ctrlsboxName,buttonboxName,poincboxName);
     }
 
-    this.setupBoxes(ctrlsboxName,poincboxName);
+    this.setupBoxes(ctrlsboxName,buttonboxName,poincboxName);
 
   };
 
   // Controller prototype
   PoincareClickerController.prototype = {
-    /* UI objects for the controls box */
+    /* UI objects for the controls */
     'ctrlsbox': {},
     'eslider': {},
     'nptslider': {},
+    'buttonbox': {},
 
     /* UI objects for the Poincare section box */
     'poincbox': {},
@@ -251,6 +259,12 @@
     'deltaT': 0.03,
     'maxSteps': 100000,
 
+    /* default style for points */
+    'basePointStyle': {size: 0.5, sizeUnit: 'screen',
+                       strokeWidth: 0,
+                       fixed: true,
+                       name: '', withLabel: false},
+
     /* Storage of points on Poincare section */
     'pointGroupList': new Array(),
     'undonePointGroupList': new Array(),
@@ -258,12 +272,14 @@
     /* Public member functions */
     'setupBoxes': {},
     'handleTouch': {},
+    'clearPoints': {},
+    'morePointsFromLast': {},
     'setenergy': {},
     'setnpt': {},
   };
 
   // TODO Maybe setupBoxes should not be public
-  PoincareClickerController.prototype.setupBoxes = function(ctrlsboxName,poincboxName) {
+  PoincareClickerController.prototype.setupBoxes = function(ctrlsboxName,buttonboxName,poincboxName) {
     this.ctrlsbox = JXG.JSXGraph.initBoard(ctrlsboxName,
                                  {boundingbox:[0.,1.,1.,0.],
                                   axis:false,
@@ -274,22 +290,29 @@
 
     this.eslider = this.ctrlsbox.create(
       'slider',
-      [[0.05,.75],[0.7,.75],
+      [[0.05,.66],[0.7,.66],
        [-2.999,-1.909,-1.001]],
       {name: 'E', precision:3});
 
     this.nptslider = this.ctrlsbox.create(
       'slider',
-      [[0.05,.5],[0.7,.5],
+      [[0.05,.33],[0.7,.33],
        [100,100,500]],
       {name: '# of points', snapWidth:1, precision:0});
 
     this.eslider.on('drag', makeESliderDrag(this));
     this.nptslider.on('drag', makeNPtSliderDrag(this));
 
-    this.ctrlsbox.create(
-      'button',
-      [.05, .25, 'Clear points', makeClearClickHandler(this)]);
+    this.buttonbox = document.getElementById(buttonboxName);
+    this.buttonbox
+      .querySelector('#clear')
+      .addEventListener('click',
+                        makeClearClickHandler(this));
+
+    this.buttonbox
+      .querySelector('#more')
+      .addEventListener('click',
+                        makeMoreClickHandler(this));
 
     //////////////////////////////
     var baseOpts = {
@@ -371,9 +394,7 @@
         this.poincbox.suspendUpdate();
         for (var i = 0; i < newPoincPoints.length; i++) {
           var p = this.poincbox.create('point', newPoincPoints[i],
-                               {size: 0.5, sizeUnit: 'screen',
-                                fixed: true,
-                                name: '', withLabel: false});
+                                       this.basePointStyle);
           newPointGroup.push(p);
         };
         this.poincbox.unsuspendUpdate();
@@ -402,6 +423,28 @@
     this.pointGroupList = new Array();
     this.undonePointGroupList = new Array();
   };
+
+  PoincareClickerController.prototype.morePointsFromLast = function() {
+    if (this.pointGroupList.length > 0) {
+      var lastGroup = this.pointGroupList[this.pointGroupList.length - 1];
+      if (lastGroup.length > 0) {
+        var lastPoint = lastGroup[lastGroup.length - 1];
+        var b = lastPoint.coords.usrCoords[1],
+            lb = lastPoint.coords.usrCoords[2];
+
+        var newPoincPoints = reapPoincarePoints(this.energy, this.npt, b, lb, this.deltaT, this.maxSteps);
+
+        this.poincbox.suspendUpdate();
+        for (var i = 0; i < newPoincPoints.length; i++) {
+          var p = this.poincbox.create('point', newPoincPoints[i],
+                                       this.basePointStyle);
+          lastGroup.push(p);
+        };
+        this.poincbox.unsuspendUpdate();
+
+      }
+    }
+  }
 
   PoincareClickerController.prototype.setenergy = function(energy) {
     this.energy = energy;
