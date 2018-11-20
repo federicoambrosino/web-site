@@ -36,7 +36,7 @@ button[disabled] {
 <button id="clear" type="button">Clear</button>
 <button id="more" type="button">More from last orbit</button>
 <button id="undo" type="button" disabled>Undo add</button>
-<button id="undo" type="button" disabled>Redo</button>
+<button id="redo" type="button" disabled>Redo</button>
 </div>
 <div id="poincbox" class="jxgbox mybox" style="width: 400px; height: 400px;">
 </div>

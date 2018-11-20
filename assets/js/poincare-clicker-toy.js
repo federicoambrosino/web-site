@@ -228,6 +228,18 @@
     };
   };
 
+  function makeUndoClickHandler(controller) {
+    return function(){
+      controller.popLastOrbit();
+    };
+  };
+
+  function makeRedoClickHandler(controller) {
+    return function(){
+      controller.restoreOrbit();
+    };
+  };
+
   ////////////////////////////////////////////////////////////
   // Controller class
 
@@ -249,6 +261,10 @@
     'eslider': {},
     'nptslider': {},
     'buttonbox': {},
+    'clearButton': {},
+    'moreButton': {},
+    'undoButton': {},
+    'redoButton': {},
 
     /* UI objects for the Poincare section box */
     'poincbox': {},
@@ -274,8 +290,13 @@
     'handleTouch': {},
     'clearPoints': {},
     'morePointsFromLast': {},
+    'popLastOrbit': {},
+    'pushSavedOrbit': {},
+
     'setenergy': {},
     'setnpt': {},
+
+    'updateButtonAbility': {},
   };
 
   // TODO Maybe setupBoxes should not be public
@@ -304,15 +325,27 @@
     this.nptslider.on('drag', makeNPtSliderDrag(this));
 
     this.buttonbox = document.getElementById(buttonboxName);
-    this.buttonbox
-      .querySelector('#clear')
+
+    this.clearButton = this.buttonbox.querySelector('#clear');
+    this.moreButton = this.buttonbox.querySelector('#more');
+    this.undoButton = this.buttonbox.querySelector('#undo');
+    this.redoButton = this.buttonbox.querySelector('#redo');
+
+    this.clearButton
       .addEventListener('click',
                         makeClearClickHandler(this));
 
-    this.buttonbox
-      .querySelector('#more')
+    this.moreButton
       .addEventListener('click',
                         makeMoreClickHandler(this));
+
+    this.undoButton
+      .addEventListener('click',
+                        makeUndoClickHandler(this));
+
+    this.redoButton
+      .addEventListener('click',
+                        makeRedoClickHandler(this));
 
     //////////////////////////////
     var baseOpts = {
@@ -405,6 +438,9 @@
       console.log("point exists");
       console.log(thePoint);
     };
+
+    this.updateButtonAbility();
+
   };
 
   PoincareClickerController.prototype.clearPoints = function() {
@@ -422,6 +458,8 @@
 
     this.pointGroupList = new Array();
     this.undonePointGroupList = new Array();
+
+    this.updateButtonAbility();
   };
 
   PoincareClickerController.prototype.morePointsFromLast = function() {
@@ -444,7 +482,37 @@
 
       }
     }
-  }
+  };
+
+  PoincareClickerController.prototype.popLastOrbit = function() {
+    if (this.pointGroupList.length == 0) return;
+
+    var lastGroup = this.pointGroupList[this.pointGroupList.length - 1];
+
+    this.undonePointGroupList.push(new Array(lastGroup.length));
+
+    var savedPoints = this.undonePointGroupList[this.undonePointGroupList.length - 1];
+
+    this.poincbox.suspendUpdate();
+    for (var i = 0; i < lastGroup.length; i++) {
+      savedPoints[i] = [ lastGroup[i].coords.usrCoords[1], lastGroup[i].coords.usrCoords[2] ];
+      this.poincbox.removeObject(lastGroup[i]);
+    };
+    this.poincbox.unsuspendUpdate();
+
+    this.pointGroupList.pop();
+
+    this.updateButtonAbility();
+
+  };
+
+  PoincareClickerController.prototype.restoreOrbit = function() {
+  };
+
+  PoincareClickerController.prototype.updateButtonAbility = function() {
+    this.undoButton.disabled = !(this.pointGroupList.length > 0);
+    this.redoButton.disabled = !(this.undonePointGroupList.length > 0);
+  };
 
   PoincareClickerController.prototype.setenergy = function(energy) {
     this.energy = energy;
