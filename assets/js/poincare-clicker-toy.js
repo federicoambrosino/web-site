@@ -239,11 +239,15 @@
     /* UI objects for the Poincare section box */
     'poincbox': {},
 
-    /* State variables for making Poincare sections */
+    /* Control variables for making Poincare sections */
     'energy': -1.9,
     'npt': 100,
     'deltaT': 0.03,
     'maxSteps': 100000,
+
+    /* Storage of points on Poincare section */
+    'pointGroupList': new Array(),
+    'undonePointGroupList': new Array(),
 
     /* Public member functions */
     'setupBoxes': {},
@@ -348,14 +352,22 @@
         // console.log(initConds(this.energy, b, lb));
         var newPoincPoints = reapPoincarePoints(this.energy, this.npt, b, lb, this.deltaT, this.maxSteps);
         // console.log(newPoincPoints);
+
+        var pointGroupId = this.pointGroupList.length;
+
+        var newPointGroup = new Array();
+
         this.poincbox.suspendUpdate();
         for (var i = 0; i < newPoincPoints.length; i++) {
-          this.poincbox.create('point', newPoincPoints[i],
+          var p = this.poincbox.create('point', newPoincPoints[i],
                                {size: 0.5, sizeUnit: 'screen',
                                 fixed: true,
                                 name: '', withLabel: false});
+          newPointGroup.push(p);
         };
         this.poincbox.unsuspendUpdate();
+
+        this.pointGroupList.push(newPointGroup);
       }
     } else {
       console.log("point exists");
@@ -363,8 +375,28 @@
     };
   };
 
+  PoincareClickerController.prototype.clearPoints = function() {
+
+    this.poincbox.suspendUpdate();
+
+    for (var i = 0; i < this.pointGroupList.length; i++) {
+      var thisGroup = this.pointGroupList[i];
+      for (var j = 0; j < thisGroup.length; j++) {
+        this.poincbox.removeObject(thisGroup[j]);
+      };
+    };
+
+    this.poincbox.unsuspendUpdate();
+
+    this.pointGroupList = new Array();
+    this.undonePointGroupList = new Array();
+  };
+
   PoincareClickerController.prototype.setenergy = function(energy) {
     this.energy = energy;
+
+    this.clearPoints();
+
     this.poincbox.suspendUpdate();
     this.poincbox.setBoundingBox([ -1.05*bMax(energy), 1.05*lbMax(energy),
                                    1.05*bMax(energy), -1.05*lbMax(energy) ], false);
