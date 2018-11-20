@@ -278,6 +278,7 @@
     /* default style for points */
     'basePointStyle': {size: 0.5, sizeUnit: 'screen',
                        strokeWidth: 0,
+                       color: '#000000',
                        fixed: true,
                        name: '', withLabel: false},
 
@@ -422,13 +423,12 @@
 
         var pointGroupId = this.pointGroupList.length;
 
-        var newPointGroup = new Array();
+        var newPointGroup = new Array(newPoincPoints.length);
 
         this.poincbox.suspendUpdate();
         for (var i = 0; i < newPoincPoints.length; i++) {
-          var p = this.poincbox.create('point', newPoincPoints[i],
-                                       this.basePointStyle);
-          newPointGroup.push(p);
+          newPointGroup[i] = this.poincbox.create('point', newPoincPoints[i],
+                                                  this.basePointStyle);
         };
         this.poincbox.unsuspendUpdate();
 
@@ -437,7 +437,12 @@
     } else {
       console.log("point exists");
       console.log(thePoint);
+
+      // TODO: Add points to this orbit?
+
     };
+
+    // QUESTION: Should we clear the 'Redo' stack?
 
     this.updateButtonAbility();
 
@@ -507,6 +512,24 @@
   };
 
   PoincareClickerController.prototype.restoreOrbit = function() {
+    if (this.undonePointGroupList.length == 0) return;
+
+    var savedPoints = this.undonePointGroupList[this.undonePointGroupList.length - 1];
+
+    this.pointGroupList.push(new Array(savedPoints.length));
+
+    var lastGroup = this.pointGroupList[this.pointGroupList.length - 1];
+
+    this.poincbox.suspendUpdate();
+    for (var i = 0; i < lastGroup.length; i++) {
+      lastGroup[i] = this.poincbox.create('point', savedPoints[i],
+                                           this.basePointStyle);
+    };
+    this.poincbox.unsuspendUpdate();
+
+    this.undonePointGroupList.pop();
+
+    this.updateButtonAbility();
   };
 
   PoincareClickerController.prototype.updateButtonAbility = function() {
