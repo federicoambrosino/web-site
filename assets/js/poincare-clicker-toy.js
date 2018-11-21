@@ -514,20 +514,16 @@
   PoincareClickerController.prototype.popLastOrbit = function() {
     if (this.pointGroupList.length == 0) return;
 
-    var lastGroup = this.pointGroupList[this.pointGroupList.length - 1];
-
-    this.undonePointGroupList.push(new Array(lastGroup.length));
-
-    var savedPoints = this.undonePointGroupList[this.undonePointGroupList.length - 1];
+    var lastGroup = this.pointGroupList.pop();
 
     this.poincbox.suspendUpdate();
     for (var i = 0; i < lastGroup.length; i++) {
-      savedPoints[i] = [ lastGroup[i].coords.usrCoords[1], lastGroup[i].coords.usrCoords[2] ];
-      this.poincbox.removeObject(lastGroup[i]);
+      lastGroup[i].hideElement();
     };
-    this.poincbox.unsuspendUpdate();
 
-    this.pointGroupList.pop();
+    this.undonePointGroupList.push(lastGroup);
+
+    this.poincbox.unsuspendUpdate();
 
     this.updateButtonAbility();
 
@@ -536,20 +532,16 @@
   PoincareClickerController.prototype.restoreOrbit = function() {
     if (this.undonePointGroupList.length == 0) return;
 
-    var savedPoints = this.undonePointGroupList[this.undonePointGroupList.length - 1];
-
-    this.pointGroupList.push(new Array(savedPoints.length));
-
-    var lastGroup = this.pointGroupList[this.pointGroupList.length - 1];
+    var savedPoints = this.undonePointGroupList.pop();
 
     this.poincbox.suspendUpdate();
-    for (var i = 0; i < lastGroup.length; i++) {
-      lastGroup[i] = this.poincbox.create('point', savedPoints[i],
-                                           this.basePointStyle);
+    for (var i = 0; i < savedPoints.length; i++) {
+      savedPoints[i].showElement();
     };
-    this.poincbox.unsuspendUpdate();
 
-    this.undonePointGroupList.pop();
+    this.pointGroupList.push(savedPoints);
+
+    this.poincbox.unsuspendUpdate();
 
     this.updateButtonAbility();
   };
