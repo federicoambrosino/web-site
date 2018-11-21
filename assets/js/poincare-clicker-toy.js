@@ -209,10 +209,13 @@
       // bbox has the coordinates of the selection rectangle.
       // Attention: box[i].usrCoords have the form [1, x, y], i.e.
       // are homogeneous coordinates.
-      // TODO: make sure to order min, max x,y so that orientation is preserved
-      var bbox = box[0].usrCoords.slice(1).concat(box[1].usrCoords.slice(1));
+      // Make sure to order min, max x,y so that orientation is preserved
+      var xMin = Math.min(box[0].usrCoords[1],box[1].usrCoords[1]),
+          xMax = Math.max(box[0].usrCoords[1],box[1].usrCoords[1]),
+          yMin = Math.min(box[0].usrCoords[2],box[1].usrCoords[2]),
+          yMax = Math.max(box[0].usrCoords[2],box[1].usrCoords[2]);
       // Set a new bounding box
-      controller.poincbox.setBoundingBox(bbox, false);
+      controller.poincbox.setBoundingBox([xMin, yMax, xMax, yMin], false);
     };
   };
 
