@@ -251,6 +251,32 @@
     };
   };
 
+  function makePointOverHandler(controller, groupCSSClass) {
+    var selectorText = "." + groupCSSClass;
+    return function(){
+      var rules = controller.styleSheet.rules;
+      for(var i=0; i<rules.length; i++) {
+        // Find the correct rule in the stylesheet
+        if(rules[i].selectorText == selectorText) {
+          rules[i].style['fill'] = "#00bb00";
+        };
+      };
+    };
+  };
+
+  function makePointOutHandler(controller, groupCSSClass) {
+    var selectorText = "." + groupCSSClass;
+    return function(){
+      var rules = controller.styleSheet.rules;
+      for(var i=0; i<rules.length; i++) {
+        // Find the correct rule in the stylesheet
+        if(rules[i].selectorText == selectorText) {
+          rules[i].style['fill'] = "#000000";
+        };
+      };
+    };
+  };
+
   ////////////////////////////////////////////////////////////
   // Controller class
 
@@ -280,6 +306,7 @@
 
     /* UI objects for the Poincare section box */
     'poincbox': {},
+    'stylesheet': {},
 
     /* Control variables for making Poincare sections */
     'energy': -1.9,
@@ -297,6 +324,7 @@
                        name: '', withLabel: false},
 
     /* Storage of points on Poincare section */
+    'groupCounter': 0,
     'pointGroupList': new Array(),
     'undonePointGroupList': new Array(),
 
@@ -426,6 +454,16 @@
 
     this.ctrlsbox.addChild(this.poincbox);
 
+    // Add <style> element to the div containing the Poincare section
+    // That is where we'll put the styles that control our point
+    // groups for easy highlighting
+    // See https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/insertRule
+    var styleEl = document.createElement('style');
+    var poincDiv = document.getElementById(poincboxName);
+    poincDiv.appendChild(styleEl);
+    this.styleSheet = styleEl.sheet;
+
+    // Begin drawing
     this.poincbox.unsuspendUpdate();
     this.ctrlsbox.unsuspendUpdate();
 
@@ -443,7 +481,12 @@
         var newPoincPoints = reapPoincarePoints(this.energy, this.npt, b, lb, this.deltaT, this.maxSteps);
         // console.log(newPoincPoints);
 
-        var pointGroupId = this.pointGroupList.length;
+        var groupId = this.groupCounter;
+        this.groupCounter++;
+        var groupCSSClass = "pointGroup"+groupId;
+        this.styleSheet.insertRule("."+groupCSSClass+" { fill: #000000 }");
+        var overHandler = makePointOverHandler(this, groupCSSClass);
+        var outHandler = makePointOutHandler(this, groupCSSClass);
 
         var newPointGroup = new Array(newPoincPoints.length);
 
@@ -451,6 +494,10 @@
         for (var i = 0; i < newPoincPoints.length; i++) {
           newPointGroup[i] = this.poincbox.create('point', newPoincPoints[i],
                                                   this.basePointStyle);
+          newPointGroup[i].on('over', overHandler);
+          newPointGroup[i].on('out', outHandler);
+          newPointGroup[i].groupId = groupId;
+          newPointGroup[i].rendNode.classList.add(groupCSSClass);
         };
         this.poincbox.unsuspendUpdate();
 
@@ -461,6 +508,9 @@
       console.log(thePoint);
 
       // TODO: Add points to this orbit?
+      // FIXME: If we use hideElement() to hide a group, we still
+      // match points here. Must check if the matched point is hidden
+      // or not.
 
     };
 
@@ -497,12 +547,23 @@
         var b = lastPoint.coords.usrCoords[1],
             lb = lastPoint.coords.usrCoords[2];
 
+        var groupId = lastPoint.groupId;
+        var groupCSSClass = "pointGroup"+groupId;
+        var overHandler = makePointOverHandler(this, groupCSSClass);
+        var outHandler = makePointOutHandler(this, groupCSSClass);
+
         var newPoincPoints = reapPoincarePoints(this.energy, this.npt, b, lb, this.deltaT, this.maxSteps);
 
         this.poincbox.suspendUpdate();
         for (var i = 0; i < newPoincPoints.length; i++) {
           var p = this.poincbox.create('point', newPoincPoints[i],
                                        this.basePointStyle);
+          p.on('over', overHandler);
+          p.on('out', outHandler);
+          p.groupId = groupId;
+          p.rendNode.classList.add(groupCSSClass);
+          // QUESTION: Is it better to resize the array instead of
+          // constantly pushing?
           lastGroup.push(p);
         };
         this.poincbox.unsuspendUpdate();
