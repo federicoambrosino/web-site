@@ -526,6 +526,12 @@
         this.poincbox.removeObject(thisGroup[j]);
       };
     };
+    for (var i = 0; i < this.undonePointGroupList.length; i++) {
+      var thisGroup = this.undonePointGroupList[i];
+      for (var j = 0; j < thisGroup.length; j++) {
+        this.poincbox.removeObject(thisGroup[j]);
+      };
+    };
 
     this.poincbox.unsuspendUpdate();
 
