@@ -175,7 +175,7 @@
       for (var el in board.objects) {
         if(JXG.isPoint(board.objects[el]) && board.objects[el].hasPoint(coords.scrCoords[1], coords.scrCoords[2])) {
           ptExists = true;
-          thePoint = el;
+          thePoint = board.objects[el];
           break;
         }
       }
@@ -474,7 +474,7 @@
   };
 
   PoincareClickerController.prototype.handleTouch = function(b, lb, ptExists, thePoint) {
-    if (!ptExists) {
+    if (!ptExists || !(thePoint.visProp.visible)) {
       if (insideSep(this.energy, b, lb)) {
         // console.log("("+b+","+lb+")=>");
         // console.log(initConds(this.energy, b, lb));
@@ -504,13 +504,9 @@
         this.pointGroupList.push(newPointGroup);
       }
     } else {
-      console.log("point exists");
-      console.log(thePoint);
+      console.log("point exists and is visible");
 
       // TODO: Add points to this orbit?
-      // FIXME: If we use hideElement() to hide a group, we still
-      // match points here. Must check if the matched point is hidden
-      // or not.
 
     };
 
