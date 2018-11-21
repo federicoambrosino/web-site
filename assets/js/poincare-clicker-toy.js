@@ -216,6 +216,8 @@
           yMax = Math.max(box[0].usrCoords[2],box[1].usrCoords[2]);
       // Set a new bounding box
       controller.poincbox.setBoundingBox([xMin, yMax, xMax, yMin], false);
+      controller.isZoom100 = false;
+      controller.updateButtonAbility();
     };
   };
 
@@ -240,6 +242,12 @@
   function makeRedoClickHandler(controller) {
     return function(){
       controller.restoreOrbit();
+    };
+  };
+
+  function makeZoom100ClickHandler(controller) {
+    return function(){
+      controller.initialZoom();
     };
   };
 
@@ -268,6 +276,7 @@
     'moreButton': {},
     'undoButton': {},
     'redoButton': {},
+    'zoomButton': {},
 
     /* UI objects for the Poincare section box */
     'poincbox': {},
@@ -277,6 +286,8 @@
     'npt': 100,
     'deltaT': 0.03,
     'maxSteps': 100000,
+
+    'isZoom100': true,
 
     /* default style for points */
     'basePointStyle': {size: 0.5, sizeUnit: 'screen',
@@ -291,14 +302,17 @@
 
     /* Public member functions */
     'setupBoxes': {},
-    'handleTouch': {},
-    'clearPoints': {},
-    'morePointsFromLast': {},
-    'popLastOrbit': {},
-    'pushSavedOrbit': {},
 
     'setenergy': {},
     'setnpt': {},
+
+    'handleTouch': {},
+
+    'clearPoints': {},
+    'morePointsFromLast': {},
+    'popLastOrbit': {},
+    'restoreOrbit': {},
+    'initialZoom': {},
 
     'updateButtonAbility': {},
   };
@@ -334,6 +348,7 @@
     this.moreButton = this.buttonbox.querySelector('#more');
     this.undoButton = this.buttonbox.querySelector('#undo');
     this.redoButton = this.buttonbox.querySelector('#redo');
+    this.zoomButton = this.buttonbox.querySelector('#zoom100');
 
     this.clearButton
       .addEventListener('click',
@@ -350,6 +365,10 @@
     this.redoButton
       .addEventListener('click',
                         makeRedoClickHandler(this));
+
+    this.zoomButton
+      .addEventListener('click',
+                        makeZoom100ClickHandler(this));
 
     //////////////////////////////
     var baseOpts = {
@@ -535,9 +554,22 @@
     this.updateButtonAbility();
   };
 
+  PoincareClickerController.prototype.initialZoom = function() {
+    this.poincbox.suspendUpdate();
+    this.poincbox.setBoundingBox([ -1.05*bMax(this.energy), 1.05*lbMax(this.energy),
+                                   1.05*bMax(this.energy), -1.05*lbMax(this.energy) ], false);
+    this.poincbox.unsuspendUpdate();
+    // This seems to be necessary to update what's shown on the axes
+    this.poincbox.fullUpdate();
+
+    this.isZoom100 = true;
+    this.updateButtonAbility();
+  }
+
   PoincareClickerController.prototype.updateButtonAbility = function() {
     this.undoButton.disabled = !(this.pointGroupList.length > 0);
     this.redoButton.disabled = !(this.undonePointGroupList.length > 0);
+    this.zoomButton.disabled = this.isZoom100;
   };
 
   PoincareClickerController.prototype.setenergy = function(energy) {
@@ -545,12 +577,7 @@
 
     this.clearPoints();
 
-    this.poincbox.suspendUpdate();
-    this.poincbox.setBoundingBox([ -1.05*bMax(energy), 1.05*lbMax(energy),
-                                   1.05*bMax(energy), -1.05*lbMax(energy) ], false);
-    this.poincbox.unsuspendUpdate();
-    // This seems to be necessary to update what's shown on the axes
-    this.poincbox.fullUpdate();
+    this.initialZoom();
   };
 
   PoincareClickerController.prototype.setnpt = function(npt) {
