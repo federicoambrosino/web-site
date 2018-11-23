@@ -165,6 +165,9 @@
       var ptExists = false, i, coords, thePoint;
 
       if (e[JXG.touchProperty]) {
+        // Is this right?
+        if (e.touches.length > 1) // multi-touch, pass through
+          return true;
         // index of the finger that is used to extract the coordinates
         i = 0;
       }
@@ -258,7 +261,10 @@
       for(var i=0; i<rules.length; i++) {
         // Find the correct rule in the stylesheet
         if(rules[i].selectorText == selectorText) {
+          // TODO Put defaults somewhere
           rules[i].style['fill'] = "#00bb00";
+          rules[i].style['rx'] = "1.5px";
+          rules[i].style['ry'] = "1.5px";
         };
       };
     };
@@ -271,7 +277,10 @@
       for(var i=0; i<rules.length; i++) {
         // Find the correct rule in the stylesheet
         if(rules[i].selectorText == selectorText) {
+          // TODO Put defaults somewhere
           rules[i].style['fill'] = "#000000";
+          rules[i].style['rx'] = "1px";
+          rules[i].style['ry'] = "1px";
         };
       };
     };
@@ -310,7 +319,7 @@
 
     /* Control variables for making Poincare sections */
     'energy': -1.9,
-    'npt': 100,
+    'npt': 250,
     'deltaT': 0.03,
     'maxSteps': 100000,
 
@@ -321,6 +330,7 @@
                        strokeWidth: 0,
                        color: '#000000',
                        fixed: true,
+                       showInfobox: false,
                        name: '', withLabel: false},
 
     /* Storage of points on Poincare section */
@@ -364,7 +374,7 @@
     this.nptslider = this.ctrlsbox.create(
       'slider',
       [[0.05,.33],[0.7,.33],
-       [100,100,500]],
+       [100,250,500]],
       {name: '# of points', snapWidth:1, precision:0});
 
     this.eslider.on('drag', makeESliderDrag(this));
@@ -405,7 +415,7 @@
       axis: false,
       grid: true,
       // renderer: 'canvas', // SVG seems to work better than canvas
-      pan: {enabled: false},
+      // pan: {enabled: true},
       showNavigation: true,
       showCopyright:  false};
 
@@ -484,7 +494,8 @@
         var groupId = this.groupCounter;
         this.groupCounter++;
         var groupCSSClass = "pointGroup"+groupId;
-        this.styleSheet.insertRule("."+groupCSSClass+" { fill: #000000 }");
+        // TODO Put defaults somewhere
+        this.styleSheet.insertRule("."+groupCSSClass+" { fill: #000000; rx: 1px; ry: 1px; }");
         var overHandler = makePointOverHandler(this, groupCSSClass);
         var outHandler = makePointOutHandler(this, groupCSSClass);
 
@@ -494,6 +505,11 @@
         for (var i = 0; i < newPoincPoints.length; i++) {
           newPointGroup[i] = this.poincbox.create('point', newPoincPoints[i],
                                                   this.basePointStyle);
+          // newPointGroup[i].hasPoint = function(){return false; };
+          // newPointGroup[i].rendNode.addEventListener('mouseenter', overHandler);
+          // newPointGroup[i].rendNode.addEventListener('touchstart', overHandler);
+          // newPointGroup[i].rendNode.addEventListener('mouseleave', outHandler);
+          // newPointGroup[i].rendNode.addEventListener('touchend', outHandler);
           newPointGroup[i].on('over', overHandler);
           newPointGroup[i].on('out', outHandler);
           newPointGroup[i].groupId = groupId;
@@ -560,6 +576,11 @@
         for (var i = 0; i < newPoincPoints.length; i++) {
           var p = this.poincbox.create('point', newPoincPoints[i],
                                        this.basePointStyle);
+          // p.hasPoint = function(){return false; };
+          // p.rendNode.addEventListener('mouseenter', overHandler);
+          // p.rendNode.addEventListener('touchstart', overHandler);
+          // p.rendNode.addEventListener('mouseleave', outHandler);
+          // p.rendNode.addEventListener('touchend', outHandler);
           p.on('over', overHandler);
           p.on('out', outHandler);
           p.groupId = groupId;

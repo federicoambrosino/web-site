@@ -1,16 +1,24 @@
 ---
-title: Poincare section clicker toy
+title: Poincaré section clicker for the double pendulum
 categories: [tool]
-excerpt: Interactive toy for understanding Poincare sections and chaos
+excerpt: Interactive toy for understanding Poincaré sections and chaos
 tags: [interactive]
 date: 2018-11-16
 jsxgraph: true
+introjs: true
 published: true
 pinned: false
 ---
 
 <!------------------------------------------------------------>
 
+Poincaré sections are a tool for understanding chaos in dynamical
+systems.  Here is an interactive one for the double
+pendulum.  Click in the main pane below to add an orbit.
+<a id="tourLink" href="javascript:void(0);">Click here for a tour</a>.
+<a href="#explanation">Details about what it all means are below</a>.
+
+<!------------------------------------------------------------>
 <style>
 .mybox {
 width: 400px;
@@ -34,7 +42,7 @@ input[type=button,disabled] {
 </div>
 <div id="buttonbox" class="mybox" style="height: initial; width: initial;">
 <input id="clear" type="button" value="Clear"/>
-<input id="more" type="button" value="More from last orbit"/>
+<input id="more" type="button" value="Extend last orbit"/>
 <input id="undo" type="button" disabled value="Undo add"/>
 <input id="redo" type="button" disabled value="Redo"/>
 <input id="zoom100" type="button" disabled value="Zoom 100%"/>
@@ -43,18 +51,59 @@ input[type=button,disabled] {
 </div>
 
 <!------------------------------------------------------------>
+
+{% include toc %}
+
+## Explanation
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+## Acknowledgments
+
+This toy makes use of [JSXGraph](http://jsxgraph.uni-bayreuth.de/wp/),
+and the 'tour' uses [intro.js](https://introjs.com/).  It was
+originally inspired by some of the coursework in Jack Wisdom's
+dynamics class at MIT.
+
+Suggestions welcome!
+
+
+
+
 <!-- CODE -->
 
 <script type="text/javascript" src="{{ site.url }}/assets/js/poincare-clicker-toy.js"></script>
 
 <script type="text/javascript">
   var controller = new PoincareClickerController('ctrlsbox','buttonbox','poincbox');
+  controller.handleTouch(.1,.1, false, null);
+
+  function startIntro(){
+    var intro = introJs();
+
+    intro.setOptions({
+      steps: [
+        {
+          element: '#poincbox',
+          intro: "This is where the Poincaré section lives.  Clicking inside the box will add points from a phase space orbit."
+        },
+        {
+          element: '#ctrlsbox',
+          intro: "Here is where you set the energy of the system, and how many points are added on each click.  Changing the energy will clear all points (which can take a while).",
+        },
+        {
+          element: '#buttonbox',
+          intro: "Use 'Extend last orbit' to add n more points to the most recent orbit.",
+        },
+        {
+          element: '#poincbox',
+          intro: "When you hover over a point, all points from that orbit will be highlighted.  You can Shift-drag to pan, and Ctrl-drag a region to zoom in for more detail.",
+        },
+      ]
+    });
+
+    intro.start();
+  };
+
+  document.getElementById('tourLink').addEventListener('click', startIntro);
 </script>
-
-## Explanation
-
-## Acknowledgments
-
-This toy makes use of [JSXGraph](http://jsxgraph.uni-bayreuth.de/wp/)
-
-Suggestions welcome!
