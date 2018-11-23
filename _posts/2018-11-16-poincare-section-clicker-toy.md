@@ -32,7 +32,7 @@ font-size: 12pt;
 -webkit-appearance: push-button;
 }
 
-input[type=button,disabled] {
+input[type=button][disabled] {
   color: #DCDAD1;
   cursor: not-allowed;
 }

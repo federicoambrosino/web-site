@@ -261,10 +261,9 @@
       for(var i=0; i<rules.length; i++) {
         // Find the correct rule in the stylesheet
         if(rules[i].selectorText == selectorText) {
-          // TODO Put defaults somewhere
-          rules[i].style['fill'] = "#00bb00";
-          rules[i].style['rx'] = "1.5px";
-          rules[i].style['ry'] = "1.5px";
+          rules[i].style['fill'] = controller.extraStyles.hiliteColor;
+          rules[i].style['rx'] = controller.extraStyles.hiliteSize;
+          rules[i].style['ry'] = controller.extraStyles.hiliteSize;
         };
       };
     };
@@ -277,10 +276,9 @@
       for(var i=0; i<rules.length; i++) {
         // Find the correct rule in the stylesheet
         if(rules[i].selectorText == selectorText) {
-          // TODO Put defaults somewhere
-          rules[i].style['fill'] = "#000000";
-          rules[i].style['rx'] = "1px";
-          rules[i].style['ry'] = "1px";
+          rules[i].style['fill'] = controller.extraStyles.normalColor;
+          rules[i].style['rx'] = controller.extraStyles.normalSize;
+          rules[i].style['ry'] = controller.extraStyles.normalSize;
         };
       };
     };
@@ -325,13 +323,16 @@
 
     'isZoom100': true,
 
-    /* default style for points */
+    /* styles */
     'basePointStyle': {size: 0.5, sizeUnit: 'screen',
                        strokeWidth: 0,
                        color: '#000000',
                        fixed: true,
                        showInfobox: false,
                        name: '', withLabel: false},
+    'extraStyles': {normalColor: "#000000", normalSize: "1px",
+                    hiliteColor: "#00bb00", hiliteSize: "1.5px",
+                    defaultRuleString: ""},
 
     /* Storage of points on Poincare section */
     'groupCounter': 0,
@@ -472,6 +473,12 @@
     var poincDiv = document.getElementById(poincboxName);
     poincDiv.appendChild(styleEl);
     this.styleSheet = styleEl.sheet;
+    this.basePointStyle.color = this.extraStyles.normalColor;
+    this.extraStyles.defaultRuleString =
+      " { fill: " + this.extraStyles.normalColor
+      + "; rx: " + this.extraStyles.normalSize
+      + "; ry: " + this.extraStyles.normalSize
+      + "; }";
 
     // Begin drawing
     this.poincbox.unsuspendUpdate();
@@ -495,7 +502,7 @@
         this.groupCounter++;
         var groupCSSClass = "pointGroup"+groupId;
         // TODO Put defaults somewhere
-        this.styleSheet.insertRule("."+groupCSSClass+" { fill: #000000; rx: 1px; ry: 1px; }");
+        this.styleSheet.insertRule("."+groupCSSClass+ this.extraStyles.defaultRuleString);
         var overHandler = makePointOverHandler(this, groupCSSClass);
         var outHandler = makePointOutHandler(this, groupCSSClass);
 
