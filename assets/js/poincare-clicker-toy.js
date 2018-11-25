@@ -670,4 +670,35 @@
   /* Add to global namespace */
   root['PoincareClickerController'] = PoincareClickerController;
 
+  ////////////////////////////////////////////////////////////
+
+  /* For tour using intro.js */
+  root['startIntro'] = function(){
+    var intro = introJs();
+
+    intro.setOptions({
+      steps: [
+        {
+          element: '#poincbox',
+          intro: "This is where the Poincaré section lives.  Clicking inside the box will add points from a phase space orbit."
+        },
+        {
+          element: '#ctrlsbox',
+          intro: "Here is where you set the energy of the system, and how many points are added on each click.  Changing the energy will clear all points (which can take a while).",
+        },
+        {
+          element: '#buttonbox',
+          intro: "Use 'Extend last orbit' to add n more points to the most recent orbit.",
+        },
+        {
+          element: '#poincbox',
+          intro: "When you hover over a point, all points from that orbit will be highlighted.  You can Shift-drag to pan, and Ctrl-drag a region to zoom in for more detail.",
+        },
+      ]
+    });
+
+    intro.start();
+  };
+
+
 })(this);
