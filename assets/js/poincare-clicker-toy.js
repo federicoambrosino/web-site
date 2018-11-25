@@ -441,7 +441,7 @@
           withLabel: true,
           ticks: {minorTicks:1, majorHeight:10, minorHeight:4},
           label: { position: 'rt',
-                   offset: [20, 0], }
+                   offset: [-20, -25], }
         });
 
     // Is this the right way?  Make them non-clickable
