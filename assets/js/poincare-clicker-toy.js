@@ -313,6 +313,15 @@
 
     /* UI objects for the Poincare section box */
     poincbox: {},
+    basePoincOpts: {
+      boundingbox: [-2, 2, 2, -2],
+      keepaspectratio: true,
+      axis: false,
+      grid: true,
+      // renderer: 'canvas', // SVG seems to work better than canvas
+      // pan: {enabled: true},
+      showNavigation: true,
+      showCopyright:  false},
     stylesheet: {},
 
     /* Control variables for making Poincare sections */
@@ -409,18 +418,7 @@
       .addEventListener('click',
                         makeZoom100ClickHandler(this));
 
-    //////////////////////////////
-    var baseOpts = {
-      boundingbox: [-2, 2, 2, -2],
-      keepaspectratio: true,
-      axis: false,
-      grid: true,
-      // renderer: 'canvas', // SVG seems to work better than canvas
-      // pan: {enabled: true},
-      showNavigation: true,
-      showCopyright:  false};
-
-    this.poincbox = JXG.JSXGraph.initBoard(poincboxName, baseOpts);
+    this.poincbox = JXG.JSXGraph.initBoard(poincboxName, this.basePoincOpts);
 
     this.poincbox.suspendUpdate();
 
