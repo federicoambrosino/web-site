@@ -257,7 +257,7 @@
   function makePointOverHandler(controller, groupCSSClass) {
     var selectorText = "." + groupCSSClass;
     return function(){
-      var rules = controller.styleSheet.rules;
+      var rules = controller.styleSheet.cssRules;
       for(var i=0; i<rules.length; i++) {
         // Find the correct rule in the stylesheet
         if(rules[i].selectorText == selectorText) {
@@ -272,7 +272,7 @@
   function makePointOutHandler(controller, groupCSSClass) {
     var selectorText = "." + groupCSSClass;
     return function(){
-      var rules = controller.styleSheet.rules;
+      var rules = controller.styleSheet.cssRules;
       for(var i=0; i<rules.length; i++) {
         // Find the correct rule in the stylesheet
         if(rules[i].selectorText == selectorText) {
