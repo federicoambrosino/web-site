@@ -320,6 +320,7 @@
     undoButton: {},
     redoButton: {},
     zoomButton: {},
+    keyHelpButton: {},
 
     /* UI objects for the Poincare section box */
     poincbox: {},
@@ -408,6 +409,7 @@
     this.undoButton = this.buttonbox.querySelector('#undo');
     this.redoButton = this.buttonbox.querySelector('#redo');
     this.zoomButton = this.buttonbox.querySelector('#zoom100');
+    this.keyHelpButton = this.buttonbox.querySelector('#keyHelp');
 
     this.clearButton
       .addEventListener('click',
@@ -430,6 +432,10 @@
                         makeZoom100ClickHandler(this));
 
     this.poincbox = JXG.JSXGraph.initBoard(poincboxName, this.basePoincOpts);
+    this.keyHelpButton
+      .addEventListener('click',
+                        keyHelp);
+
 
     this.poincbox.suspendUpdate();
 
@@ -570,7 +576,38 @@
     case "0":
       this.initialZoom();
       break;
+    case "?":
+      keyHelp();
+      break;
     };
+  };
+
+  function keyHelp() {
+    var intro = introJs();
+
+    intro.setOptions({
+      showStepNumbers: false,
+      // showButtons: false,
+      showBullets: false,
+      overlayOpacity: 0.0,
+      steps: [
+        {
+          element: "#poincbox",
+          intro: "The following keyboard shortcuts are available:"+
+            "<table><thead><tr><th>Key</th><th>Function</th></tr></thead><tbody>"+
+            "<tr><td>?</td><td>Show this help</td></tr>"+
+            "<tr><td>z</td><td>Undo add last orbit</td></tr>"+
+            "<tr><td>x</td><td>Redo add last orbit</td></tr>"+
+            "<tr><td>a or m</td><td>Extend last orbit</td></tr>"+
+            "<tr><td>c</td><td>Clear board</td></tr>"+
+            "<tr><td>0</td><td>Zoom 100%</td></tr>"+
+            "</tbody></table>"
+            ,
+        }
+      ]
+    });
+
+    intro.start();
   };
 
   PoincareClickerController.prototype.clearPoints = function() {
@@ -709,6 +746,8 @@
     var intro = introJs();
 
     intro.setOptions({
+      disableInteraction: false,
+      overlayOpacity: 0.1,
       steps: [
         {
           element: '#poincbox',

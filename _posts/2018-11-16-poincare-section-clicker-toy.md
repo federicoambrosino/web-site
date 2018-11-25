@@ -46,10 +46,12 @@ body.waiting * {
 </div>
 <div id="buttonbox" class="mybox" style="height: initial; width: initial;">
 <input id="clear" type="button" value="Clear"/>
+<input id="zoom100" type="button" disabled value="Zoom 100%"/>
+<input id="keyHelp" type="button" value="Keys"/>
+<br>
 <input id="more" type="button" value="Extend last orbit"/>
 <input id="undo" type="button" disabled value="Undo add"/>
 <input id="redo" type="button" disabled value="Redo"/>
-<input id="zoom100" type="button" disabled value="Zoom 100%"/>
 </div>
 <div id="poincbox" class="jxgbox mybox" style="height: 400px;">
 </div>
