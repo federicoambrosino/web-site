@@ -361,6 +361,7 @@
 
     /* Public member functions */
     setupBoxes: {},
+    setupCtrls: {},
     setupPoinc: {},
 
     setenergy: {},
@@ -382,6 +383,20 @@
 
   // TODO Maybe setupBoxes should not be public
   PoincareClickerController.prototype.setupBoxes = function(ctrlsboxName,buttonboxName,poincboxName) {
+
+    this.setupCtrls(ctrlsboxName,buttonboxName);
+
+    this.setupPoinc(poincboxName);
+
+    // Make poinc box a child of the ctrls box, because changing the energy
+    // slider should update the poincare section box
+    this.ctrlsbox.addChild(this.poincbox);
+
+    // Add keyboard handler
+    document.body.addEventListener("keydown", makeKeyHandler(this));
+  };
+
+  PoincareClickerController.prototype.setupCtrls = function(ctrlsboxName,buttonboxName) {
     this.ctrlsbox = JXG.JSXGraph.initBoard(ctrlsboxName,
                                  {boundingbox:[0.,1.,1.,0.],
                                   axis:false,
@@ -404,6 +419,11 @@
 
     this.eslider.on('drag', makeESliderDrag(this));
     this.nptslider.on('drag', makeNPtSliderDrag(this));
+
+    this.ctrlsbox.unsuspendUpdate();
+
+    //////////////////////////////
+    // Buttons
 
     this.buttonbox = document.getElementById(buttonboxName);
 
@@ -437,19 +457,6 @@
     this.keyHelpButton
       .addEventListener('click',
                         keyHelp);
-
-    // This sets up the whole Poincare section board and starts
-    // drawing it
-    this.setupPoinc(poincboxName);
-
-    // Make it a child of the ctrls box, because changing the energy
-    // slider should update the poincare section box
-    this.ctrlsbox.addChild(this.poincbox);
-
-    this.ctrlsbox.unsuspendUpdate();
-
-    // Add keyboard handler
-    document.body.addEventListener("keydown", makeKeyHandler(this));
   };
 
   PoincareClickerController.prototype.setupPoinc = function(poincboxName) {
