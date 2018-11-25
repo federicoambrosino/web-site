@@ -371,9 +371,14 @@
     handleKey: {},
 
     clearPoints: {},
+    clearPointThresh: 500,
+    _clearPointsSanely: {},
+    _clearPointsViaFreeBoard: {},
+
     morePointsFromLast: {},
     popLastOrbit: {},
     restoreOrbit: {},
+
     bbox: {},
     padFactor: 1.05,
     initialZoom: {},
@@ -387,10 +392,6 @@
     this.setupCtrls(ctrlsboxName,buttonboxName);
 
     this.setupPoinc(poincboxName);
-
-    // Make poinc box a child of the ctrls box, because changing the energy
-    // slider should update the poincare section box
-    this.ctrlsbox.addChild(this.poincbox);
 
     // Add keyboard handler
     document.body.addEventListener("keydown", makeKeyHandler(this));
@@ -629,6 +630,20 @@
 
   PoincareClickerController.prototype.clearPoints = function() {
 
+    if (this.poincbox.objectsList.length < this.clearPointThresh) {
+      this._clearPointsSanely();
+    } else { // JSXGraph is very slow at clearing a huge number of points
+      this._clearPointsViaFreeBoard();
+    };
+
+    this.pointGroupList = new Array();
+    this.undonePointGroupList = new Array();
+
+    this.updateButtonAbility();
+  };
+
+  PoincareClickerController.prototype._clearPointsSanely = function() {
+
     this.poincbox.suspendUpdate();
 
     // Have to remove in reverse order to hack around JXG's
@@ -643,11 +658,13 @@
     };
 
     this.poincbox.unsuspendUpdate();
+  };
 
-    this.pointGroupList = new Array();
-    this.undonePointGroupList = new Array();
+  PoincareClickerController.prototype._clearPointsViaFreeBoard = function() {
 
-    this.updateButtonAbility();
+    var poincboxName = this.poincbox.container;
+    JXG.JSXGraph.freeBoard(this.poincbox);
+    this.setupPoinc(poincboxName);
   };
 
   PoincareClickerController.prototype.morePointsFromLast = function() {
