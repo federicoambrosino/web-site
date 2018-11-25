@@ -226,7 +226,11 @@
 
   function makeClearClickHandler(controller) {
     return function(){
-      controller.clearPoints();
+      // $('body').addClass('waiting');
+      // setTimeout(function() {
+        controller.clearPoints();
+      //   $('body').removeClass('waiting');
+      // }, 1);
     };
   };
 

@@ -2,7 +2,7 @@
 title: Poincaré section clicker for the double pendulum
 categories: [tool]
 excerpt: Interactive toy for understanding Poincaré sections and chaos
-tags: [interactive]
+tags: [interactive, dynamics, chaos]
 date: 2018-11-16
 jsxgraph: true
 introjs: true
@@ -36,6 +36,10 @@ input[type=button][disabled] {
   color: #DCDAD1;
   cursor: not-allowed;
 }
+
+body.waiting * {
+    cursor: progress;
+}
 </style>
 
 <div id="ctrlsbox" class="jxgbox mybox" style="height:75px;">
@@ -54,11 +58,32 @@ input[type=button][disabled] {
 
 {% include toc %}
 
-## Explanation
+# Explanation
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-## Acknowledgments
+## Limitations
+
+Some of these limitations are identical to what's on the [Kerr
+spherical photon orbit page]({{ site.url }}{% post_url 2016-02-23-kerr-circular-photon-orbits %}#limitations).
+
+* The major limitation is that this is in javascript, which is not
+  ideal for numerical work.  There are very few numerical libraries.
+* JSXGraph is really not designed for putting tens/hundreds of
+  thousands of points onto plots -- their points have many features I
+  don't need.  It is also extremely slow to clear all these points off
+  of the board, and this blocks the UI thread.
+* JSXGraph only has fixed-step-size integrators, no adaptive ones.  I
+  picked what seemed like a reasonable step size in most of parameter space.
+* The numerical integrator from JSXGraph that I use is a fixed
+  step-size
+  [RK4](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods)
+  integrator.  RK4 has no energy-error guarantee, so it is poorly
+  suited to generate Poincaré sections.  Energy drift other
+  integration errors will smear out fine details, and worse yet will
+  even connect quasiperiod orbits to chaotic ones.
+
+# Acknowledgments
 
 This toy makes use of [JSXGraph](http://jsxgraph.uni-bayreuth.de/wp/),
 and the 'tour' uses [intro.js](https://introjs.com/).  It was
@@ -68,13 +93,12 @@ dynamics class at MIT.
 Suggestions welcome!
 
 
-
-
 <!-- CODE -->
 
 <script type="text/javascript" src="{{ site.url }}/assets/js/poincare-clicker-toy.js"></script>
 
 <script type="text/javascript">
+  // Should I use DOMContentLoaded?
   var controller = new PoincareClickerController('ctrlsbox','buttonbox','poincbox');
   controller.handleTouch(.1,.1, false, null);
 
