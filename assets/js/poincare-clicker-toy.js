@@ -301,59 +301,59 @@
   // Controller prototype
   PoincareClickerController.prototype = {
     /* UI objects for the controls */
-    'ctrlsbox': {},
-    'eslider': {},
-    'nptslider': {},
-    'buttonbox': {},
-    'clearButton': {},
-    'moreButton': {},
-    'undoButton': {},
-    'redoButton': {},
-    'zoomButton': {},
+    ctrlsbox: {},
+    eslider: {},
+    nptslider: {},
+    buttonbox: {},
+    clearButton: {},
+    moreButton: {},
+    undoButton: {},
+    redoButton: {},
+    zoomButton: {},
 
     /* UI objects for the Poincare section box */
-    'poincbox': {},
-    'stylesheet': {},
+    poincbox: {},
+    stylesheet: {},
 
     /* Control variables for making Poincare sections */
-    'energy': -1.9,
-    'npt': 250,
-    'deltaT': 0.03,
-    'maxSteps': 100000,
+    energy: -1.9,
+    npt: 250,
+    deltaT: 0.03,
+    maxSteps: 100000,
 
-    'isZoom100': true,
+    isZoom100: true,
 
     /* styles */
-    'basePointStyle': {size: 0.5, sizeUnit: 'screen',
+    basePointStyle: {size: 0.5, sizeUnit: 'screen',
                        strokeWidth: 0,
                        color: '#000000',
                        fixed: true,
                        showInfobox: false,
                        name: '', withLabel: false},
-    'extraStyles': {normalColor: "#000000", normalSize: "1px",
+    extraStyles: {normalColor: "#000000", normalSize: "1px",
                     hiliteColor: "#00bb00", hiliteSize: "1.5px",
                     defaultRuleString: ""},
 
     /* Storage of points on Poincare section */
-    'groupCounter': 0,
-    'pointGroupList': new Array(),
-    'undonePointGroupList': new Array(),
+    groupCounter: 0,
+    pointGroupList: new Array(),
+    undonePointGroupList: new Array(),
 
     /* Public member functions */
-    'setupBoxes': {},
+    setupBoxes: {},
 
-    'setenergy': {},
-    'setnpt': {},
+    setenergy: {},
+    setnpt: {},
 
-    'handleTouch': {},
+    handleTouch: {},
 
-    'clearPoints': {},
-    'morePointsFromLast': {},
-    'popLastOrbit': {},
-    'restoreOrbit': {},
-    'initialZoom': {},
+    clearPoints: {},
+    morePointsFromLast: {},
+    popLastOrbit: {},
+    restoreOrbit: {},
+    initialZoom: {},
 
-    'updateButtonAbility': {},
+    updateButtonAbility: {},
   };
 
   // TODO Maybe setupBoxes should not be public
