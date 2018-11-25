@@ -258,7 +258,7 @@
     };
   };
 
-  function makePointOverHandler(controller, groupCSSClass) {
+  function makePointOverHandler(controller, groupId, groupCSSClass) {
     var selectorText = "." + groupCSSClass;
     return function(){
       var rules = controller.styleSheet.cssRules;
@@ -273,14 +273,14 @@
     };
   };
 
-  function makePointOutHandler(controller, groupCSSClass) {
+  function makePointOutHandler(controller, groupId, groupCSSClass) {
     var selectorText = "." + groupCSSClass;
     return function(){
       var rules = controller.styleSheet.cssRules;
       for(var i=0; i<rules.length; i++) {
         // Find the correct rule in the stylesheet
         if(rules[i].selectorText == selectorText) {
-          rules[i].style['fill'] = controller.extraStyles.normalColor;
+          rules[i].style['fill'] = controller.colorPal[controller.groupColMap[groupId]];
           rules[i].style['rx'] = controller.extraStyles.normalSize;
           rules[i].style['ry'] = controller.extraStyles.normalSize;
         };
@@ -353,11 +353,15 @@
     extraStyles: {normalColor: "#000000", normalSize: "1px",
                     hiliteColor: "#00bb00", hiliteSize: "1.5px",
                     defaultRuleString: ""},
+    colorPal: ['#000000', '#4477aa', '#66ccee', '#228833', '#ccbb44', '#ee6677', '#aa3377'],
 
     /* Storage of points on Poincare section */
     groupCounter: 0,
     pointGroupList: new Array(),
     undonePointGroupList: new Array(),
+
+    groupColMap: {},
+    rotateColor: {},
 
     /* Public member functions */
     setupBoxes: {},
@@ -536,10 +540,13 @@
         var groupId = this.groupCounter;
         this.groupCounter++;
         var groupCSSClass = "pointGroup"+groupId;
-        // TODO Put defaults somewhere
+
         this.styleSheet.insertRule("."+groupCSSClass+ this.extraStyles.defaultRuleString);
-        var overHandler = makePointOverHandler(this, groupCSSClass);
-        var outHandler = makePointOutHandler(this, groupCSSClass);
+        // Start with default color
+        this.groupColMap[groupId] = 0;
+
+        var overHandler = makePointOverHandler(this, groupId, groupCSSClass);
+        var outHandler = makePointOutHandler(this, groupId, groupCSSClass);
 
         var newPointGroup = new Array(newPoincPoints.length);
 
@@ -562,15 +569,30 @@
         this.pointGroupList.push(newPointGroup);
       }
     } else {
-      console.log("point exists and is visible");
-
-      // TODO: Add points to this orbit?
+      // point exists and is visible --- rotate color
+      this.rotateColor(thePoint.groupId, thePoint.rendNode.classList[0]);
 
     };
 
     // QUESTION: Should we clear the 'Redo' stack?
 
     this.updateButtonAbility();
+
+  };
+
+  PoincareClickerController.prototype.rotateColor = function(groupId, groupCSSClass) {
+
+    this.groupColMap[groupId] = (this.groupColMap[groupId] + 1) % this.colorPal.length;
+
+    var selectorText = "." + groupCSSClass;
+    var rules = this.styleSheet.cssRules;
+
+    for(var i=0; i<rules.length; i++) {
+      // Find the correct rule in the stylesheet
+      if(rules[i].selectorText == selectorText) {
+        rules[i].style['fill'] = this.colorPal[this.groupColMap[groupId]];
+      };
+    };
 
   };
 
