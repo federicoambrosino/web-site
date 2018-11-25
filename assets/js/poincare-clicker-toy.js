@@ -361,6 +361,7 @@
 
     /* Public member functions */
     setupBoxes: {},
+    setupPoinc: {},
 
     setenergy: {},
     setnpt: {},
@@ -372,6 +373,8 @@
     morePointsFromLast: {},
     popLastOrbit: {},
     restoreOrbit: {},
+    bbox: {},
+    padFactor: 1.05,
     initialZoom: {},
 
     updateButtonAbility: {},
@@ -431,13 +434,30 @@
       .addEventListener('click',
                         makeZoom100ClickHandler(this));
 
-    this.poincbox = JXG.JSXGraph.initBoard(poincboxName, this.basePoincOpts);
     this.keyHelpButton
       .addEventListener('click',
                         keyHelp);
 
+    // This sets up the whole Poincare section board and starts
+    // drawing it
+    this.setupPoinc(poincboxName);
+
+    // Make it a child of the ctrls box, because changing the energy
+    // slider should update the poincare section box
+    this.ctrlsbox.addChild(this.poincbox);
+
+    this.ctrlsbox.unsuspendUpdate();
+
+    // Add keyboard handler
+    document.body.addEventListener("keydown", makeKeyHandler(this));
+  };
+
+  PoincareClickerController.prototype.setupPoinc = function(poincboxName) {
+
+    this.poincbox = JXG.JSXGraph.initBoard(poincboxName, this.basePoincOpts);
 
     this.poincbox.suspendUpdate();
+    this.poincbox.setBoundingBox(this.bbox(), false);
 
     var baxis = this.poincbox.create('axis', [[-4, 0], [4,0]],
         { name:'b',
@@ -478,8 +498,6 @@
 
     this.poincbox.on('down', makePoincTouch(this));
 
-    this.ctrlsbox.addChild(this.poincbox);
-
     // Add <style> element to the div containing the Poincare section
     // That is where we'll put the styles that control our point
     // groups for easy highlighting
@@ -497,14 +515,6 @@
 
     // Begin drawing
     this.poincbox.unsuspendUpdate();
-    this.ctrlsbox.unsuspendUpdate();
-
-    // Use triggers to synchronize internal state
-    makeNPtSliderDrag(this)();
-    makeESliderDrag(this)();
-
-    // Add keyboard handler
-    document.body.addEventListener("keydown", makeKeyHandler(this));
   };
 
   PoincareClickerController.prototype.handleTouch = function(b, lb, ptExists, thePoint) {
@@ -706,10 +716,14 @@
     this.updateButtonAbility();
   };
 
+  PoincareClickerController.prototype.bbox = function() {
+    return [ -this.padFactor*bMax(this.energy), this.padFactor*lbMax(this.energy),
+             this.padFactor*bMax(this.energy), -this.padFactor*lbMax(this.energy) ];
+  };
+
   PoincareClickerController.prototype.initialZoom = function() {
     this.poincbox.suspendUpdate();
-    this.poincbox.setBoundingBox([ -1.05*bMax(this.energy), 1.05*lbMax(this.energy),
-                                   1.05*bMax(this.energy), -1.05*lbMax(this.energy) ], false);
+    this.poincbox.setBoundingBox(this.bbox(), false);
     this.poincbox.unsuspendUpdate();
     // This seems to be necessary to update what's shown on the axes
     this.poincbox.fullUpdate();
