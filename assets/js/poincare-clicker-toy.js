@@ -577,17 +577,15 @@
 
     this.poincbox.suspendUpdate();
 
-    for (var i = 0; i < this.pointGroupList.length; i++) {
-      var thisGroup = this.pointGroupList[i];
-      for (var j = 0; j < thisGroup.length; j++) {
-        this.poincbox.removeObject(thisGroup[j]);
-      };
-    };
-    for (var i = 0; i < this.undonePointGroupList.length; i++) {
-      var thisGroup = this.undonePointGroupList[i];
-      for (var j = 0; j < thisGroup.length; j++) {
-        this.poincbox.removeObject(thisGroup[j]);
-      };
+    // Have to remove in reverse order to hack around JXG's
+    // otherwise O(n^2) behaviour
+    for (var i = this.poincbox.objectsList.length - 1;
+         i >=0; i--) {
+      // All the points on the board that we've added have the
+      // property groupId
+      if ((this.poincbox.objectsList[i].type == JXG.OBJECT_TYPE_POINT) &&
+          this.poincbox.objectsList[i].hasOwnProperty('groupId'))
+        this.poincbox.removeObject(this.poincbox.objectsList[i].id);
     };
 
     this.poincbox.unsuspendUpdate();
