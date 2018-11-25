@@ -284,6 +284,12 @@
     };
   };
 
+  function makeKeyHandler(controller) {
+    return function(event) {
+      return controller.handleKey(event);
+    };
+  }
+
   ////////////////////////////////////////////////////////////
   // Controller class
 
@@ -355,6 +361,7 @@
     setnpt: {},
 
     handleTouch: {},
+    handleKey: {},
 
     clearPoints: {},
     morePointsFromLast: {},
@@ -486,6 +493,8 @@
     makeNPtSliderDrag(this)();
     makeESliderDrag(this)();
 
+    // Add keyboard handler
+    document.body.addEventListener("keydown", makeKeyHandler(this));
   };
 
   PoincareClickerController.prototype.handleTouch = function(b, lb, ptExists, thePoint) {
@@ -535,6 +544,29 @@
 
     this.updateButtonAbility();
 
+  };
+
+  PoincareClickerController.prototype.handleKey = function(event) {
+    if (event.repeat) // Ignore repeated keys
+      return;
+    switch (event.key.toLowerCase()) {
+    case "z":
+      this.popLastOrbit();
+      break;
+    case "x":
+      this.restoreOrbit();
+      break;
+    case "a":
+    case "m":
+      this.morePointsFromLast();
+      break;
+    case "c":
+      this.clearPoints();
+      break;
+    case "0":
+      this.initialZoom();
+      break;
+    };
   };
 
   PoincareClickerController.prototype.clearPoints = function() {
