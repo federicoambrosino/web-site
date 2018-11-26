@@ -14,7 +14,7 @@ pinned: false
 
 Poincaré sections are a tool for understanding chaos in dynamical
 systems.  Here is an interactive one for the double
-pendulum.  Click in the main pane below to add an orbit.
+pendulum<span class="mobileShow"> (best enjoyed on desktop)</span>.  Click in the main pane below to add an orbit.
 <a id="tourLink" href="javascript:void(0);">Click here for a tour</a>.
 <a href="#explanation">Details about what it all means are below</a>.
 
@@ -40,11 +40,18 @@ input[type=button][disabled] {
 body.waiting * {
     cursor: progress;
 }
+
+.mobileShow {display: none;}
+
+@media only screen
+  and (max-device-width : 768px) {
+    .mobileShow {display: inline;}
+  }
 </style>
 
 <div id="ctrlsbox" class="jxgbox mybox" style="height:75px;">
 </div>
-<div id="buttonbox" class="mybox" style="height: initial; width: initial;">
+<div id="buttonbox" class="mybox" style="height: initial;">
 <input id="clear" type="button" value="Clear"/>
 <input id="zoom100" type="button" disabled value="Zoom 100%"/>
 <input id="keyHelp" type="button" value="Keys"/>

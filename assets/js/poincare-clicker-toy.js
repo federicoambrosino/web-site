@@ -166,8 +166,14 @@
 
       if (e[JXG.touchProperty]) {
         // Is this right?
-        if (e.touches.length > 1) // multi-touch, pass through
-          return true;
+        if (e.touches.length > 1) // multi-touch, pass through to treat as pan or zoom?
+          return;
+
+        // Calling preventDefault() so that we don't also generate a
+        // click event, see
+        // https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
+        e.preventDefault();
+
         // index of the finger that is used to extract the coordinates
         i = 0;
       }
@@ -260,7 +266,7 @@
 
   function makePointOverHandler(controller, groupId, groupCSSClass) {
     var selectorText = "." + groupCSSClass;
-    return function(){
+    return function(e){
       var rules = controller.styleSheet.cssRules;
       for(var i=0; i<rules.length; i++) {
         // Find the correct rule in the stylesheet
@@ -275,7 +281,7 @@
 
   function makePointOutHandler(controller, groupId, groupCSSClass) {
     var selectorText = "." + groupCSSClass;
-    return function(){
+    return function(e){
       var rules = controller.styleSheet.cssRules;
       for(var i=0; i<rules.length; i++) {
         // Find the correct rule in the stylesheet
@@ -807,7 +813,7 @@
 
     intro.setOptions({
       disableInteraction: false,
-      overlayOpacity: 0.1,
+      overlayOpacity: 0.0,
       steps: [
         {
           element: '#poincbox',
@@ -823,7 +829,7 @@
         },
         {
           element: '#poincbox',
-          intro: "When you hover over a point, all points from that orbit will be highlighted.  You can Shift-drag to pan, and Ctrl-drag a region to zoom in for more detail.",
+          intro: "When you hover over a point, all points from that orbit will be highlighted.  Clicking on an orbit will assign a new color, so you can keep track of different orbits.  You can Shift-drag to pan, and Ctrl-drag a region to zoom in for more detail.",
         },
       ]
     });
