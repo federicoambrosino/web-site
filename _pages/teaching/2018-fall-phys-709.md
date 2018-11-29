@@ -15,6 +15,7 @@ tags:
 
 ## News
 
+* Nov. 28: Pset 09 has been posted below.
 * Nov. 10: Pset 08 has been posted below.
 * Nov. 5: The due date for pset07 has been pushed back by one day to
   Tuesday, Nov. 6 at 5PM.
@@ -32,6 +33,8 @@ tags:
 
 ## Problem sets
 
+* [Problem set 09]({{ site.url }}/files/teaching/2018-fall-phys-709/pset09.pdf),
+  due to me by 5PM on Thursday, Dec. 6
 * [Problem set 08]({{ site.url }}/files/teaching/2018-fall-phys-709/pset08.pdf),
   due to me by 5PM on Friday, Nov. 16
 * [Problem set 07]({{ site.url }}/files/teaching/2018-fall-phys-709/pset07.pdf),
