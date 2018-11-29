@@ -689,10 +689,12 @@
   };
 
   PoincareClickerController.prototype._clearPointsViaFreeBoard = function() {
+    var bbox = this.poincbox.getBoundingBox();
 
     var poincboxName = this.poincbox.container;
     JXG.JSXGraph.freeBoard(this.poincbox);
     this.setupPoinc(poincboxName);
+    this.poincbox.setBoundingBox(bbox);
   };
 
   PoincareClickerController.prototype.morePointsFromLast = function() {
