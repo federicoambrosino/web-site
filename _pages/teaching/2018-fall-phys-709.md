@@ -37,7 +37,8 @@ tags:
   due to me by 5PM on Thursday, Dec. 6
 * [Problem set 08]({{ site.url }}/files/teaching/2018-fall-phys-709/pset08.pdf),
   due to me by 5PM on Friday, Nov. 16
-* [Problem set 07]({{ site.url }}/files/teaching/2018-fall-phys-709/pset07.pdf),
+* [Problem set 07]({{ site.url }}/files/teaching/2018-fall-phys-709/pset07.pdf)
+  ([solution]({{ site.url }}/files/teaching/2018-fall-phys-709/pset07-sol.pdf)),
   due to me by 5PM on Tuesday, Nov. 6
 * [Midterm (a.k.a. problem set 06)]({{ site.url }}/files/teaching/2018-fall-phys-709/pset06.pdf)
   ([solution]({{ site.url }}/files/teaching/2018-fall-phys-709/pset06-sol.pdf)),
