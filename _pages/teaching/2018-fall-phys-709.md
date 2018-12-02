@@ -35,7 +35,8 @@ tags:
 
 * [Problem set 09]({{ site.url }}/files/teaching/2018-fall-phys-709/pset09.pdf),
   due to me by 5PM on Thursday, Dec. 6
-* [Problem set 08]({{ site.url }}/files/teaching/2018-fall-phys-709/pset08.pdf),
+* [Problem set 08]({{ site.url }}/files/teaching/2018-fall-phys-709/pset08.pdf)
+  ([solution]({{ site.url }}/files/teaching/2018-fall-phys-709/pset08-sol.pdf)),
   due to me by 5PM on Friday, Nov. 16
 * [Problem set 07]({{ site.url }}/files/teaching/2018-fall-phys-709/pset07.pdf)
   ([solution]({{ site.url }}/files/teaching/2018-fall-phys-709/pset07-sol.pdf)),
