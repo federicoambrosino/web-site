@@ -228,7 +228,7 @@ side:
 \\[
 u_1^2 =
 \frac{1}{2a^2} \left\[
-(a^2-Q+\Phi^2) - \sqrt{(a^2-Q+\Phi^2)^2+4a^2Q}
+(a^2-Q-\Phi^2) - \sqrt{(a^2-Q-\Phi^2)^2+4a^2Q}
 \right\]
 \\]
 Note that my $$u_1$$ is not the same as Teo's $$u_1$$.  Also keep
