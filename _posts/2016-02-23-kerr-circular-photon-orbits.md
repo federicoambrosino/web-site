@@ -95,6 +95,11 @@ of the photon's trajectory.  Some history of the trajectory is saved.
   will be automatically determined from the *a* value; so move the
   *a* slider around, because the *r* slider will be disabled.
 
+**Correction 2019-01-19**: Many thanks to [Charles
+Gammie](https://physics.illinois.edu/people/directory/profile/gammie)
+for spotting a typo in the equation for $$u_0^2$$ (this typo did not
+affect the code).
+
 **Update 2016-03-05**: Boyer-Lindquist coordinates are converted into
 Cartesian coordinates by treating them as oblate spheroidal
 coordinates, with the appropriate oblateness determined by the spin
@@ -180,7 +185,7 @@ read off of the angular potential.  This minimum/maximum is given by:
 u_0^2 = \cos^2\theta_\mathrm{min\ or\ max}
 =
 \frac{1}{2a^2} \left\[
-(a^2-Q+\Phi^2) + \sqrt{(a^2-Q+\Phi^2)^2+4a^2Q}
+(a^2-Q-\Phi^2) + \sqrt{(a^2-Q-\Phi^2)^2+4a^2Q}
 \right\]
 \\]
 This function is plotted below:
