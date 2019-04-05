@@ -2,7 +2,7 @@
 title: "Phys 402, Electromagnetism II (Spring 2019)"
 date: 2019-01-14
 permalink: /teaching/2019-spring-phys-402/
-modified: 2019-03-27
+modified: 2019-04-05
 excerpt:
 tags:
 ---
@@ -15,7 +15,8 @@ tags:
 
 ## News
 
-* Mar. 20: Pset 06 has been posted below.
+* Apr. 05: Pset 07 has been posted below.
+* Mar. 27: Pset 06 has been posted below.
 * Mar. 20: The midterm (a.k.a. pset 05) has been posted below.
 * Mar.  2: Pset 04 has been posted below.
 * Feb. 21: Pset 03 has been posted below.
@@ -26,6 +27,9 @@ tags:
   reflected in the updated syllabus linked at top.
 
 ## Problem sets
+
+* [Problem set 07]({{ site.url }}/files/teaching/2019-spring-phys-402/pset07.pdf),
+  due to me by 5PM on Thursday, Apr. 11
 
 * [Problem set 06]({{ site.url }}/files/teaching/2019-spring-phys-402/pset06.pdf),
   due to me by 5PM on Wednesday, Apr. 3
