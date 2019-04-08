@@ -1,15 +1,15 @@
 ---
 layout: pub-link
 title: "The binary black hole explorer: on-the-fly visualizations of precessing binary black holes"
-modified:
+modified: 2019-04-08
 categories: pubs
 excerpt: "Real-time interactive visualizations of merging black holes in seconds!"
 tags: [general relativity, gravity, black holes, python, code, visualization, interactive]
 pub:
   authors: "Vijay Varma, Leo C. Stein, and Davide Gerosa"
-  doi:
+  doi: "10.1088/1361-6382/ab0ee9"
   arXiv: "1811.06552"
-  jref:
+  jref: "2019 Class. Quantum Grav. <b>36</b> 095007"
 date: 2018-11-18
 ---
 
