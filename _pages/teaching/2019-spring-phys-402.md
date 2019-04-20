@@ -15,6 +15,7 @@ tags:
 
 ## News
 
+* Apr. 19: Pset 08 has been posted below.
 * Apr. 05: Pset 07 has been posted below.
 * Mar. 27: Pset 06 has been posted below.
 * Mar. 20: The midterm (a.k.a. pset 05) has been posted below.
@@ -27,6 +28,9 @@ tags:
   reflected in the updated syllabus linked at top.
 
 ## Problem sets
+
+* [Problem set 08]({{ site.url }}/files/teaching/2019-spring-phys-402/pset08.pdf),
+  due to me by 5PM on Friday, Apr. 26
 
 * [Problem set 07]({{ site.url }}/files/teaching/2019-spring-phys-402/pset07.pdf),
   due to me by 5PM on Thursday, Apr. 11
