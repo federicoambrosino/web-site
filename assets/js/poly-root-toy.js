@@ -22,7 +22,7 @@
       controller.updateRootsFromPoly();
       controller.updateRootView();
 
-      return; // Discriminant stuff is not ready for production
+      // Discriminant stuff is ready for production!
 
       // Beginning of discriminant roots code
       if (controller.showingDiscRoots) {
@@ -46,12 +46,12 @@
         var t1 = performance.now();
 
         console.log("Discriminant took "+(t1-t0)+"ms.");
-        console.log(disc);
+        // console.log(disc);
 
         var dRootResult = disc.complexRoots(controller.roots);
        // TODO CHECK FOR ERRORS
 
-        console.log(dRootResult);
+        // console.log(dRootResult);
 
         for (var i=0; i<nDiscRoots; i++) {
           controller.discRootPoints[i] =
@@ -400,7 +400,7 @@
 
         this.rootPoints[i].on('drag', makeRootPointOnDrag(this, i));
         this.coeffPoints[i].on('drag', makeCoeffPointOnDrag(this, i));
-        // this.coeffPoints[i].on('up', makeCoeffPointOnUp(this, i));
+        this.coeffPoints[i].on('up', makeCoeffPointOnUp(this, i));
       }
     },
 
