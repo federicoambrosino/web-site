@@ -135,7 +135,7 @@ Question: What determines the type of permutation (cycle structure or
 conjugacy class)?
 Hint: It has something to do with the zeros of the
 [discriminant](https://en.wikipedia.org/wiki/Discriminant).
-To understand the relationship, check the box to view the
+To understand the relationship, check <a href="#viewDisc">the box</a> to view the
 discriminant's roots.  When you drag a coefficient $$a_i$$, you will
 see the roots of the discriminant (treated as univariate, holding fixed
 all other $$a_{j\neq i}$$).
