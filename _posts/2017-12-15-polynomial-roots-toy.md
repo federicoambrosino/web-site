@@ -4,6 +4,7 @@ categories: [tool]
 excerpt: Interactive toy for visualizing relationship between polynomial roots and coefficients
 tags: [interactive, algebra, polynomial, roots]
 date: 2017-12-15
+modified: 2019-06-08
 jsxgraph: true
 published: true
 pinned: false
@@ -131,8 +132,13 @@ What we have here is a map from closed loops in *a*-space to
 *n* roots.
 
 Question: What determines the type of permutation (cycle structure or
-conjugacy class)? Does it have anything to do with the zeros of the
-[discriminant](https://en.wikipedia.org/wiki/Discriminant)?
+conjugacy class)?
+Hint: It has something to do with the zeros of the
+[discriminant](https://en.wikipedia.org/wiki/Discriminant).
+To understand the relationship, check the box to view the
+discriminant's roots.  When you drag a coefficient $$a_i$$, you will
+see the roots of the discriminant (treated as univariate, holding fixed
+all other $$a_{j\neq i}$$).
 
 ## Acknowledgments
 
@@ -154,10 +160,12 @@ Suggestions welcome!
     Galois](https://en.wikipedia.org/wiki/%C3%89variste_Galois) before
     his death in a duel at age 20.
 
-[^3]: I implemented the [Aberth-Ehrlich
+[^3]: For root-finding, I implemented the [Aberth-Ehrlich
     method](https://en.wikipedia.org/wiki/Aberth_method) into the
     javascript package
     [Polynomial.js](https://github.com/infusion/Polynomial.js),
     following [Dario Bini's paper](https://doi.org/10.1007/BF02207694)
     and his [FORTRAN
     implementation](http://www.netlib.org/numeralgo/na10).
+    To evaluate the discriminant, I compute the determinant of the
+    [Bézout matrix](https://en.wikipedia.org/wiki/Bézout_matrix).
