@@ -42,8 +42,15 @@ Grab the red dots and play around! Or jump to the
 </div>
 
 <form onsubmit="return false;">
+<div>
 <label for="degView" class="myLabel">Degree of polynomial (change me!):</label>
 <input type="number" name="degView" id="degView" class="myDegInput" min="1" max="7" step="1" value="4">
+</div>
+
+<div>
+<label for="viewDisc" class="myLabel">View discriminant's roots?</label>
+<input type="checkbox" name="viewDisc" id="viewDisc">
+</div>
 </form>
 
 <!------------------------------------------------------------>
@@ -57,7 +64,7 @@ Grab the red dots and play around! Or jump to the
 <script type="text/javascript" src="{{ site.url }}/assets/js/poly-root-toy.js"></script>
 
 <script type="text/javascript">
-  var controller = new PolyRootController("rootbox","coeffbox", "degView");
+  var controller = new PolyRootController("rootbox","coeffbox", "degView", "viewDisc");
 </script>
 
 ## Explanation

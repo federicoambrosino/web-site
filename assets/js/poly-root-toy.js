@@ -23,6 +23,7 @@
       controller.updateRootView();
 
       // Discriminant stuff is ready for production!
+      if (! controller.viewDisc) return;
 
       // Beginning of discriminant roots code
       if (controller.showingDiscRoots) {
@@ -214,7 +215,7 @@
     return result;
   };
 
-  function PolyRootController(rootboxName, coeffboxName, degreeInputName) {
+  function PolyRootController(rootboxName, coeffboxName, degreeInputName, discInputName) {
 
     if (!(this instanceof PolyRootController)) {
       return new PolyRootController(rootboxName, coeffboxName, degreeInputName);
@@ -226,6 +227,7 @@
     this.setupBoxes(rootboxName, coeffboxName);
 
     this.setupDegreeInput(degreeInputName);
+    this.setupDiscInput(discInputName);
 
     // Fire the input handler to set up
     this.degreeInput.oninput();
@@ -234,6 +236,8 @@
   PolyRootController.prototype = {
     'degree': 0,
     'degreeInput': {},
+    'viewDisc': false,
+    'discInput': {},
     'roots' : [],
     'coeffs': [],
     'p': {},
@@ -375,6 +379,16 @@
 
             controller.updateRootView();
             controller.updateCoeffView();
+          };
+        })(this);
+    },
+
+    'setupDiscInput': function(discInputName) {
+      this.discInput = document.getElementById(discInputName);
+      this.discInput.oninput =
+        (function(controller) {
+          return function() {
+            controller.viewDisc = controller.discInput.checked;
           };
         })(this);
     },
