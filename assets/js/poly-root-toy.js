@@ -116,6 +116,54 @@
   }
 
   /**
+   * TODO Document this
+   * This constructs the Bezout matrix B( p(x), p'(x) ) while treating
+   * the coefficient a_j as free, i.e. terms are polynomials in a_j
+   */
+  function Bezout_p_pprime_with_aj_free(p, j) {
+    var n = p.degree();
+
+    var pa = p.coeffArray();
+    var ppa = p.derive(1).coeffArray();
+    ppa[n] = 0.;
+
+    for (var i=0; i<=n; i++) {
+      pa[i] = Polynomial(pa[i]);
+      ppa[i] = Polynomial(ppa[i]);
+    }
+
+    var px = Polynomial("x");
+    var pjx = px.mul(Complex(j));
+
+    pa[j] = px;
+    if (j>0) { ppa[j-1] = pjx; };
+
+    var b = new Array(n);
+
+    for (var i=0; i<n; i++) {
+      b[i] = new Array(n);
+
+      for (var j=i; j<n; j++) {
+        b[i][j] = Polynomial(0.);
+
+        var maxk = Math.min(i,n-j-1);
+        for (var k=0; k <= maxk; k++) {
+          b[i][j] = b[i][j].add(  pa[j+k+1].mul( ppa[i-k] ));
+          b[i][j] = b[i][j].sub( ppa[j+k+1].mul( pa[i-k] ) );
+        };
+      };
+    };
+
+    // Bezout matrix is symmetric, copy
+    for (var i=0; i<n; i++) {
+      for (var j=0; j<i; j++)
+        b[i][j] = b[j][i];
+    };
+
+    return b;
+  }
+
+  /**
    * Return the (i,j) minor matrix
    */
   function MinorMatrix(mat, i, j) {
@@ -380,24 +428,28 @@
      * a[j], holding all other coefficients constant
      */
     'discriminantAsUnivariateOfCoeff': function(j) {
-      var SylvM = SylvesterMatrix(this.p, this.p.derive(1));
-      var n = this.degree;
-      var px = Polynomial("x");
-      var pjx = px.mul(Complex(j));
+      return PolyDeterminant(Bezout_p_pprime_with_aj_free(this.p, j));
 
-      // replace the appropriate slots in SylvM with px or pjx
-      for (var i=0; i<n-1; i++)
-        SylvM[i][i + n - j] = px;
-      if (j>0) {
-        for (var i=n-1; i<(n * 2 - 1); i++)
-          SylvM[i][i+1 - j] = pjx;
-      }
+      // // Below is the old way, using the Sylvester matrix. It is unacceptably slow!
+      // var SylvM = SylvesterMatrix(this.p, this.p.derive(1));
+      // var n = this.degree;
+      // var px = Polynomial("x");
+      // var pjx = px.mul(Complex(j));
 
-      return PolyDeterminant(SylvM);
+      // // replace the appropriate slots in SylvM with px or pjx
+      // for (var i=0; i<n-1; i++)
+      //   SylvM[i][i + n - j] = px;
+      // if (j>0) {
+      //   for (var i=n-1; i<(n * 2 - 1); i++)
+      //     SylvM[i][i+1 - j] = pjx;
+      // }
+
+      // return PolyDeterminant(SylvM);
     },
   };
 
   PolyRootController.SylvesterMatrix = SylvesterMatrix;
+  PolyRootController.Bezout_p_pprime_with_aj_free = Bezout_p_pprime_with_aj_free;
   PolyRootController.MinorMatrix = MinorMatrix;
   PolyRootController.PolyDeterminant = PolyDeterminant;
 
