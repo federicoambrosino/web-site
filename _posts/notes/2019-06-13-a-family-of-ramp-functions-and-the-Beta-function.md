@@ -87,7 +87,7 @@ p_n^\prime(t) \propto t^n (1-t)^n \,.
 The only thing to get right is the normalization, which we enforce by
 asking that the integral of $$p_n^\prime$$ is 1 at $$t=1$$.  If you've
 spent enough time on probability and statistics, then you'll recognize
-$$p_n(t)$$ as a special case of the [Beta
+$$p_n^\prime(t)$$ as a special case of the [Beta
 distribution](https://en.wikipedia.org/wiki/Beta_distribution), with
 shape parameters $$\alpha = \beta = n+1$$.  So we know the
 normalization,
