@@ -251,31 +251,18 @@
   /*
    * Return a string with a polynomial equation up to degree.  Examples:
    * degree  equation
-   * 1       a0 + x = 0
-   * 2       a0 + a1 x + x^2 = 0
-   * 3       a0 + a1 x + a2 x^2 + x^3 = 0
+   * 1       x + a_0 = 0
+   * 2       x^2 + a_1 x + a_0 = 0
+   * 3       x^3 + a_2 x^2 + a_1 x + a_0 = 0
    */
   function buildEquationStr(degree) {
     var formula_pieces = [];
-    // Generate equation up to (but not including) degree.
-    for (var i = 0; i < degree; i++) {
-      formula_pieces.push("a_" + i + buildXTermStr(i));
-    }
     // The higest-degree term has a coefficient of 1.
     formula_pieces.push(buildXTermStr(degree));
-    return formula_pieces.join(" + ") + " = 0";
-  }
-
-  function buildEquationStrOld(degree) {
-    var formula_pieces = [];
-    // Degree zero is just the coefficient.
-    formula_pieces.push("a_0");
-    // Lower degrees have a coefficient ai and x^i.
-    for (var i = 1; i < degree; i++) {
-      formula_pieces.push("a_" + i + " x^" + i);
+    // Generate equation up to (but not including) degree.
+    for (var i = degree-1; i >=0; i--) {
+      formula_pieces.push("a_" + i + buildXTermStr(i));
     }
-    // The higest-degree term has a coefficient of 1.
-    formula_pieces.push("x^" + degree);
     return formula_pieces.join(" + ") + " = 0";
   }
 
