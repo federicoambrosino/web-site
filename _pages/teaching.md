@@ -2,14 +2,19 @@
 title: "Teaching"
 date: 2018-08-20
 permalink: /teaching/
-modified: 2019-01-14
+modified: 2019-08-21
 excerpt:
 tags:
 ---
 
+## Fall 2019
+
+This term I'm lecturing [Phys 401, Electromagnetism I (course site
+here)]({{ site.url }}/teaching/2019-fall-phys-401).
+
 ## Spring 2019
 
-This term I'm lecturing [Phys 402, Electromagnetism II (course site
+[Phys 402, Electromagnetism II (course site
 here)]({{ site.url }}/teaching/2019-spring-phys-402).
 
 ## Fall 2018
