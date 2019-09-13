@@ -1,15 +1,15 @@
 ---
 layout: pub-link
 title: "The SXS Collaboration catalog of binary black hole simulations"
-modified:
+modified: 2019-09-12
 categories: pubs
 excerpt: "Accurate models of gravitational waves from merging black holes are necessary for detectors to observe as many events as possible while extracting the maximum science"
 tags: [general relativity, numerical relativity, gravity, black holes, code, SXS]
 pub:
   authors: "Boyle et al. (LCS is corresponding author)"
-  doi:
+  doi: "10.1088/1361-6382/ab34e2"
   arXiv: "1904.04831"
-  jref:
+  jref: "Class. Quantum Grav. <b>36</b> 195006 (2019)"
 date: 2019-04-10
 ---
 
