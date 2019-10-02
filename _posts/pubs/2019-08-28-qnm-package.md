@@ -1,15 +1,15 @@
 ---
 layout: pub-link
 title: "qnm: A Python package for calculating Kerr quasinormal modes, separation constants, and spherical-spheroidal mixing coefficients"
-modified:
+modified: 2019-10-01
 categories: pubs
 excerpt: "qnm is an open-source Python package for computing the Kerr quasinormal mode frequencies, angular separation constants, and spherical-spheroidal mixing coefficients."
 tags: [black holes, code, general relativity, gravitational waves, gravity, perturbation theory, python, ringdown, scientific computing]
 pub:
   authors: "Leo C. Stein"
-  doi:
+  doi: "10.21105/joss.01683"
   arXiv: "1908.10377"
-  jref: "Submitted to JOSS"
+  jref: "J. Open Source Softw., 4(42), 1683 (2019)"
 date: 2019-08-28
 ---
 
