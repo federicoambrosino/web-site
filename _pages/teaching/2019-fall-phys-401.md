@@ -2,7 +2,7 @@
 title: "Phys 401, Electromagnetism I (Fall 2019)"
 date: 2019-08-21
 permalink: /teaching/2019-fall-phys-401/
-modified: 2019-09-20
+modified: 2019-09-29
 excerpt:
 tags:
 ---
@@ -15,6 +15,7 @@ tags:
 
 ## News
 
+* Sep. 29: Pset 05 has been posted below.
 * Sep. 20: Pset 04 has been posted below.
 * Sep. 13: Pset 03 has been posted below.
 * Sep. 05: Pset 02 has been posted below.
@@ -24,6 +25,8 @@ tags:
 
 ## Problem sets
 
+* [Problem set 05]({{ site.url }}/files/teaching/2019-fall-phys-401/pset05.pdf),
+  due to me by 5PM on Monday, Oct. 7
 * [Problem set 04]({{ site.url }}/files/teaching/2019-fall-phys-401/pset04.pdf),
   due to me by 5PM on Friday, Sept. 27
 * [Problem set 03]({{ site.url }}/files/teaching/2019-fall-phys-401/pset03.pdf),
