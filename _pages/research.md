@@ -9,7 +9,7 @@ tags:
 
 I research various aspects of gravity from an astrophysical
 standpoint. I'm an Assistant Professor in the [department of physics
-and astronomy](http://physics.olemiss.edu/) at Ole Miss.
+and astronomy](http://physics.olemiss.edu/) at the University of Mississippi.
 
 I'm mainly interested in testing general relativity, specifically in
 the high-curvature regime (think black holes, neutron stars,

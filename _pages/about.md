@@ -13,7 +13,7 @@ header:
 
 I am currently an Assistant Professor in the
 [department of Physics and Astronomy](http://physics.olemiss.edu/) at the
-[University of Mississippi (a.k.a. Ole Miss)](http://www.olemiss.edu/).
+[University of Mississippi](http://www.olemiss.edu/).
 
 Briefly, my research interests are studying and testing general
 relativity and other theories of gravity from an astrophysical

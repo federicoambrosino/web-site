@@ -20,7 +20,7 @@ links you think ought to be here, feel free to suggest them to me.
   gravity conferences and jobs
 * [Seminar and colloquium
   calendar](http://www.phy.olemiss.edu/Colloquia/index.html) at the
-  [Ole Miss physics and astronomy
+  [U of MS physics and astronomy
   department](http://physics.olemiss.edu/)
 
 # Papers #
