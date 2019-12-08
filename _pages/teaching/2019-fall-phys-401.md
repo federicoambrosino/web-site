@@ -2,7 +2,7 @@
 title: "Phys 401, Electromagnetism I (Fall 2019)"
 date: 2019-08-21
 permalink: /teaching/2019-fall-phys-401/
-modified: 2019-12-02
+modified: 2019-12-08
 excerpt:
 tags:
 ---
@@ -15,6 +15,7 @@ tags:
 
 ## News
 
+* Dec. 08: The final (a.k.a. pset 11) has been posted below.
 * Dec. 02: Pset 10 has been posted below.
 * Nov. 15: Pset 09 has been posted below.
 * Nov. 02: Pset 08 has been posted below.
@@ -30,6 +31,8 @@ tags:
 
 ## Problem sets
 
+* [Final (a.k.a problem set 11)]({{ site.url }}/files/teaching/2019-fall-phys-401/pset11.pdf),
+  due to me by 5PM on Friday, Dec. 13
 * [Problem set 10]({{ site.url }}/files/teaching/2019-fall-phys-401/pset10.pdf),
   due to me by 5PM on Friday, Dec. 6
 * [Problem set 09]({{ site.url }}/files/teaching/2019-fall-phys-401/pset09.pdf),
