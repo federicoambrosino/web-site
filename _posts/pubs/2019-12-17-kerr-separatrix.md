@@ -9,7 +9,7 @@ pub:
   authors: "Leo C. Stein, Niels Warburton"
   doi:
   arXiv: "1912.07609"
-  jref:
+  jref: "Accepted by PRD (2020)"
 date: 2019-12-17
 ---
 
