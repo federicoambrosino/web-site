@@ -2,7 +2,7 @@
 title: "Phys 750, GR II (Spring 2020)"
 date: 2020-01-20
 permalink: /teaching/2020-spring-phys-750/
-modified: 2020-02-18
+modified: 2020-02-28
 excerpt:
 tags:
 ---
@@ -15,6 +15,7 @@ tags:
 
 ## News
 
+* Feb. 28: Pset 04 has been posted below
 * Feb. 18: Pset 03 has been posted below
 * Feb. 7: Pset 02 has been posted below
 * Jan. 28: Pset 01 has been posted below
@@ -22,6 +23,8 @@ tags:
 
 ## Problem sets
 
+* [Problem set 04]({{ site.url }}/files/teaching/2020-spring-phys-750/pset04.pdf),
+  due to me by 5PM on Friday, Mar. 06
 * [Problem set 03]({{ site.url }}/files/teaching/2020-spring-phys-750/pset03.pdf),
   due to me by 5PM on Tuesday, Feb. 25
 * [Problem set 02]({{ site.url }}/files/teaching/2020-spring-phys-750/pset02.pdf),
