@@ -825,19 +825,26 @@
   TorusDemoController.prototype = {
     /* UI objects for the controls */
 
-    /* UI objects for the Poincare section box */
-    /* threebox: {}, */
+    /* threejs objects */
+    three: {},
+    trajObj: {},
+    sectPoints: {},
 
     /* Variables */
     majorRad: 2.,
     minorRad: 0.6,
+    freqRatio: 1.618,
+    deltaPhi: 0.05,
+    nNewPhi: 50,
 
     /* Storage of trajectory points and section points */
-    trajPoints: new Array(),
-    sectPoints: new Array(),
+    curPhi12: [0., 0.],
 
     /* Public member functions */
     setupDemoGeom: {},
+    anglesTo3d: {},
+    advanceTraj: {},
+
   };
 
   TorusDemoController.prototype.setupDemoGeom = function(threeboxName) {
@@ -849,6 +856,8 @@
         klass: THREE.OrbitControls
       },
     });
+
+    this.three = three;
 
     three.scene.add( new THREE.AmbientLight( 0xf0f0f0 ) );
 
@@ -899,6 +908,51 @@
     // Place camera
     three.camera.position.set(3, 2.25, 5.);
 
+    // For the trajectory object
+    this.trajObj = new THREE.Line( new THREE.Geometry(),
+                                   new THREE.LineBasicMaterial( { color : 0x000000,
+                                                                  linewidth : 2 } ));
+
+    three.scene.add( this.trajObj );
+
+    this.advanceTraj();
+  };
+
+  TorusDemoController.prototype.anglesTo3d = function(phi1, phi2) {
+    var n_phi = phi1.length;
+    var threeVectors = new Array(n_phi);
+
+    for (var i=0; i<n_phi; i++) {
+      var rho = this.majorRad + this.minorRad * Math.cos(phi2[i]);
+
+      threeVectors[i] = new THREE.Vector3(
+        rho * Math.cos(phi1[i]),
+        this.minorRad * Math.sin(phi2[i]),
+        rho * Math.sin(phi1[i]));
+    };
+
+    return threeVectors;
+  };
+
+  TorusDemoController.prototype.advanceTraj = function() {
+    var phi1 = new Array(this.nNewPhi);
+    var phi2 = new Array(this.nNewPhi);
+
+    for (var i=0; i<this.nNewPhi; i++) {
+      phi1[i] = this.curPhi12[0] + i * this.deltaPhi;
+      phi2[i] = this.curPhi12[1] + i * this.deltaPhi * this.freqRatio;
+    };
+
+    this.curPhi12[0] = phi1[this.nNewPhi-1];
+    this.curPhi12[1] = phi2[this.nNewPhi-1];
+
+    var threeVectors = this.anglesTo3d(phi1, phi2);
+
+    var newGeom = new THREE.Geometry();
+    newGeom.vertices = threeVectors;
+
+    this.trajObj.geometry.dispose();
+    this.trajObj.geometry = newGeom;
   };
 
   /* Add to global namespace */
