@@ -67,7 +67,7 @@ body.waiting * {
 
 {% include toc %}
 
-# Explanation
+# What is a Poincaré section?
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
@@ -112,6 +112,7 @@ Suggestions welcome!
 <script type="text/javascript" src="{{ site.url }}/assets/js/vendor/threestrap.min.js"></script>
 <script type="text/javascript" src="{{ site.url }}/assets/js/vendor/OrbitControls.js"></script>
 
+<script type="text/javascript" src="{{ site.url }}/assets/js/my_utils.js"></script>
 
 <script type="text/javascript" src="{{ site.url }}/assets/js/poincare-clicker-toy.js"></script>
 

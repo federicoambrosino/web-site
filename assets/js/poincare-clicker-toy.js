@@ -818,6 +818,7 @@
     }
 
     this.setupDemoGeom(threeboxName);
+    this.setupEventListeners(threeboxName);
 
   };
 
@@ -849,6 +850,7 @@
 
     /* Public member functions */
     setupDemoGeom: {},
+    setupEventListeners: {},
     anglesTo3d: {},
     advanceTraj: {},
     runTick: {},
@@ -927,6 +929,30 @@
     this.advanceTraj();
   };
 
+  TorusDemoController.prototype.setupEventListeners = function(threeboxName) {
+
+    var threeBoxEl = document.getElementById(threeboxName);
+
+    window.addEventListener('scroll',
+                            (function(o, el) {
+                              return function(e) {
+
+                                var isVis = isPartiallyScrolledIntoView(el);
+
+                                if (o.runningState) {
+                                  if (!isVis) {
+                                    o.toggleRunning();
+                                  }
+                                } else {
+                                  // not yet running
+                                  if (isVis) {
+                                    o.toggleRunning();
+                                  }
+                                }
+                              }
+                            })(this, threeBoxEl));
+  };
+
   TorusDemoController.prototype.anglesTo3d = function(phi1, phi2) {
     var n_phi = phi1.length;
     var threeVectors = new Array(n_phi);
@@ -956,14 +982,14 @@
     var phi1 = new Array(this.nNewPhi);
     var phi2 = new Array(this.nNewPhi);
 
-    var phi10 = this.curPhi1[ this.curPhi1.length - 1 ];
-    var phi20 = this.curPhi2[ this.curPhi2.length - 1 ];
+    var phi10 = fmod(this.curPhi1[ this.curPhi1.length - 1 ],
+                     2. * Math.PI);
+    var phi20 = fmod(this.curPhi2[ this.curPhi2.length - 1 ],
+                     2. * Math.PI);
 
     for (var i=0; i<this.nNewPhi; i++) {
-      phi1[i] = fmod(phi10 + i * this.deltaPhi,
-                     2. * Math.PI);
-      phi2[i] = fmod(phi20 + i * this.deltaPhi * this.freqRatio,
-                     2. * Math.PI);
+      phi1[i] = phi10 + i * this.deltaPhi;
+      phi2[i] = phi20 + i * this.deltaPhi * this.freqRatio;
     };
 
     var newPhi1 = this.curPhi1.concat(phi1);
