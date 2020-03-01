@@ -73,7 +73,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 <div id="torusbox" style="width:500px; height:500px;"></div>
 
-## Limitations
+# Limitations
 
 Some of these limitations are identical to what's on the [Kerr
 spherical photon orbit page]({{ site.url }}{% post_url 2016-02-23-kerr-circular-photon-orbits %}#limitations).

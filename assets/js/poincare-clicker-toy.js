@@ -829,7 +829,7 @@
     /* threejs objects */
     three: {},
     trajObj: {},
-    sectPoints: {},
+    sectPointsObj: {},
 
     /* Variables */
     majorRad: 2.,
@@ -839,6 +839,7 @@
     deltaPhi: 0.05,
     nPhi: 48,
     nNewPhi: 8,
+    nSectPoints: 10,
 
     tickTime: 35, // milliseconds
     timeoutID: {},
@@ -847,12 +848,14 @@
     /* Storage of trajectory points and section points */
     curPhi1: [0.],
     curPhi2: [0.],
+    sectPoints: new Array(),
 
     /* Public member functions */
     setupDemoGeom: {},
     setupEventListeners: {},
-    anglesTo3d: {},
     advanceTraj: {},
+    anglesTo3d: {},
+    sectPointsToAdd: {},
     runTick: {},
     toggleRunning: {},
 
@@ -926,7 +929,22 @@
 
     three.scene.add( this.trajObj );
 
+    // For the poinc sect points
+    var sectPointGeom = new THREE.Geometry();
+    var minor_r = this.minorRad * this.trajBumpOutFac;
+    sectPointGeom.vertices.push( new THREE.Vector3( this.majorRad + minor_r, 0., 0.) );
+
+    var pointMat = new THREE.PointsMaterial( { size: 5,
+                                               color: 0x880088,
+                                               sizeAttenuation: false,
+                                               alphaTest: 0.5,
+                                               transparent: true } );
+
+    this.sectPointsObj = new THREE.Points( sectPointGeom, pointMat );
+    three.scene.add( this.sectPointsObj );
+
     this.advanceTraj();
+
   };
 
   TorusDemoController.prototype.setupEventListeners = function(threeboxName) {
@@ -978,6 +996,29 @@
     return ((x<0)? Math.abs(m) : 0) + (x % m);
   };
 
+  TorusDemoController.prototype.sectPointsToAdd = function(vects) {
+    var n_vect = vects.length;
+
+    var sectPoints = new Array();
+
+    for (var i=1; i<n_vect; i++) {
+      var v0 = vects[i-1];
+      var v1 = vects[i];
+      if ((v1.x > 0) && (v0.z < 0) && (v1.z >= 0)) {
+        // linearly interpolate between v0 and v1, using the z coord as the indep var
+        var newPoint = new THREE.Vector3(
+          linearInterp(0., v0.z, v0.x, v1.z, v1.x),
+          linearInterp(0., v0.z, v0.y, v1.z, v1.y),
+          0.
+        );
+        sectPoints.push(newPoint);
+      };
+    };
+
+    return sectPoints;
+
+  };
+
   TorusDemoController.prototype.advanceTraj = function() {
     var phi1 = new Array(this.nNewPhi);
     var phi2 = new Array(this.nNewPhi);
@@ -1004,11 +1045,34 @@
 
     var threeVectors = this.anglesTo3d(newPhi1, newPhi2);
 
+
     var newGeom = new THREE.Geometry();
     newGeom.vertices = threeVectors;
 
     this.trajObj.geometry.dispose();
     this.trajObj.geometry = newGeom;
+
+    // Find possible points to add to section
+    // They can only come from the last nNewPhi points, which are the new ones
+    var lastVects = threeVectors.slice(this.nPhi - this.nNewPhi);
+    var newSectPoints = this.sectPointsToAdd(lastVects);
+
+    newSectPoints = this.sectPoints.concat(newSectPoints);
+    newSectPoints.splice(0, newSectPoints.length - this.nSectPoints);
+
+    this.sectPoints = newSectPoints;
+
+    var newSectGeom = new THREE.Geometry();
+    newSectGeom.vertices = newSectPoints;
+
+    if (newSectPoints.length > 0) {
+      this.sectPointsObj.material.visible = true;
+      this.sectPointsObj.geometry.dispose();
+      this.sectPointsObj.geometry = newSectGeom;
+    } else {
+      this.sectPointsObj.material.visible = false;
+    };
+
   };
 
   TorusDemoController.prototype.toggleRunning = function() {
