@@ -833,17 +833,26 @@
     /* Variables */
     majorRad: 2.,
     minorRad: 0.6,
+    trajBumpOutFac: 1.03,
     freqRatio: 1.618,
     deltaPhi: 0.05,
-    nNewPhi: 50,
+    nPhi: 48,
+    nNewPhi: 8,
+
+    tickTime: 35, // milliseconds
+    timeoutID: {},
+    runningState: false,
 
     /* Storage of trajectory points and section points */
-    curPhi12: [0., 0.],
+    curPhi1: [0.],
+    curPhi2: [0.],
 
     /* Public member functions */
     setupDemoGeom: {},
     anglesTo3d: {},
     advanceTraj: {},
+    runTick: {},
+    toggleRunning: {},
 
   };
 
@@ -876,7 +885,7 @@
     var geometry = new THREE.TorusGeometry( this.majorRad, this.minorRad, 16, 50 );
     geometry.rotateX(Math.PI * 0.5);
     var material = new THREE.MeshStandardMaterial( {
-      transparent: true, opacity: 0.5,
+      transparent: true, opacity: 0.35,
       emissive: 0x0, roughness: 0.2, metalness: 0.2,
       side: THREE.DoubleSide,
       wireframe: false,
@@ -890,7 +899,7 @@
 
     var plane = new THREE.PlaneBufferGeometry( sectSize, sectSize );
     var planeMat = new THREE.MeshStandardMaterial( {
-      transparent: true, opacity: 0.3,
+      transparent: true, opacity: 0.25,
       emissive: 0x0, roughness: 0.2, metalness: 0.2,
       wireframe: false,
       depthTest: false, depthWrite: false,
@@ -922,37 +931,83 @@
     var n_phi = phi1.length;
     var threeVectors = new Array(n_phi);
 
-    for (var i=0; i<n_phi; i++) {
-      var rho = this.majorRad + this.minorRad * Math.cos(phi2[i]);
+    var minor_r = this.minorRad * this.trajBumpOutFac;
 
+    for (var i=0; i<n_phi; i++) {
+      var rho = this.majorRad + minor_r * Math.cos(phi2[i]);
+
+      // graphics people... argh
       threeVectors[i] = new THREE.Vector3(
         rho * Math.cos(phi1[i]),
-        this.minorRad * Math.sin(phi2[i]),
+        minor_r * Math.sin(phi2[i]),
         rho * Math.sin(phi1[i]));
     };
 
     return threeVectors;
   };
 
+  // Because mods should always be in the range 0 <= x < m
+  function fmod(x, m)
+  {
+    return ((x<0)? Math.abs(m) : 0) + (x % m);
+  };
+
   TorusDemoController.prototype.advanceTraj = function() {
     var phi1 = new Array(this.nNewPhi);
     var phi2 = new Array(this.nNewPhi);
 
+    var phi10 = this.curPhi1[ this.curPhi1.length - 1 ];
+    var phi20 = this.curPhi2[ this.curPhi2.length - 1 ];
+
     for (var i=0; i<this.nNewPhi; i++) {
-      phi1[i] = this.curPhi12[0] + i * this.deltaPhi;
-      phi2[i] = this.curPhi12[1] + i * this.deltaPhi * this.freqRatio;
+      phi1[i] = fmod(phi10 + i * this.deltaPhi,
+                     2. * Math.PI);
+      phi2[i] = fmod(phi20 + i * this.deltaPhi * this.freqRatio,
+                     2. * Math.PI);
     };
 
-    this.curPhi12[0] = phi1[this.nNewPhi-1];
-    this.curPhi12[1] = phi2[this.nNewPhi-1];
+    var newPhi1 = this.curPhi1.concat(phi1);
+    var newPhi2 = this.curPhi2.concat(phi2);
 
-    var threeVectors = this.anglesTo3d(phi1, phi2);
+    // Drop enough to keep the desired length
+    newPhi1.splice(0, newPhi1.length - this.nPhi);
+    newPhi2.splice(0, newPhi2.length - this.nPhi);
+
+    this.curPhi1 = newPhi1;
+    this.curPhi2 = newPhi2;
+
+    var threeVectors = this.anglesTo3d(newPhi1, newPhi2);
 
     var newGeom = new THREE.Geometry();
     newGeom.vertices = threeVectors;
 
     this.trajObj.geometry.dispose();
     this.trajObj.geometry = newGeom;
+  };
+
+  TorusDemoController.prototype.toggleRunning = function() {
+    if (this.runningState) {
+      window.clearTimeout(this.timeoutID);
+      this.runningState = false;
+    } else {
+      this.runningState = true;
+      // Will set its own timeout
+      this.runTick();
+    };
+  };
+
+  TorusDemoController.prototype.runTick = function() {
+    this.advanceTraj();
+
+    if (this.runningState) {
+      // OMGauss I hate javascript...
+      this.timeoutID = setTimeout((function(o) {
+                                     return function() { o.runTick() };
+                                  })(this),
+                                  this.tickTime);
+    } else {
+      // nothing to do
+    };
   };
 
   /* Add to global namespace */
