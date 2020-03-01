@@ -3,7 +3,7 @@ title: Poincaré section clicker for the double pendulum
 categories: [tool]
 excerpt: Interactive toy for understanding Poincaré sections and chaos
 tags: [interactive, dynamics, chaos]
-date: 2018-11-16
+date: 2020-03-01
 jsxgraph: true
 introjs: true
 published: true
@@ -71,6 +71,8 @@ body.waiting * {
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
+<div id="torusbox" style="width:500px; height:500px;"></div>
+
 ## Limitations
 
 Some of these limitations are identical to what's on the [Kerr
@@ -88,14 +90,16 @@ spherical photon orbit page]({{ site.url }}{% post_url 2016-02-23-kerr-circular-
   step-size
   [RK4](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods)
   integrator.  RK4 has no energy-error guarantee, so it is poorly
-  suited to generate Poincaré sections.  Energy drift other
+  suited to generate Poincaré sections.  Energy drift and other
   integration errors will smear out fine details, and worse yet will
-  even connect quasiperiod orbits to chaotic ones.
+  even connect quasiperiodic orbits to chaotic ones.
 
 # Acknowledgments
 
-This toy makes use of [JSXGraph](http://jsxgraph.uni-bayreuth.de/wp/),
-and the 'tour' uses [intro.js](https://introjs.com/).  It was
+This toy makes use of [JSXGraph](http://jsxgraph.uni-bayreuth.de/wp/).
+The 'tour' uses [intro.js](https://introjs.com/).
+The torus demo uses [three.js](http://threejs.org/) and
+[threestrap](https://github.com/unconed/threestrap).  It was
 originally inspired by some of the coursework in Jack Wisdom's
 dynamics class at MIT.
 
@@ -104,6 +108,11 @@ Suggestions welcome!
 
 <!-- CODE -->
 
+<script type="text/javascript" src="{{ site.url }}/assets/js/vendor/three.min.js"></script>
+<script type="text/javascript" src="{{ site.url }}/assets/js/vendor/threestrap.min.js"></script>
+<script type="text/javascript" src="{{ site.url }}/assets/js/vendor/OrbitControls.js"></script>
+
+
 <script type="text/javascript" src="{{ site.url }}/assets/js/poincare-clicker-toy.js"></script>
 
 <script type="text/javascript">
@@ -111,5 +120,10 @@ Suggestions welcome!
   var controller = new PoincareClickerController('ctrlsbox','buttonbox','poincbox');
   controller.handleTouch(.1,.1, false, null);
 
+  // tour stuff
   document.getElementById('tourLink').addEventListener('click', startIntro);
+
+  // 3D stuff
+  var torusController = new TorusDemoController('torusbox');
+
 </script>

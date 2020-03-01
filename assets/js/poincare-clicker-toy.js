@@ -808,6 +808,103 @@
   root['PoincareClickerController'] = PoincareClickerController;
 
   ////////////////////////////////////////////////////////////
+  // For the torus demo
+
+  // Constructor
+  function TorusDemoController(threeboxName) {
+
+    if (!(this instanceof TorusDemoController)) {
+      return new TorusDemoController(threeboxName);
+    }
+
+    this.setupDemoGeom(threeboxName);
+
+  };
+
+  // Controller prototype
+  TorusDemoController.prototype = {
+    /* UI objects for the controls */
+
+    /* UI objects for the Poincare section box */
+    /* threebox: {}, */
+
+    /* Variables */
+    majorRad: 2.,
+    minorRad: 0.6,
+
+    /* Storage of trajectory points and section points */
+    trajPoints: new Array(),
+    sectPoints: new Array(),
+
+    /* Public member functions */
+    setupDemoGeom: {},
+  };
+
+  TorusDemoController.prototype.setupDemoGeom = function(threeboxName) {
+    // Bootstrap core + controls plugin into element
+    var three = THREE.Bootstrap({
+      element: document.querySelector('#' + threeboxName),
+      plugins: ['core', 'controls', 'cursor'],
+      controls: {
+        klass: THREE.OrbitControls
+      },
+    });
+
+    three.scene.add( new THREE.AmbientLight( 0xf0f0f0 ) );
+
+    var directionalLight = new THREE.DirectionalLight( 0xf0f0f0, 0.5 );
+    three.scene.add( directionalLight );
+
+    var helper = new THREE.GridHelper( 60, 5 );
+    helper.position.y = - 6;
+    helper.material.opacity = 0.25;
+    helper.material.transparent = true;
+    three.scene.add( helper );
+
+    three.renderer.setClearColor( 0xf0f0f0 );
+
+    // Torus
+    var geometry = new THREE.TorusGeometry( this.majorRad, this.minorRad, 16, 50 );
+    geometry.rotateX(Math.PI * 0.5);
+    var material = new THREE.MeshStandardMaterial( {
+      transparent: true, opacity: 0.5,
+      emissive: 0x0, roughness: 0.2, metalness: 0.2,
+      side: THREE.DoubleSide,
+      wireframe: false,
+      depthTest: false, depthWrite: false,
+      color: 0x21ce70,  } );
+    var torus = new THREE.Mesh( geometry, material );
+    three.scene.add( torus );
+
+    // Cutting section
+    var sectSize = 2. * this.majorRad;
+
+    var plane = new THREE.PlaneBufferGeometry( sectSize, sectSize );
+    var planeMat = new THREE.MeshStandardMaterial( {
+      transparent: true, opacity: 0.3,
+      emissive: 0x0, roughness: 0.2, metalness: 0.2,
+      wireframe: false,
+      depthTest: false, depthWrite: false,
+      side: THREE.DoubleSide,
+      color: 0x0000ff,  } );
+
+    var sect = new THREE.Mesh( plane, planeMat );
+
+    sect.position.x = this.majorRad;
+    three.scene.add( sect );
+
+    // Alter controls
+    three.controls.rotateSpeed = 0.5;
+
+    // Place camera
+    three.camera.position.set(3, 2.25, 5.);
+
+  };
+
+  /* Add to global namespace */
+  root['TorusDemoController'] = TorusDemoController;
+
+  ////////////////////////////////////////////////////////////
 
   /* For tour using intro.js */
   root['startIntro'] = function(){
