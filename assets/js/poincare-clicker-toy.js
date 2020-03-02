@@ -811,12 +811,13 @@
   // For the torus demo
 
   // Constructor
-  function TorusDemoController(threeboxName) {
+  function TorusDemoController(threeboxName, ctrlsboxName) {
 
     if (!(this instanceof TorusDemoController)) {
-      return new TorusDemoController(threeboxName);
+      return new TorusDemoController(threeboxName, ctrlsboxName);
     }
 
+    this.setupCtrls(ctrlsboxName);
     this.setupDemoGeom(threeboxName);
     this.setupEventListeners(threeboxName);
 
@@ -825,6 +826,9 @@
   // Controller prototype
   TorusDemoController.prototype = {
     /* UI objects for the controls */
+    ctrlsbox: {},
+    freqslider: {},
+    nptslider: {},
 
     /* threejs objects */
     three: {},
@@ -851,6 +855,7 @@
     sectPoints: new Array(),
 
     /* Public member functions */
+    setupCtrls: {},
     setupDemoGeom: {},
     setupEventListeners: {},
     advanceTraj: {},
@@ -859,6 +864,43 @@
     runTick: {},
     toggleRunning: {},
 
+  };
+
+  TorusDemoController.prototype.setupCtrls = function(ctrlsboxName) {
+    this.ctrlsbox = JXG.JSXGraph.initBoard(ctrlsboxName,
+                                 {boundingbox:[0.,1.,1.,0.],
+                                  axis:false,
+                                  pan: {enabled: false},
+                                  showNavigation: false,
+                                  showCopyright:  false});
+    this.ctrlsbox.suspendUpdate();
+
+    this.freqslider = this.ctrlsbox.create(
+      'slider',
+      [[0.05,.66],[0.63,.66],
+       [0.1, 1.618, 3.]],
+      {name: 'Frequency ratio', precision:3});
+
+    this.nptslider = this.ctrlsbox.create(
+      'slider',
+      [[0.05,.33],[0.63,.33],
+       [1,8,100]],
+      {name: '# pts on section', snapWidth:1, precision:0});
+
+    this.freqslider.on('drag',
+                       (function (o) {
+                         return function() {
+                           o.freqRatio = o.freqslider.Value();
+                         };
+                       })(this));
+    this.nptslider.on('drag',
+                      (function (o) {
+                         return function() {
+                           o.nSectPoints = o.nptslider.Value();
+                         };
+                       })(this));
+
+    this.ctrlsbox.unsuspendUpdate();
   };
 
   TorusDemoController.prototype.setupDemoGeom = function(threeboxName) {
