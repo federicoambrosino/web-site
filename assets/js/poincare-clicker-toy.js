@@ -478,14 +478,14 @@
     this.poincbox.setBoundingBox(this.bbox(), false);
 
     var baxis = this.poincbox.create('axis', [[-4, 0], [4,0]],
-        { name:'b',
+        { name:'β',
           withLabel: true,
           ticks: {minorTicks:1, majorHeight:10, minorHeight:4},
           label: { position: 'rt',
                    offset: [-25, 20], }
         });
     var lbaxis = this.poincbox.create('axis', [[0, -4], [0,4]],
-        { name:'l_b',
+        { name:'ℓ_β',
           withLabel: true,
           ticks: {minorTicks:1, majorHeight:10, minorHeight:4},
           label: { position: 'rt',
@@ -840,10 +840,10 @@
     minorRad: 0.6,
     trajBumpOutFac: 1.03,
     freqRatio: 1.618,
-    deltaPhi: 0.05,
+    deltaPhi: 0.04,
     nPhi: 48,
     nNewPhi: 8,
-    nSectPoints: 10,
+    nSectPoints: 14,
 
     tickTime: 35, // milliseconds
     timeoutID: {},
@@ -884,7 +884,7 @@
     this.nptslider = this.ctrlsbox.create(
       'slider',
       [[0.05,.33],[0.63,.33],
-       [1,10,100]],
+       [1,this.nSectPoints,100]],
       {name: '# pts on section', snapWidth:1, precision:0});
 
     this.freqslider.on('drag',

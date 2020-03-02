@@ -16,7 +16,7 @@ Poincaré sections are a tool for understanding chaos in dynamical
 systems.  Here is an interactive one for the double
 pendulum<span class="mobileShow"> (best enjoyed on desktop)</span>.  Click in the main pane below to add an orbit.
 <a id="tourLink" href="javascript:void(0);">Click here for a tour</a>.
-<a href="#what-is-a-poincaré-section">Details about what it all means are below</a>.
+<a href="#explanation">Details about what it all means are below</a>.
 
 <!------------------------------------------------------------>
 <style>
@@ -39,6 +39,10 @@ input[type=button][disabled] {
 
 body.waiting * {
     cursor: progress;
+}
+
+a.image-popup {
+    cursor: zoom-in;
 }
 
 .mobileShow {display: none;}
@@ -67,7 +71,7 @@ body.waiting * {
 
 {% include toc %}
 
-# What is a Poincaré section?
+# What is a Poincaré section? {#explanation}
 
 Understanding a dynamical system is hard, especially when there are a
 lot of degrees of freedom.  We usually think of the state of a system
@@ -99,6 +103,9 @@ periodic orbits, some them being resonant.
 
 # What to look for
 
+Try to click around in the interactive Poincaré section at the top of
+the page to find these phenomena for yourself:
+
 ## (Quasi)periodic orbits
 
 Like on the torus above, a quasiperiodic orbit is restricted to
@@ -120,10 +127,11 @@ the kinda boring picture here, just a bunch of nested curves).
 ## Resonances
 
 If the frequency ratio happens to be rational, then the Poincaré map
-will *recur*.  That is, every nth dot you put on the Poincaré section
-will be in the exact same spot.  Try this above, by setting the
-torus's frequency ratio to something like 3/2=1.5, or 4/3≅1.333.
-Here's an example in the double pendulum:
+will *recur*.  That is, every *n*th dot you put on the Poincaré
+section will be in the exact same spot.  The number *n* is called the
+order of the resonance.  Try this above, by setting the torus's
+frequency ratio to something like 3/2=1.5, or 4/3≅1.333.  Here's an
+example in the double pendulum:
 
 <figure class="half">
 <a href="{{ site.url }}/images/double-pend-res.png"><img src="{{ site.url }}/images/double-pend-res.png" /></a>
@@ -131,10 +139,10 @@ Here's an example in the double pendulum:
 
 ## Nonlinear resonances
 
-Suppose we're close to an exactly resonant orbit that recurs every nth
-time it hits the Poincaré section. Near by, we might find nonlinear
+Suppose we're close to an exactly resonant orbit of order *n*.
+Nearby, we might find nonlinear
 resonances.  These are quasiperiodic orbits with irrational
-frequencies, but they almost-recur every nth time they hit the
+frequencies, but they almost-recur every *n*th time they hit the
 section.  They trace out little loops around the resonances, hitting
 each of the *n* little loops once before returning to the first one.
 
@@ -155,8 +163,7 @@ up looking like dust that's filling an area.
 
 Here we can see a single chaotic orbit trying to fill out an area of
 the Poincaré section.  Nearby there are ordinary quasiperiodic
-trajectories and nonlinear resonances (shown: ones with winding
-numbers 3 and 5).
+trajectories and nonlinear resonances (shown: ones with orders 3 and 5).
 One really cool thing about dynamical systems is that their phase
 space can have chaotic regions and quasiperiodic regions coexisting in
 harmony right next to each other.
@@ -172,16 +179,19 @@ nonlinear resonances (red and blue)?  Zoom out!
 </figure>
 
 That green loop in the middle was itself part of a nonlinear
-resonance, with winding number 5.  When zoomed in, the red loops
-looked like they have winding number 5, and the blue loops like they
-have winding number 8.  But when you zoom out, you realize that the
-red trajectory actually has to go around 25=5×5 times before it gets
-back on any curve, and the blue trajectory has to go around 40=5×8
-times!
+resonance, with order 5.  When zoomed in, the red loops
+looked like they have order 5, and the blue loops like they
+have order 8.  But when you zoom out, you see all red loops are part
+of the same orbit.  That orbit has to visit each of the 25=5×5 loops
+once before returning to the first loop.  Similarly, the blue
+trajectory has to visit 40=5×8 islands before returning to the first
+one!
 
 The fact that you can find islands around islands (around islands...)
-is a hallmark of fractal behavior.  If you click around, you find that
-these are islands of order in a sea of chaos:
+is a hallmark of fractal behavior.
+
+If you click around, you find that these are islands of regularity in
+a sea of chaos:
 
 <figure class="half">
 <a href="{{ site.url }}/images/frac3.png"><img src="{{ site.url }}/images/frac3.png" /></a>
@@ -212,7 +222,58 @@ Homoclinic orbits are important in understanding the transition to chaos.
 
 # The double pendulum's math
 
-Hello
+One of the simplest dynamical systems that displays all these rich
+phenomena is the double pendulum.
+<figure class="half">
+<a href="{{ site.url }}/images/HF-double-pend.jpg"><img src="{{ site.url }}/images/HF-double-pend.jpg" /></a>
+<figcaption>Taken from Fig. 11.1 of
+<a href="https://doi.org/10.1017/CBO9780511801662">Hand and Finch's Analytical Mechanics</a></figcaption>
+</figure>
+It has a four-dimensional phase space: the two angles
+$$(\alpha, \beta)$$, and their conjugate momenta $$(l_\alpha, l_\beta)$$.
+The Hamiltonian for a scaled version of this system is
+<div>
+\begin{align}
+H(\alpha, l_\alpha, \beta, l_\beta) ={}&
+-2\cos\alpha -\cos(\alpha+\beta) \\
+&{}+ \frac{l_\alpha^2 - 2(1+\cos\beta)l_\alpha l_\beta
++ (3+2\cos\beta)l_\beta^2}{3-\cos 2\beta}
+\,.\nonumber
+\end{align}
+</div>
+You can work out the four equations of motion from Hamilton's
+equations.  For any phase space variable $$\xi$$, its time derivative
+comes from the Poisson bracket with the Hamiltonian.
+<div>
+\begin{align}
+\frac{d}{dt}\xi = \{ \xi, H \}
+\,.
+\end{align}
+</div>
+With the canonical Poisson brackets $$\{\alpha, l_\alpha\}=1 =
+\{\beta,l_\beta\} $$ and all others vanishing, Hamilton's equations
+are
+<div>
+\begin{align}
+\frac{d}{dt}\alpha &= + \frac{\partial H}{\partial l_\alpha} &
+\frac{d}{dt}l_\alpha &= - \frac{\partial H}{\partial \alpha} \\
+\frac{d}{dt}\beta &= + \frac{\partial H}{\partial l_\beta} &
+\frac{d}{dt}l_\beta &= - \frac{\partial H}{\partial \beta}
+\,.
+\end{align}
+</div>
+They are some not very pretty nonlinear equations that I will not
+repeat here, but your computer doesn't mind.
+
+We are making Poincaré sections for exactly this system at the top of
+the page. The surface that we're cutting through is the $$H=E,
+\alpha=0$$ surface, and only plotting points that cross through in the
+positive $$\alpha$$ direction, i.e. $$d\alpha/dt > 0$$.  That
+corresponds to the upper arm of the pendulum being instantaneously
+vertical (at the bottom of its motion), and rotating in the
+counter-clockwise direction.  The two variables that are being plotted
+are $$(\beta, l_\beta)$$ on the horizontal and vertical.
+
 
 # Limitations
 
