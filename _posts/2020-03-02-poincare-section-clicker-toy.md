@@ -16,7 +16,7 @@ Poincaré sections are a tool for understanding chaos in dynamical
 systems.  Here is an interactive one for the double
 pendulum<span class="mobileShow"> (best enjoyed on desktop)</span>.  Click in the main pane below to add an orbit.
 <a id="tourLink" href="javascript:void(0);">Click here for a tour</a>.
-<a href="#explanation">Details about what it all means are below</a>.
+<a href="#what-is-a-poincaré-section">Details about what it all means are below</a>.
 
 <!------------------------------------------------------------>
 <style>
