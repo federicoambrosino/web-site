@@ -97,7 +97,7 @@ example you can play with to help get the idea:
 </div>
 <div id="torusbox" style="width:500px; height:500px; margin-bottom: 1em;"></div>
 
-We have the dynamics of some motion around the torus, with different
+We're watching dynamics on the surface of a torus, with different
 frequencies for the two directions.  This type of system only has
 periodic orbits, some them being resonant.
 
