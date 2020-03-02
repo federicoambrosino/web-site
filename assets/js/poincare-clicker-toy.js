@@ -878,19 +878,20 @@
     this.freqslider = this.ctrlsbox.create(
       'slider',
       [[0.05,.66],[0.63,.66],
-       [0.1, 1.618, 3.]],
+       [0.5, 1.618, 2.]],
       {name: 'Frequency ratio', precision:3});
 
     this.nptslider = this.ctrlsbox.create(
       'slider',
       [[0.05,.33],[0.63,.33],
-       [1,8,100]],
+       [1,10,100]],
       {name: '# pts on section', snapWidth:1, precision:0});
 
     this.freqslider.on('drag',
                        (function (o) {
                          return function() {
                            o.freqRatio = o.freqslider.Value();
+                           o.sectPoints.splice(0, o.sectPoints.length-1);
                          };
                        })(this));
     this.nptslider.on('drag',
