@@ -98,8 +98,8 @@ example you can play with to help get the idea:
 <div id="torusbox" style="width:500px; height:500px; margin-bottom: 1em;"></div>
 
 We're watching dynamics on the surface of a torus, with different
-frequencies for the two directions.  This type of system only has
-periodic orbits, some them being resonant.
+frequencies for the two directions ("longitude" and "latitude").  This
+type of system only has periodic orbits, some them being resonant.
 
 # What to look for
 
@@ -163,7 +163,8 @@ up looking like dust that's filling an area.
 
 Here we can see a single chaotic orbit trying to fill out an area of
 the Poincaré section.  Nearby there are ordinary quasiperiodic
-trajectories and nonlinear resonances (shown: ones with orders 3 and 5).
+trajectories (light blue) and nonlinear resonances (shown: ones with
+orders 3 (purple) and 5 (green)).
 One really cool thing about dynamical systems is that their phase
 space can have chaotic regions and quasiperiodic regions coexisting in
 harmony right next to each other.
@@ -199,18 +200,18 @@ a sea of chaos:
 
 ## Homoclinic orbits
 
-Close to where islands appear, you can find somethind called a
+Close to where islands appear, you can find something called a
 [hyperbolic fixed
 point](https://en.wikipedia.org/wiki/Hyperbolic_equilibrium_point) --
 these look like an "X", where flows on opposite sides of the X have to
 move in opposite directions.  Associated to these points, we can have
 an orbit that gets arbitrarily close to (but never reaches) the
-fixpoint, if we go far enough forward or backward in time.  Two
-opposite legs of the X are repelling from the fixpoint, and two are
+fixed point, if we go far enough forward or backward in time.  Two
+opposite legs of the X are repelling from the fixed point, and two are
 attracting.
 
-It's possible for a trajectory to be attracted to the fixpoint going
-into the future, and repelled from *that same fixpoint* far in the
+It's possible for a trajectory to be attracted to the fixed point going
+into the future, and repelled from *that same fixed point* far in the
 past.  This kind of trajectory is called a homoclinic orbit.  Here's
 the closest to one that I could get in the double pendulum:
 
@@ -266,8 +267,9 @@ They are some not very pretty nonlinear equations that I will not
 repeat here, but your computer doesn't mind.
 
 We are making Poincaré sections for exactly this system at the top of
-the page. The surface that we're cutting through is the $$H=E,
-\alpha=0$$ surface, and only plotting points that cross through in the
+the page. The surface that we're cutting through is at constant energy
+$$H=E$$, where you choose the energy with a slider.  Then further
+intersect with $$\alpha=0$$, only plotting points that cross through in the
 positive $$\alpha$$ direction, i.e. $$d\alpha/dt > 0$$.  That
 corresponds to the upper arm of the pendulum being instantaneously
 vertical (at the bottom of its motion), and rotating in the
