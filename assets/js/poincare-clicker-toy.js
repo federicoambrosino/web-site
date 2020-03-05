@@ -347,6 +347,11 @@
     deltaT: 0.03,
     maxSteps: 100000,
 
+    /* Parameters for points during sliding energy */
+    nSlidePts: 100,
+    slideb: 0.01,
+    slidelb: 0.01,
+
     isZoom100: true,
 
     /* styles */
@@ -798,6 +803,11 @@
     this.clearPoints();
 
     this.initialZoom();
+
+    var oldnpt = this.npt;
+    this.npt = this.nSlidePts;
+    this.handleTouch(this.slideb, this.slidelb, false, null);
+    this.npt = oldnpt;
   };
 
   PoincareClickerController.prototype.setnpt = function(npt) {

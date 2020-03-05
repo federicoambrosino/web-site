@@ -306,7 +306,8 @@ The torus demo uses [three.js](http://threejs.org/) and
 originally inspired by some of the coursework in Jack Wisdom's
 dynamics class at MIT.  I started coding this up when I was teaching
 a grad dynamics class in 2018.
-Thanks to Jenny and Nic for editorial feedback and beta testing.
+Thanks to Jenny, Nic, and Niels for editorial feedback and beta testing.
+Thanks to Niels for UI feedback.
 
 Suggestions welcome!  Or fork the code for this web site and send a PR :)
 
