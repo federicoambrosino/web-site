@@ -1,15 +1,15 @@
 ---
 layout: pub-link
-title: "The location of the last stable orbit in Kerr spacetime"
+title: "Location of the last stable orbit in Kerr spacetime"
 modified:
 categories: pubs
 excerpt: "The dividing line between bound and plunging orbits is an algebraic variety"
 tags: [black holes, gravity, general relativity, dynamics]
 pub:
   authors: "Leo C. Stein, Niels Warburton"
-  doi:
+  doi: "10.1103/PhysRevD.101.064007"
   arXiv: "1912.07609"
-  jref: "Accepted by PRD (2020)"
+  jref: "Phys. Rev. D <b>101</b>, 064007 (2020)"
 date: 2019-12-17
 ---
 
