@@ -1162,7 +1162,7 @@
         },
         {
           element: '#ctrlsbox',
-          intro: "Here is where you set the energy of the system, and how many points are added on each click.  Changing the energy will clear all points (which can take a while).",
+          intro: "Here is where you set the energy of the system, and how many points are added on each click.  Changing the energy will clear all points.",
         },
         {
           element: '#buttonbox',

@@ -286,8 +286,7 @@ spherical photon orbit page]({{ site.url }}{% post_url 2016-02-23-kerr-circular-
   ideal for numerical work.  There are very few numerical libraries.
 * JSXGraph is really not designed for putting tens/hundreds of
   thousands of points onto plots -- their points have many features I
-  don't need.  It is also extremely slow to clear all these points off
-  of the board, and this blocks the UI thread.
+  don't need.
 * JSXGraph only has fixed-step-size integrators, no adaptive ones.  I
   picked what seemed like a reasonable step size in most of parameter space.
 * The numerical integrator from JSXGraph that I use is a fixed
