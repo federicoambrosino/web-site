@@ -10,11 +10,16 @@ tags:
 ## Course info
 
 * [Syllabus in PDF format]({{ site.url }}/files/teaching/2020-spring-phys-750/syllabus.pdf)
-* Class schedule:  TR 0800--0915, Lewis Hall room 109
+* Class schedule:  TR 0800--0915, [this Google Meet link](https://meet.google.com/hmc-pkqq-qqi)
 * Office hours:  TBD, 205 Lewis Hall
 
 ## News
 
+* Mar. 27: Pset 05 has been posted below
+* Mar. 16: Made plans for moving online because of COVID-19. Lectures
+  will now be on Google Meet. Recorded lectures will be made available
+  on Google Drive. Spring break is extended 1 week, we will lose a
+  week of lectures.
 * Feb. 28: Pset 04 has been posted below
 * Feb. 18: Pset 03 has been posted below
 * Feb. 7: Pset 02 has been posted below
@@ -23,6 +28,8 @@ tags:
 
 ## Problem sets
 
+* [Problem set 05]({{ site.url }}/files/teaching/2020-spring-phys-750/pset05.pdf),
+  due to me by 5PM on Thursday, Apr. 02
 * [Problem set 04]({{ site.url }}/files/teaching/2020-spring-phys-750/pset04.pdf),
   due to me by 5PM on Friday, Mar. 06
 * [Problem set 03]({{ site.url }}/files/teaching/2020-spring-phys-750/pset03.pdf),

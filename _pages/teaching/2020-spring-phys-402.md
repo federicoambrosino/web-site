@@ -18,7 +18,7 @@ tags:
 * Mar. 24: Pset 06 has been posted below
 * Mar. 16: Made plans for moving online because of COVID-19. Lectures
   will now be on Google Meet. Recorded lectures will be made available
-  on Google Drive. Spring break is extende 1 week, we will lose a
+  on Google Drive. Spring break is extended 1 week, we will lose a
   week of lectures.
 * Mar. 09: The midterm (a.k.a. pset 05) has been posted below
 * Feb. 26: Pset 04 has been posted below
