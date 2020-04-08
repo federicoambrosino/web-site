@@ -15,6 +15,7 @@ tags:
 
 ## News
 
+* Apr. 08: Pset 07 has been posted below
 * Mar. 24: Pset 06 has been posted below
 * Mar. 16: Made plans for moving online because of COVID-19. Lectures
   will now be on Google Meet. Recorded lectures will be made available
@@ -29,6 +30,8 @@ tags:
 
 ## Problem sets
 
+* [Problem set 07]({{ site.url }}/files/teaching/2020-spring-phys-402/pset07.pdf),
+  due to me by 5PM on Wednesday, Apr. 15
 * [Problem set 06]({{ site.url }}/files/teaching/2020-spring-phys-402/pset06.pdf),
   due to me by 5PM on Wednesday, Apr. 1
 * [Midterm (a.k.a. problem set 05)]({{ site.url }}/files/teaching/2020-spring-phys-402/pset05.pdf),
