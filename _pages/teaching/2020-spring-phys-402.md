@@ -15,6 +15,7 @@ tags:
 
 ## News
 
+* Apr. 20: Pset 08 has been posted below
 * Apr. 08: Pset 07 has been posted below
 * Mar. 24: Pset 06 has been posted below
 * Mar. 16: Made plans for moving online because of COVID-19. Lectures
@@ -30,6 +31,8 @@ tags:
 
 ## Problem sets
 
+* [Problem set 08]({{ site.url }}/files/teaching/2020-spring-phys-402/pset08.pdf),
+  due to me by 5PM on Saturday, Apr. 25
 * [Problem set 07]({{ site.url }}/files/teaching/2020-spring-phys-402/pset07.pdf),
   due to me by 5PM on Wednesday, Apr. 15
 * [Problem set 06]({{ site.url }}/files/teaching/2020-spring-phys-402/pset06.pdf),
