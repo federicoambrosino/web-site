@@ -15,6 +15,7 @@ tags:
 
 ## News
 
+* Apr. 26: Pset 09 has been posted below
 * Apr. 20: Pset 08 has been posted below
 * Apr. 08: Pset 07 has been posted below
 * Mar. 24: Pset 06 has been posted below
@@ -31,6 +32,8 @@ tags:
 
 ## Problem sets
 
+* [Problem set 09]({{ site.url }}/files/teaching/2020-spring-phys-402/pset09.pdf),
+  due to me by 5PM on Sunday, May 3
 * [Problem set 08]({{ site.url }}/files/teaching/2020-spring-phys-402/pset08.pdf),
   due to me by 5PM on Saturday, Apr. 25
 * [Problem set 07]({{ site.url }}/files/teaching/2020-spring-phys-402/pset07.pdf),
