@@ -15,6 +15,7 @@ tags:
 
 ## News
 
+* May 03: The final (a.k.a. pset 10) has been posted below
 * Apr. 26: Pset 09 has been posted below
 * Apr. 20: Pset 08 has been posted below
 * Apr. 08: Pset 07 has been posted below
@@ -32,6 +33,8 @@ tags:
 
 ## Problem sets
 
+* [Problem set 10]({{ site.url }}/files/teaching/2020-spring-phys-402/pset10.pdf),
+  due to me by 5PM on Friday, May 8
 * [Problem set 09]({{ site.url }}/files/teaching/2020-spring-phys-402/pset09.pdf),
   due to me by 5PM on Sunday, May 3
 * [Problem set 08]({{ site.url }}/files/teaching/2020-spring-phys-402/pset08.pdf),
