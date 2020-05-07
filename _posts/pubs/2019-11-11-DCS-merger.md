@@ -7,10 +7,10 @@ excerpt: "The first astrophysically-relevant numerical simulation of merging bla
 tags: [Chern-Simons, beyond-GR, black holes, gravitational waves, gravity, numerical relativity, ringdown]
 pub:
   authors: "Maria Okounkova, Leo C. Stein, Jordan Moxon, Mark A. Scheel, Saul A. Teukolsky"
-  doi:
+  doi: "10.1103/PhysRevD.101.104016"
   arXiv: "1911.02588"
-  jref:
-date: 2019-11-11
+  jref: "Phys. Rev. D <b>101</b>, 104016 (2020)"
+date: 2020-05-07
 ---
 
 ![]({{ site.url }}/images/DCS-merger-waveform.png)
@@ -24,4 +24,5 @@ date: 2019-11-11
 > leading-order corrections to the merger and ringdown waveforms, as
 > well as the ringdown quasi-normal mode spectrum. We estimate that
 > such corrections may be discriminated in detections with signal to
-> noise ratio ≳ 24.
+> noise ratio ≳180–240, with the precise value depending on the
+> dimension of the GR waveform family used in data analysis.
