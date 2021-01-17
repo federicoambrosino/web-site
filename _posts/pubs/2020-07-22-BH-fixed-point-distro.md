@@ -1,15 +1,15 @@
 ---
 layout: pub-link
 title: "A fixed point for black hole distributions"
-modified:
+modified: 2021-01-17
 categories: pubs
 excerpt: "Merger dynamics create an attractive fixed-point in the space of distributions"
 tags: [black holes, gravity, general relativity, surrogate]
 pub:
   authors: "José T. Gálvez Ghersi, Leo C. Stein"
-  doi:
+  doi: "10.1088/1361-6382/abcfd2"
   arXiv: "2007.11578"
-  jref:
+  jref: "Class. Quantum Grav. <b>38</b> 045012 (2021)"
 date: 2020-07-22
 ---
 
