@@ -7,9 +7,9 @@ excerpt: "We show that an eccentric binary of black holes with misaligned spins 
 tags: [black holes, gravity, general relativity, chaos, integrability, dynamics, perturbation theory]
 pub:
   authors: "Sashwat Tanay, Leo C. Stein, José T. Gálvez Ghersi"
-  doi:
+  doi: "10.1103/PhysRevD.103.064066"
   arXiv: "2012.06586"
-  jref:
+  jref: "Phys. Rev. D <b>103</b>, 064066 (2021)"
 date: 2020-12-11
 ---
 
