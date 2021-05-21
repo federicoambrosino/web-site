@@ -1,15 +1,15 @@
 ---
 layout: pub-link
 title: "Brans-Dicke theory in Bondi-Sachs form: Asymptotically flat solutions, asymptotic symmetries and gravitational-wave memory effects"
-modified:
+modified: 2021-05-21
 categories: pubs
 excerpt: "We study the structure of asymptotic null infinity in the Brans-Dicke theory of gravity"
 tags: [gravity, beyond-GR, asymptotia, conformal, geometry, BMS, gravitational waves]
 pub:
   authors: "Shammi Tahura, David A. Nichols, Alexander Saffer, Leo C. Stein, Kent Yagi"
-  doi:
+  doi: "10.1103/PhysRevD.103.104026"
   arXiv: "2007.13799"
-  jref:
+  jref: "Phys. Rev. D <b>103</b>, 104026 (2021)"
 date: 2020-07-27
 ---
 
