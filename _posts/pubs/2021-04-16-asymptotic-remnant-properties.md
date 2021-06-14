@@ -1,15 +1,15 @@
 ---
 layout: pub-link
 title: "Comparing Remnant Properties from Horizon Data and Asymptotic Data in Numerical Relativity"
-modified:
+modified: 2021-06-10
 categories: pubs
 excerpt:
 tags: [gravity, gravitational waves, asymptotia, BMS, SXS, black holes, general relativity, numerical relativity, symmetry]
 pub:
   authors: "Dante A. B. Iozzo, Neev Khera, Leo C. Stein, et al."
-  doi:
+  doi: "10.1103/PhysRevD.103.124029"
   arXiv: "2104.07052"
-  jref:
+  jref: "Phys. Rev. D <b>103</b>, 124029 (2021)"
 date: 2021-04-16
 ---
 
