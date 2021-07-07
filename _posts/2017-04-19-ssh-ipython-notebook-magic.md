@@ -1,6 +1,6 @@
 ---
 title: "ssh ipython notebook tunneling magic"
-modified:
+modified: 2021-07-07
 categories: code
 excerpt: "How to get remote jupyter to automatically open a local browser."
 tags: [code, ssh, remote, tunnel, python, ipython, jupyter, iterm2, scientific computing]
@@ -8,7 +8,7 @@ date: 2017-04-19T22:24:00-07:00
 ---
 
 The problem: you have large datasets on a remote machine and want to
-use an `ipython` ([`jupyter`](http://jupyter.org/)) notebook to
+use a [`jupyter`](http://jupyter.org/) notebook to
 interactively analyse your data.  You could transfer the data to your
 local machine, or mount the remote drive.  But ideally, the `jupyter`
 server should run on the remote machine, so that only the much smaller
@@ -30,12 +30,18 @@ browser.  This will work in any programmable terminal that has trigger
 functionality.  There may be other solutions, please contact me if you
 have something cleaner.
 
+**Update 2021-07-07**: I updated these instructions to include how to
+capture the token that's output when your jupyter session is secure.
+
 # Instructions
 
 There are just 3 steps:
 
 1. On your local machine, set up your `ssh_config` to always forward a
-   specific port for this remote host.  I picked 8889, leaving 8888
+   specific port for this remote host.  It's most convenient for this
+   to be the same local and remote port, and it should be one that you
+   expect to be free (for example, something in the range 49152—65535).
+   I picked 8889, leaving 8888
    free for a locally-running `jupyter`.  To do this, add an entry for
    the remote host in `~/.ssh/config` with the `LocalForward` keyword
    like so:
@@ -45,23 +51,26 @@ There are just 3 steps:
      HostName     wheeler.caltech.edu
      User         leostein
      ForwardX11   no
-     LocalForward 8889 localhost:8888
+     LocalForward 8889 localhost:8889
    ~~~
    
    This tells `ssh` that whenever I `ssh wheeler`, it's also going to
    forward my *local* port 8889 to the *remote* interface:port pair
-   localhost:8888, which is where the remote `jupyter` server is going
+   localhost:8889, which is where the remote `jupyter` server is going
    to be listening.
 
 2. On your remote machine, edit your
-   `~/.jupyter/jupyter_notebook_config.py` to use a custom "browser".
+   `~/.jupyter/jupyter_notebook_config.py` to use a custom port,
+   custom "browser", and no redirect file.
    If you don't already have a config file, then run `jupyter notebook
    --generate-config` to create one in the default place.  Open this
    file and find the variable named `NotebookApp.browser`.  Uncomment
    it and set it to emit a magic keyword.  I set this:
    
    ~~~ python
+   c.NotebookApp.port = 8889
    c.NotebookApp.browser = u'echo TRIGGER-ITERM-2-WHEELER-JUPYTER %s'
+   c.NotebookApp.use_redirect_file = False
    ~~~
    
    The `%s` is going to get replaced with the URL on the remote
@@ -76,22 +85,26 @@ There are just 3 steps:
    ![]({{ site.url }}/images/iterm2-prefs-profs-advanced.png)
    
    Hit the plus to add a new trigger.  Set the regular expression to
+   (for example)
    
    ~~~
-   ^TRIGGER-ITERM-2-WHEELER-JUPYTER
+   ^TRIGGER-ITERM-2-WHEELER-JUPYTER (.*)$
    ~~~
    
    using the same magic keyword as in step 2 (if you omit the caret,
    you're going to have an annoying time editing the
    `jupyter_notebook_config` in the future, if you need to do that).
+   The parenthetical pattern will be captured so we can use it for the
+   following command.
    Set the Action to 'Run Command...'.  Then set the Parameters to
    
    ~~~
-   open "http://localhost:8889/tree"
+   open "\1"
    ~~~
    
-   using the same *local* port as in step 1.  You should see something
-   like this:
+   This will get you the correct token.  If you are using a different
+   local and remote port, you will need to work harder.
+   You should see something like this:
    
    ![]({{ site.url }}/images/iterm2-prefs-profs-advanced-2.png)
    
