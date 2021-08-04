@@ -7,9 +7,9 @@ excerpt:
 tags: [gravity, gravitational waves, asymptotia, BMS, SXS, black holes, general relativity, numerical relativity, symmetry]
 pub:
   authors: "Keefe Mitman, Neev Khera, Dante A. B. Iozzo, Leo C. Stein, et al."
-  doi:
+  doi: "10.1103/PhysRevD.104.024051"
   arXiv: "2105.02300"
-  jref:
+  jref: "Phys. Rev. D <b>104</b>, 024051 (2021)"
 date: 2021-05-06
 ---
 
