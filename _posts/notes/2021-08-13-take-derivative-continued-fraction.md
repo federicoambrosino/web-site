@@ -226,7 +226,7 @@ auxiliary variables.
 ## Automatic differentiation point of view
 
 As a note here, I should thank [Rob
-Corless](https://publish.uwo.ca/~rcorless/) who helped me ensure I
+Corless](https://rcorless.github.io/) who helped me ensure I
 understood how to do the above, and emphasized another point of view.
 This point of view is as follows: we should not distinguish between
 (a) some abstract mathematical function and (b) a computer algorithm
