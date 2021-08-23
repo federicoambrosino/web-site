@@ -2,16 +2,20 @@
 title: "Teaching"
 date: 2018-08-20
 permalink: /teaching/
-modified: 2021-01-18
+modified: 2021-08-22
 excerpt:
 tags:
 ---
 
-## Spring 2021
+## Fall 2021
 
 This term I'm lecturing:
+* [Phys 401, Electromagnetism I (course site here)]({{ site.url }}/teaching/2021-fall-phys-401)
+
+## Spring 2021
+
 * [Phys 213, General physics I (on Blackboard)](https://blackboard.olemiss.edu)
-* [Phys 402, Electromagnetism I (on Google Classroom)]({{ site.url }}/teaching/2021-spring-phys-402)
+* [Phys 402, Electromagnetism II (on Google Classroom)]({{ site.url }}/teaching/2021-spring-phys-402)
 
 ## Fall 2020
 
