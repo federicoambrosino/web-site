@@ -2,7 +2,7 @@
 title: "Phys 401, Electromagnetism I (Fall 2021)"
 date: 2021-08-22
 permalink: /teaching/2021-fall-phys-401/
-modified:
+modified: 2021-08-27
 excerpt:
 tags:
 ---
@@ -11,7 +11,7 @@ tags:
 
 * [Syllabus in PDF format]({{ site.url }}/files/teaching/2021-fall-phys-401/syllabus.pdf)
 * Class schedule:  MWF 1400--1450, Lewis 109
-* Office hours:  TBD
+* Office hours:  Monday 1300--1400, Lewis 205
 * Professor: Leo C. Stein (he/him; you can call me "Leo" or "Dr. Stein")
 * Email: [lcstein@go.olemiss.edu](mailto:lcstein@go.olemiss.edu)
 * Office: 205 Lewis Hall
