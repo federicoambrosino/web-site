@@ -1,15 +1,15 @@
 ---
 layout: pub-link
 title: "Numerical renormalization group-based approach to secular perturbation theory"
-modified:
+modified: 2021-10-01
 categories: pubs
 excerpt:
 tags: [dynamics, group theory, geometry, integrability, numerical methods, perturbation theory, renormalization]
 pub:
   authors: "José Tomás Gálvez Ghersi and Leo C. Stein"
-  doi:
+  doi: "10.1103/PhysRevE.104.034219"
   arXiv: "2106.08410"
-  jref:
+  jref: "Phys Rev. E <b>104</b>, 034219 (2021)"
 date: 2021-06-15
 ---
 
