@@ -4,7 +4,7 @@ title: "Integrability of eccentric, spinning black hole binaries up to second po
 modified:
 categories: pubs
 excerpt: "We show that an eccentric binary of black holes with misaligned spins is integrable at 2PN order.  We also construct 4 out of 5 action variables at 1.5PN."
-tags: [black holes, gravity, general relativity, chaos, integrability, dynamics, perturbation theory]
+tags: [black holes, gravity, general relativity, chaos, integrability, post-Newtonian, dynamics, perturbation theory]
 pub:
   authors: "Sashwat Tanay, Leo C. Stein, José T. Gálvez Ghersi"
   doi: "10.1103/PhysRevD.103.064066"

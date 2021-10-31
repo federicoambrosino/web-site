@@ -4,7 +4,7 @@ title: "Post-Newtonian, Quasicircular Binary Inspirals in Quadratic Modified Gra
 modified:
 categories: pubs
 excerpt: "The post-Newtonian calculation scheme applied to binary inspirals in a broad class of almost-GR theories."
-tags: []
+tags: [Chern-Simons, Gauss-Bonnet, beyond-GR, black holes, compact objects, post-Newtonian, dynamics, gravitational waves, gravity, perturbation theory]
 pub:
   authors: "Kent Yagi, Leo C. Stein, Nicolás Yunes, and Takahiro Tanaka"
   doi: 10.1103/PhysRevD.85.064022
